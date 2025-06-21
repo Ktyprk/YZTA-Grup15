@@ -1,0 +1,5 @@
+﻿# Auto detect text files and perform LF normalization
+* text=auto
+# Avoiding wrong language detection
+*.shader linguist-detectable=false
+*.cginc linguist-detectable=false
