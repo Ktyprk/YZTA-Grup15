@@ -46,8 +46,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 move = new Vector3(direction.x, 0, direction.y);
             transform.position += move * Time.fixedDeltaTime * 5f;
-
-            // Isometrik yönlendirme
+            
             transform.forward = move;
         }
     }
