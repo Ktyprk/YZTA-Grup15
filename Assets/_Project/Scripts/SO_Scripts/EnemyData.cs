@@ -18,10 +18,11 @@ public class EnemyData : ScriptableObject
     public float moveSpeed = 2f;
 
     [Header("Combat")]
-    public float attackTime = 3f;
+    public float attackTime = 1.2f; 
+    public float attackCooldown = 2f;
+    public float attackDistance = 1.5f;
     public float idleTime = 1f;
     public float blockTime = 0.5f;
-    public float attackDistance = 1.2f;
     public float enemyDistance = 1f;
 
     [Header("Animations")]

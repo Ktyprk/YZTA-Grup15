@@ -19,10 +19,11 @@ MonoBehaviour:
   health: 100
   damage: 10
   moveSpeed: 2
-  attackTime: 3
+  attackTime: 1.2
+  attackCooldown: 2
+  attackDistance: 1.8
   idleTime: 1
   blockTime: 0.5
-  attackDistance: 1.2
   enemyDistance: 1
   animatorController: {fileID: 9100000, guid: 47deda16815701e499d6e66bcb61e339, type: 2}
   idleAnim: Idle

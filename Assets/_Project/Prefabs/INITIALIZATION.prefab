@@ -2078,12 +2078,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9045072818136635803}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
   idleOverride: {fileID: 22100000, guid: a1ac2086ff35f164dacf909ce8c43e64, type: 2}
   moveOverride: {fileID: 22100000, guid: a1ac2086ff35f164dacf909ce8c43e64, type: 2}
   attackOverride: {fileID: 22100000, guid: a1ac2086ff35f164dacf909ce8c43e64, type: 2}
   attackGizmoCenter: {x: 0, y: 0, z: 0}
   attackGizmoSize: {x: 0, y: 0, z: 0}
   showAttackGizmo: 0
+  maxHealth: 100
 --- !u!114 &9045072818136635803
 MonoBehaviour:
   m_ObjectHideFlags: 0

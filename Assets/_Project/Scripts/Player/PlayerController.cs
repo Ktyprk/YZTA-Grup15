@@ -1,10 +1,11 @@
 using UnityEngine;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ICombat
 {
     public AnimatorController animator;
     private PlayerState _currentState;
+    public LayerMask enemyLayer;
 
     public Vector2 MoveInput { get; private set; }
     
@@ -17,9 +18,13 @@ public class PlayerController : MonoBehaviour
     public bool showAttackGizmo = false;
     
     public System.Action<PlayerState> OnStateChange;
+    
+    public int maxHealth = 100;
+    private int currentHealth;
 
     private void Start()
     {
+        currentHealth = maxHealth;
         ChangeState(new IdleState(this));
         
         ControlsManager.Controls.Player.Attack.performed += ctx =>
@@ -86,5 +91,24 @@ public class PlayerController : MonoBehaviour
             Gizmos.matrix = transform.localToWorldMatrix;
             Gizmos.DrawWireCube(attackGizmoCenter, attackGizmoSize);
         }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 }

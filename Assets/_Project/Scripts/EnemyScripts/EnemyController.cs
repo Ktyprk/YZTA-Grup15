@@ -1,9 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour,ICombat
 {
     [Header("Enemy Settings")]
     [SerializeField] private EnemyData enemyData;
+    
+    [Header("Damage Flash")]
+    [SerializeField] private List<SkinnedMeshRenderer> renderers;
+    [SerializeField] private Material normalMaterial;
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private float flashDuration = 0.1f;
+
+    private Coroutine flashRoutine;
+
+    
 
     private Transform target;
 
@@ -14,13 +26,12 @@ public class EnemyController : MonoBehaviour
     public System.Action OnWaitForAttack, OnAttack, OnIdle;
 
     public EnemyAnimatorController animController;
-    private int currentHealth;
+    public int currentHealth;
 
     private void Awake()
     {
         if (enemyData == null)
         {
-            Debug.LogError("EnemyData eksik: " + gameObject.name);
             enabled = false;
             return;
         }
@@ -40,6 +51,7 @@ public class EnemyController : MonoBehaviour
     {
         if (target == null)
         {
+            animController.Idle();
             if (waitForAttack)
             {
                 waitForAttack = false;
@@ -54,7 +66,7 @@ public class EnemyController : MonoBehaviour
 
         if (dist > enemyData.attackDistance)
         {
-            animController.Walk();
+            
             MoveToTarget();
         }
 
@@ -63,25 +75,31 @@ public class EnemyController : MonoBehaviour
 
     private void HandleCombat(float distanceToTarget)
     {
-        attackTimer += Time.deltaTime;
-        stanceTimer += Time.deltaTime;
+        if (distanceToTarget > enemyData.attackDistance)
+        {
+            waitForAttack = false;
+            return;
+        }
 
-        if (!waitForAttack && enemyData.attackTime - attackTimer < 0.6f)
+        attackTimer += Time.deltaTime;
+
+        if (!waitForAttack)
         {
             waitForAttack = true;
-            OnWaitForAttack?.Invoke();
+            OnWaitForAttack?.Invoke(); 
         }
 
-        if (attackTimer >= enemyData.attackTime && distanceToTarget <= enemyData.attackDistance)
+        if (attackTimer >= enemyData.attackCooldown)
         {
-            attackTimer = 0;
-            stanceTimer = 0;
-            waitForAttack = false;
-
+            attackTimer = 0f;
             Attack();
             OnAttack?.Invoke();
+            animController.Attack(); 
         }
     }
+
+
+
 
     private void RotateToTarget()
     {
@@ -97,33 +115,51 @@ public class EnemyController : MonoBehaviour
     private void MoveToTarget()
     {
        
-            
+        animController.Walk();
         Vector3 dir = (target.position - transform.position).normalized;
         transform.position += dir * enemyData.moveSpeed * Time.deltaTime;
     }
 
     private void Attack()
     {
-        Debug.Log($"{enemyData.enemyName} attacks with {enemyData.attackType}");
 
-        if (animController != null)
-            animController.Attack();
-        
-        ICombat combatTarget = target.GetComponent<ICombat>();
+        if (target == null)
+        {
+            return;
+        }
+
+        ICombat combatTarget = target.GetComponentInParent<ICombat>();
+
         if (combatTarget != null)
         {
             combatTarget.TakeDamage(enemyData.damage);
         }
+
+        if (target.gameObject.activeInHierarchy  == false)
+        {
+            target = null;
+        }
+       
     }
+
+
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
 
+        if (flashRoutine != null)
+            StopCoroutine(flashRoutine);
+        flashRoutine = StartCoroutine(FlashEffect());
+
         if (currentHealth <= 0)
-        {
             Die();
-        }
+    }
+
+
+    public Transform GetTransform()
+    {
+        return transform;
     }
 
     private void Die()
@@ -131,4 +167,24 @@ public class EnemyController : MonoBehaviour
         Debug.Log($"{enemyData.enemyName} died.");
         Destroy(gameObject);
     }
+    
+    private IEnumerator FlashEffect()
+    {
+        foreach (var r in renderers)
+        {
+            if (r != null)
+                r.material = flashMaterial;
+        }
+
+        yield return new WaitForSeconds(flashDuration);
+
+        foreach (var r in renderers)
+        {
+            if (r != null)
+                r.material = normalMaterial;
+        }
+    }
+
 }
+
+
