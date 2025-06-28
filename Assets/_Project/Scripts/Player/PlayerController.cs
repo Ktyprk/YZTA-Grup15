@@ -1,15 +1,22 @@
 using UnityEngine;
 
+
 public class PlayerController : MonoBehaviour
 {
-    public Animator animator;
+    public AnimatorController animator;
     private PlayerState _currentState;
 
     public Vector2 MoveInput { get; private set; }
     
+    public AnimatorOverrideController idleOverride;
+    public AnimatorOverrideController moveOverride;
+    public AnimatorOverrideController attackOverride;
+    
     public Vector3 attackGizmoCenter;
     public Vector3 attackGizmoSize;
     public bool showAttackGizmo = false;
+    
+    public System.Action<PlayerState> OnStateChange;
 
     private void Start()
     {
@@ -38,6 +45,7 @@ public class PlayerController : MonoBehaviour
         _currentState?.Exit();
         _currentState = newState;
         _currentState?.Enter();
+        OnStateChange?.Invoke(_currentState);
     }
 
     public void Move(Vector2 direction)
@@ -56,20 +64,18 @@ public class PlayerController : MonoBehaviour
         switch (stateName)
         {
             case "Idle":
-               
+                animator.Idle();
                 break;
             case "Move":
-                
+                animator.Walk();
                 break;
             case "Attack":
-               
+                animator.PlayAnim("Attack");
                 break;
             default:
-               
+                animator.Idle();
                 break;
         }
-
-       
     }
     
     private void OnDrawGizmos()

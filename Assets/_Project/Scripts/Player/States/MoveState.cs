@@ -2,12 +2,12 @@ public class MoveState : PlayerState
 {
     public MoveState(PlayerController controller) : base(controller)
     {
-        animatorController = controller.animator;
+        animatorController = controller.moveOverride;
     }
 
     public override void Enter()
     {
-        controller.SetAnimation("Run");
+        controller.SetAnimation("Move");
     }
 
     public override void FixedUpdate()

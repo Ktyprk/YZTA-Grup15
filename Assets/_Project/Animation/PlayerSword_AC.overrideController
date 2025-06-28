@@ -8,4 +8,8 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerSword_AC
   m_Controller: {fileID: 9100000, guid: 47deda16815701e499d6e66bcb61e339, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 2eccefe26810f5844b07e14bb9296eef, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2eccefe26810f5844b07e14bb9296eef, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 04ed68f39e2b7f74988038aa02d9a201, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 04ed68f39e2b7f74988038aa02d9a201, type: 2}

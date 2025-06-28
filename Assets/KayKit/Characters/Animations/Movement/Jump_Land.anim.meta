@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 756af91d502183e4f90476cb271b2e11
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 290679
+  packageName: KayKit - Adventurers Character Pack (for Unity)
+  packageVersion: 1.0
+  assetPath: Assets/KayKit/Characters/Animations/Movement/Jump_Land.anim
+  uploadId: 678573

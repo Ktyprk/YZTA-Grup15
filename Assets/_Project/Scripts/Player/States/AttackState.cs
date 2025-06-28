@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 public class AttackState : PlayerState
 {
-    private float attackDuration = .25f;
+    private float attackDuration = .8f;
     private float timer = 0f;
 
     private bool attackHitDone = false;
     
-    private Vector3 hitboxCenter = new Vector3(0, 1f, 1f);
-    private Vector3 hitboxSize = new Vector3(1f, 1f, 1.5f);
+    private Vector3 hitboxCenter = new Vector3(0, .025f, 1.8f);
+    private Vector3 hitboxSize = new Vector3(3f, 1f, 2f);
     private LayerMask enemyLayer;
 
     public AttackState(PlayerController controller) : base(controller)
     {
-        animatorController = controller.animator;
+        animatorController = controller.attackOverride;
     }
 
     public override void Enter()

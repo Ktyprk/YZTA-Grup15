@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 35586a467d9229747bb8d885f441fd04
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 290679
+  packageName: KayKit - Adventurers Character Pack (for Unity)
+  packageVersion: 1.0
+  assetPath: Assets/KayKit/Characters/Animations/Combat/Spellcasting/Spellcast_Shoot.anim
+  uploadId: 678573

@@ -3,7 +3,8 @@ public class IdleState : PlayerState
 {
     public IdleState(PlayerController controller) : base(controller)
     {
-        animatorController = controller.animator;
+        animatorController = controller.idleOverride;
+        
     }
 
     public override void Enter()

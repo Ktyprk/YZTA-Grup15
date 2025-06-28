@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3d174dceee1b701479ba1a2cb9dfa2bb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 290679
+  packageName: KayKit - Adventurers Character Pack (for Unity)
+  packageVersion: 1.0
+  assetPath: Assets/KayKit/Characters/Animations/Combat/General/Taunt.anim
+  uploadId: 678573

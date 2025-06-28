@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 44105a4a5b1f84144a969e86350155b1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 290679
+  packageName: KayKit - Adventurers Character Pack (for Unity)
+  packageVersion: 1.0
+  assetPath: Assets/KayKit/Characters/Animations/Combat/1H_Ranged/1H_Ranged_Aiming.anim
+  uploadId: 678573

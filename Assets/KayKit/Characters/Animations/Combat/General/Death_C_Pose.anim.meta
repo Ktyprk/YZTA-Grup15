@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 5fd1ac282f6191e4abcbf7bd6eeb63b5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 290679
+  packageName: KayKit - Adventurers Character Pack (for Unity)
+  packageVersion: 1.0
+  assetPath: Assets/KayKit/Characters/Animations/Combat/General/Death_C_Pose.anim
+  uploadId: 678573

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fbdd6b9fc6c9bed4b9055526bc8ec289
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 290679
+  packageName: KayKit - Adventurers Character Pack (for Unity)
+  packageVersion: 1.0
+  assetPath: Assets/KayKit/Characters/Animations/Movement/Jump_Full_Long.anim
+  uploadId: 678573

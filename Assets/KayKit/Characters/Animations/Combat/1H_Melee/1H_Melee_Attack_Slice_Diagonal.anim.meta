@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6ad12e1c226ac984ea9ad896e7023002
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 290679
+  packageName: KayKit - Adventurers Character Pack (for Unity)
+  packageVersion: 1.0
+  assetPath: Assets/KayKit/Characters/Animations/Combat/1H_Melee/1H_Melee_Attack_Slice_Diagonal.anim
+  uploadId: 678573

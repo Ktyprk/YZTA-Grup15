@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7fd32bfe9c38b5d498cfe30ef085676b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 290679
+  packageName: KayKit - Adventurers Character Pack (for Unity)
+  packageVersion: 1.0
+  assetPath: Assets/KayKit/Characters/Animations/Combat/1H_Melee/1H_Melee_Attack_Jump_Chop.anim
+  uploadId: 678573
