@@ -17,7 +17,7 @@ public class EnemyController : MonoBehaviour,ICombat
 
     
 
-    private Transform target;
+   [SerializeField] private Transform target;
 
     private float stanceTimer;
     private float attackTimer;
@@ -95,6 +95,7 @@ public class EnemyController : MonoBehaviour,ICombat
             Attack();
             OnAttack?.Invoke();
             animController.Attack(); 
+           
         }
     }
 
@@ -165,7 +166,15 @@ public class EnemyController : MonoBehaviour,ICombat
     private void Die()
     {
         Debug.Log($"{enemyData.enemyName} died.");
-        Destroy(gameObject);
+        EntityPoolManager.Instance.ReleaseEntityToPool(enemyData.enemyPrefab,gameObject);
+        currentHealth = enemyData.health;
+        foreach (var r in renderers)
+        {
+            if (r != null)
+                r.material = normalMaterial;
+        }
+
+
     }
     
     private IEnumerator FlashEffect()
@@ -186,5 +195,3 @@ public class EnemyController : MonoBehaviour,ICombat
     }
 
 }
-
-

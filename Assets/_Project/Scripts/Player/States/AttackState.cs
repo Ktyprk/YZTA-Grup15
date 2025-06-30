@@ -8,7 +8,7 @@ public class AttackState : PlayerState
 
     private bool attackHitDone = false;
     
-    private Vector3 hitboxCenter = new Vector3(0, .025f, 1.8f);
+    private Vector3 hitboxCenter = new Vector3(0, 1f, 1.8f);
     private Vector3 hitboxSize = new Vector3(3f, 1f, 2f);
     private LayerMask enemyLayer;
    

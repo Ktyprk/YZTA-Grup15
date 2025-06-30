@@ -22,6 +22,15 @@ public class PlayerController : MonoBehaviour, ICombat
     public int maxHealth = 100;
     private int currentHealth;
 
+    // Dash parameters
+    public float dashSpeed = 15f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1f;
+    private bool isDashing = false;
+    private float dashTime = 0f;
+    private float lastDashTime = -Mathf.Infinity;
+    private Vector3 dashDirection;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -32,17 +41,50 @@ public class PlayerController : MonoBehaviour, ICombat
             if (!(_currentState is AttackState))
                 ChangeState(new AttackState(this));
         };
+        
+        ControlsManager.Controls.Player.Dash.performed += ctx =>
+        {
+            TryDash();
+        };
     }
 
     private void Update()
     {
         MoveInput = ControlsManager.Controls.Player.Move.ReadValue<Vector2>();
+
+         if (isDashing)
+        {
+        dashTime += Time.deltaTime;
+        if (dashTime >= dashDuration)
+        {
+            isDashing = false;
+
+            if (MoveInput.sqrMagnitude > 0.01f)
+            {
+                ChangeState(new MoveState(this));
+            }
+            else
+            {
+                ChangeState(new IdleState(this));
+            }
+        }
+        }
+        else
+         {
         _currentState?.Update();
+         }
     }
 
     private void FixedUpdate()
     {
-        _currentState?.FixedUpdate();
+        if (isDashing)
+        {
+            transform.position += dashDirection * dashSpeed * Time.fixedDeltaTime;
+        }
+        else
+        {
+            _currentState?.FixedUpdate();
+        }
     }
 
     public void ChangeState(PlayerState newState)
@@ -110,5 +152,18 @@ public class PlayerController : MonoBehaviour, ICombat
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    private void TryDash()
+    {
+        if (isDashing) return;
+        if (Time.time < lastDashTime + dashCooldown) return;
+        if (MoveInput.sqrMagnitude < 0.01f) return; 
+
+        animator.Dash();
+        isDashing = true;
+        dashTime = 0f;
+        lastDashTime = Time.time;
+        dashDirection = new Vector3(MoveInput.x, 0, MoveInput.y).normalized;
     }
 }
