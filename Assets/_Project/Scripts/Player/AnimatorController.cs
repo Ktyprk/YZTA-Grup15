@@ -37,6 +37,11 @@ public class AnimatorController : MonoBehaviour
 
         PlayAnim("Idle");
     }
+
+    public void Dash()
+    {
+        PlayAnim("Dash");
+    }
     
     public void JumpStart()
     {
