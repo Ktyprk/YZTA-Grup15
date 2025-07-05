@@ -570,6 +570,16 @@ MonoBehaviour:
   dashSpeed: 15
   dashDuration: 0.2
   dashCooldown: 1
+  renderers:
+  - {fileID: 74314464806642123}
+  - {fileID: 1591908030985431711}
+  - {fileID: 6429139926624915778}
+  - {fileID: 6333039812222070757}
+  - {fileID: 402317921883275175}
+  - {fileID: 111923265328244567}
+  normalMaterial: {fileID: 2100000, guid: 6e65d2029574b9d478a517183de241f7, type: 2}
+  flashMaterial: {fileID: 2100000, guid: f82eabeecea10324b89d115735be15d6, type: 2}
+  flashDuration: 0.1
 --- !u!114 &3209079632759480671
 MonoBehaviour:
   m_ObjectHideFlags: 0
