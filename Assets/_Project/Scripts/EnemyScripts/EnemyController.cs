@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, ICombat
 {
+    public EnemyData EnemyData => enemyData; 
     [Header("Enemy Settings")]
     [SerializeField] private EnemyData enemyData;
+    private IEnemyAttackBehavior attackBehavior;
 
     [Header("Damage Flash Settings")]
     [SerializeField] private List<SkinnedMeshRenderer> renderers;
@@ -28,7 +30,7 @@ public class EnemyController : MonoBehaviour, ICombat
 
     private float attackTimer;
     private bool waitingForAttack;
-    private int currentHealth;
+    public int currentHealth;
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class EnemyController : MonoBehaviour, ICombat
     private void OnEnable()
     {
         ResetEnemy();
+        InitializeAttackBehavior();
     }
 
     private void FixedUpdate()
@@ -63,34 +66,48 @@ public class EnemyController : MonoBehaviour, ICombat
 
         HandleCombat(distance);
     }
+    
+    public void InitializeAttackBehavior()
+    {
+        switch (enemyData.attackType)
+        {
+            case AttackType.Melee:
+                InitializeAttackBehavior(new MeleeAttackBehavior());
+                break;
+
+            case AttackType.Ranged:
+                InitializeAttackBehavior(new RangedAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed)); 
+                break;
+        }
+    }
+    private void InitializeAttackBehavior(IEnemyAttackBehavior behavior)
+    {
+        attackBehavior = behavior;
+    }
+
 
     private void HandleCombat(float distanceToTarget)
     {
         if (distanceToTarget > enemyData.attackDistance)
         {
             waitingForAttack = false;
+            attackTimer = 0f;
             return;
         }
 
-        if (!waitingForAttack)
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= enemyData.attackCooldown || !waitingForAttack)
         {
             waitingForAttack = true;
             attackTimer = 0f;
+
             animController.Attack();
             OnAttack?.Invoke();
+            attackBehavior?.Attack(this, target);
         }
-        else
-        {
-            attackTimer += Time.deltaTime;
-            if (attackTimer >= enemyData.attackCooldown)
-            {
-                attackTimer = 0f;
-                animController.Attack();
-                OnAttack?.Invoke();
-            }
-        }
-
     }
+
 
     private void RotateTowardsTarget()
     {

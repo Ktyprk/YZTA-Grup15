@@ -11,11 +11,13 @@ public class EnemyData : ScriptableObject
     public EnemyType enemyType;
     public AttackType attackType;
     public GameObject enemyPrefab;
+    public GameObject projectilePrefab; 
 
     [Header("Stats")]
     public int health = 100;
     public int damage = 10;
     public float moveSpeed = 2f;
+    public float projectileSpeed = 10f;
 
     [Header("Combat")]
     public float attackTime = 1.2f; 
