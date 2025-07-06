@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour, ICombat
 
     private void Die()
     {
-        this.gameObject.SetActive(false);
+       gameObject.SetActive(false);
     }
 
     public Transform GetTransform()

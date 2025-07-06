@@ -489,7 +489,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
   enemyCount: 3
   spawnRadius: 5
-  spawnOnlyOnce: 1
+  spawnOnlyOnce: 0
 --- !u!114 &186907350
 MonoBehaviour:
   m_ObjectHideFlags: 0

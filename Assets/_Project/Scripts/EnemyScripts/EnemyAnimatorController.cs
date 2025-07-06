@@ -74,4 +74,13 @@ public class EnemyAnimatorController : MonoBehaviour
     {
         //GetComponent<EnemyCombat>()?.OnAttackHit();
     }
+    
+    
+    public void ResetAnimator()
+    {
+        if (animator == null) return;
+        animator.Rebind();  
+        animator.Update(0f); 
+        
+    }
 }
