@@ -178,7 +178,7 @@ Sprint Review katılımcıları: Melike Şahin, Ecenur Ektaş, Kutay Perk, Mirza
 - Asset toplama ve tasarım süreci beklenenden uzun sürdü
 - Kod tarafında branch yönetiminde bazı karışıklıklar yaşandı.
 
-📝**ilerleme Planı**
+📝**İlerleme Planı**
 
 - Demo için giriş menüsü ve UI prototipi
 - Oyunun core loopunu oynanabilir hale getirme
