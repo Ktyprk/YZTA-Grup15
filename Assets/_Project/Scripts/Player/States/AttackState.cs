@@ -63,7 +63,11 @@ public class AttackState : PlayerState
             {
                 if (enemy.TryGetComponent<ICombat>(out var combatTarget))
                 {
-                    combatTarget.TakeDamage(10); 
+                    int minDamage = (int)controller.playerStats.playerminDamage;
+                    int maxDamage = (int)controller.playerStats.playermaxDamage;
+
+                    int playerDamage = Random.Range(minDamage, maxDamage + 1);
+                    combatTarget.TakeDamage(playerDamage);
                     damagedEnemies.Add(enemy);
                 }
             }

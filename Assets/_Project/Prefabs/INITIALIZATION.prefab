@@ -580,6 +580,7 @@ MonoBehaviour:
   normalMaterial: {fileID: 2100000, guid: 6e65d2029574b9d478a517183de241f7, type: 2}
   flashMaterial: {fileID: 2100000, guid: f82eabeecea10324b89d115735be15d6, type: 2}
   flashDuration: 0.1
+  playerStats: {fileID: 0}
 --- !u!114 &3209079632759480671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,10 +606,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81d8c9a3a5be7648957e9a70a0c0fc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerHealth: 100
-  PlayerDamage: 5
-  PlayerArmor: 0
-  PlayerSpeed: 0
+  maxHealth: 100
+  playerminDamage: 5
+  playermaxDamage: 10
+  playerArmor: 0
+  playerSpeed: 5
+  currentHealth: 0
 --- !u!54 &2580525760350812434
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1535,6 +1538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8142850350112850943}
   - component: {fileID: 3756530540047747267}
+  - component: {fileID: 6786107603136904985}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1570,6 +1574,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerObject: {fileID: 2096890630642989694}
+--- !u!114 &6786107603136904985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6138293087920792554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354775384819a214a8d2e638bcc362b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpPrefab: {fileID: 7849611583419578600, guid: e7a40f7abcd9bf647a775363c3c20c08, type: 3}
 --- !u!1 &6532286957528052856
 GameObject:
   m_ObjectHideFlags: 0

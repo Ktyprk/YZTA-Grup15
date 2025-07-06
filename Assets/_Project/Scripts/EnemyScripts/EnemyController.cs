@@ -45,9 +45,11 @@ public class EnemyController : MonoBehaviour, ICombat
 
     private void FixedUpdate()
     {
-        if (target == null)
+        if (target == null || !target.gameObject.activeSelf)
         {
-            animController.Idle();
+            target = null;
+            WanderSimple();
+            //animController.Idle();
             if (waitingForAttack)
             {
                 waitingForAttack = false;
@@ -66,6 +68,43 @@ public class EnemyController : MonoBehaviour, ICombat
 
         HandleCombat(distance);
     }
+
+    
+    private Vector3 wanderTarget;
+    private float wanderTimer;
+    [SerializeField] private float wanderRadius = 5f; 
+
+
+    
+    private void WanderSimple()
+    {
+        
+        wanderTimer -= Time.deltaTime;
+
+        if (wanderTimer <= 0f || Vector3.Distance(transform.position, wanderTarget) < 0.5f)
+        {
+            Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * wanderRadius;
+            wanderTarget = new Vector3(transform.position.x + randomPoint.x, transform.position.y, transform.position.z + randomPoint.y);
+            wanderTimer = UnityEngine.Random.Range(3f, 6f); 
+        }
+
+        animController.Walk();
+        
+        Vector3 direction = (wanderTarget - transform.position).normalized;
+        direction.y = 0;
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        }
+        
+        transform.position += direction * enemyData.moveSpeed * 0.5f * Time.deltaTime;
+    }
+
+
+
+
     
     public void InitializeAttackBehavior()
     {
@@ -111,6 +150,8 @@ public class EnemyController : MonoBehaviour, ICombat
 
     private void RotateTowardsTarget()
     {
+        if (target == null) return; 
+        
         Vector3 direction = (target.position - transform.position).normalized;
         direction.y = 0;
 
@@ -123,6 +164,8 @@ public class EnemyController : MonoBehaviour, ICombat
 
     private void MoveTowardsTarget()
     {
+        if (target == null) return; 
+        
         animController.Walk();
         Vector3 direction = (target.position - transform.position).normalized;
         transform.position += direction * enemyData.moveSpeed * Time.deltaTime;
@@ -140,6 +183,8 @@ public class EnemyController : MonoBehaviour, ICombat
     {
         currentHealth -= damage;
         OnDamageTaken?.Invoke(damage);
+        
+        DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
 
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);

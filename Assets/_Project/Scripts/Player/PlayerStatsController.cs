@@ -4,7 +4,8 @@ public class PlayerStatsController : MonoBehaviour
 {
     [Header("Stats")]
     public int maxHealth = 100;
-    public float playerDamage = 5f;
+    public float playerminDamage = 5f;
+    public float playermaxDamage = 5f;
     public int playerArmor = 0;
     public int playerSpeed = 5;
 
@@ -13,11 +14,5 @@ public class PlayerStatsController : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxHealth;
-    }
-
-    public bool TakeDamage(int amount)
-    {
-        currentHealth -= amount;
-        return currentHealth <= 0;
     }
 }

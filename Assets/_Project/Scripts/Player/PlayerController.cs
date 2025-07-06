@@ -39,9 +39,12 @@ public class PlayerController : MonoBehaviour, ICombat
     [SerializeField] private float flashDuration = 0.1f;
 
     private Coroutine flashRoutine;
+    
+    [HideInInspector] public PlayerStatsController playerStats;
 
     private void Start()
     {
+        playerStats = GetComponent<PlayerStatsController>();
         currentHealth = maxHealth;
         ChangeState(new IdleState(this));
         
@@ -147,13 +150,14 @@ public class PlayerController : MonoBehaviour, ICombat
 
    public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
+        playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.maxHealth);
+        //currentHealth -= amount;
 
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
         flashRoutine = StartCoroutine(FlashEffect());
 
-        if (currentHealth <= 0)
+        if ( playerStats.currentHealth  <= 0)
             Die();
     }
 
