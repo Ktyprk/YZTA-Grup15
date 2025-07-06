@@ -7,8 +7,10 @@ public class MushroomColorChange : MonoBehaviour
     private Material[] materials;
     private Color[] originalColors;
     [SerializeField] private GameObject smoke;
+    [SerializeField] private GameObject smokeDamageArea;
     [SerializeField] private GameObject gameObjects;
     Vector3 transformLocation;
+    Vector3 transformLocation2;
 
     public float flashInterval = 0.2f;
     public float totalFlashDuration = 1f;
@@ -16,7 +18,8 @@ public class MushroomColorChange : MonoBehaviour
     void Start()
     {
         transformLocation = transform.position;
-        transformLocation.y += 2f;
+        transformLocation2 = transform.position;
+        transformLocation.y += 1f;
         rend = GetComponent<Renderer>();
         materials = rend.materials; // Tüm materyalleri al
 
@@ -54,6 +57,7 @@ public class MushroomColorChange : MonoBehaviour
         }
 
         Instantiate(smoke, transformLocation, Quaternion.identity);
+        Instantiate(smokeDamageArea, transformLocation2, Quaternion.identity);
         Destroy(gameObjects, 0.2f);
     }
 }

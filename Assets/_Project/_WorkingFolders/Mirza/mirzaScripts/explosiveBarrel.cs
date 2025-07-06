@@ -7,7 +7,8 @@ public class explosiveBarrel : MonoBehaviour
 
     [SerializeField] private GameObject circleAroundBarrel;
     [SerializeField] private GameObject blowUpeffect;
-    
+    [SerializeField] private GameObject explosiveArea;
+
     public void HealChange()
     {
 
@@ -32,6 +33,7 @@ public class explosiveBarrel : MonoBehaviour
         circleAroundBarrel.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         Instantiate(blowUpeffect, transform.position, Quaternion.identity);
+        Instantiate(explosiveArea, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
