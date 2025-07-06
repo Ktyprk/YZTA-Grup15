@@ -8,7 +8,7 @@ public class AttackState : PlayerState
 
     private bool attackHitDone = false;
     
-    private Vector3 hitboxCenter = new Vector3(0, .025f, 1.8f);
+    private Vector3 hitboxCenter = new Vector3(0, 1f, 1.8f);
     private Vector3 hitboxSize = new Vector3(3f, 1f, 2f);
     private LayerMask enemyLayer;
    
@@ -63,7 +63,11 @@ public class AttackState : PlayerState
             {
                 if (enemy.TryGetComponent<ICombat>(out var combatTarget))
                 {
-                    combatTarget.TakeDamage(10); 
+                    int minDamage = (int)controller.playerStats.playerminDamage;
+                    int maxDamage = (int)controller.playerStats.playermaxDamage;
+
+                    int playerDamage = Random.Range(minDamage, maxDamage + 1);
+                    combatTarget.TakeDamage(playerDamage);
                     damagedEnemies.Add(enemy);
                 }
             }

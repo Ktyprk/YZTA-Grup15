@@ -2,11 +2,17 @@ using UnityEngine;
 
 public class PlayerStatsController : MonoBehaviour
 {
-    public float PlayerHealth = 100;
-    public float PlayerDamage = 5;
-    public int PlayerArmor;
-    
-    public int PlayerSpeed;
-    
-    
+    [Header("Stats")]
+    public int maxHealth = 100;
+    public float playerminDamage = 5f;
+    public float playermaxDamage = 5f;
+    public int playerArmor = 0;
+    public int playerSpeed = 5;
+
+    [HideInInspector] public int currentHealth;
+
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+    }
 }

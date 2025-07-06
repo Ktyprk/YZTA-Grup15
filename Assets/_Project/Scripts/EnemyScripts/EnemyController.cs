@@ -1,190 +1,246 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour,ICombat
+public class EnemyController : MonoBehaviour, ICombat
 {
+    public EnemyData EnemyData => enemyData; 
     [Header("Enemy Settings")]
     [SerializeField] private EnemyData enemyData;
-    
-    [Header("Damage Flash")]
+    private IEnemyAttackBehavior attackBehavior;
+
+    [Header("Damage Flash Settings")]
     [SerializeField] private List<SkinnedMeshRenderer> renderers;
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
 
+    [Header("Target Settings")]
+    [SerializeField] private Transform target;
+
+    public event Action OnWaitForAttack;
+    public event Action OnAttack;
+    public event Action OnIdle;
+    public event Action OnDie;
+    public event Action<int> OnDamageTaken;
+
+    private EnemyAnimatorController animController;
     private Coroutine flashRoutine;
 
-    
-
-    private Transform target;
-
-    private float stanceTimer;
     private float attackTimer;
-    private bool waitForAttack;
-
-    public System.Action OnWaitForAttack, OnAttack, OnIdle;
-
-    public EnemyAnimatorController animController;
+    private bool waitingForAttack;
     public int currentHealth;
 
     private void Awake()
     {
-        if (enemyData == null)
-        {
-            enabled = false;
-            return;
-        }
-
-        currentHealth = enemyData.health;
-
         animController = GetComponent<EnemyAnimatorController>();
-        attackTimer = Random.Range(0, enemyData.attackTime * 0.6f);
     }
 
-    public void SetTarget(Transform t)
+    private void OnEnable()
     {
-        target = t;
+        ResetEnemy();
+        InitializeAttackBehavior();
     }
 
     private void FixedUpdate()
     {
-        if (target == null)
+        if (target == null || !target.gameObject.activeSelf)
         {
-            animController.Idle();
-            if (waitForAttack)
+            target = null;
+            WanderSimple();
+            //animController.Idle();
+            if (waitingForAttack)
             {
-                waitForAttack = false;
+                waitingForAttack = false;
                 OnIdle?.Invoke();
             }
             return;
         }
 
-        RotateToTarget();
+        RotateTowardsTarget();
 
-        float dist = Vector3.Distance(transform.position, target.position);
-
-        if (dist > enemyData.attackDistance)
+        float distance = Vector3.Distance(transform.position, target.position);
+        if (distance > enemyData.attackDistance)
         {
-            
-            MoveToTarget();
+            MoveTowardsTarget();
         }
 
-        HandleCombat(dist);
+        HandleCombat(distance);
     }
+
+    
+    private Vector3 wanderTarget;
+    private float wanderTimer;
+    [SerializeField] private float wanderRadius = 5f; 
+
+
+    
+    private void WanderSimple()
+    {
+        
+        wanderTimer -= Time.deltaTime;
+
+        if (wanderTimer <= 0f || Vector3.Distance(transform.position, wanderTarget) < 0.5f)
+        {
+            Vector2 randomPoint = UnityEngine.Random.insideUnitCircle * wanderRadius;
+            wanderTarget = new Vector3(transform.position.x + randomPoint.x, transform.position.y, transform.position.z + randomPoint.y);
+            wanderTimer = UnityEngine.Random.Range(3f, 6f); 
+        }
+
+        animController.Walk();
+        
+        Vector3 direction = (wanderTarget - transform.position).normalized;
+        direction.y = 0;
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        }
+        
+        transform.position += direction * enemyData.moveSpeed * 0.5f * Time.deltaTime;
+    }
+
+
+
+
+    
+    public void InitializeAttackBehavior()
+    {
+        switch (enemyData.attackType)
+        {
+            case AttackType.Melee:
+                InitializeAttackBehavior(new MeleeAttackBehavior());
+                break;
+
+            case AttackType.Ranged:
+                InitializeAttackBehavior(new RangedAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed)); 
+                break;
+        }
+    }
+    private void InitializeAttackBehavior(IEnemyAttackBehavior behavior)
+    {
+        attackBehavior = behavior;
+    }
+
 
     private void HandleCombat(float distanceToTarget)
     {
         if (distanceToTarget > enemyData.attackDistance)
         {
-            waitForAttack = false;
+            waitingForAttack = false;
+            attackTimer = 0f;
             return;
         }
 
         attackTimer += Time.deltaTime;
 
-        if (!waitForAttack)
+        if (attackTimer >= enemyData.attackCooldown || !waitingForAttack)
         {
-            waitForAttack = true;
-            OnWaitForAttack?.Invoke(); 
-        }
-
-        if (attackTimer >= enemyData.attackCooldown)
-        {
+            waitingForAttack = true;
             attackTimer = 0f;
-            Attack();
+
+            animController.Attack();
             OnAttack?.Invoke();
-            animController.Attack(); 
+            attackBehavior?.Attack(this, target);
         }
     }
 
 
-
-
-    private void RotateToTarget()
+    private void RotateTowardsTarget()
     {
-        Vector3 dir = (target.position - transform.position).normalized;
-        dir.y = 0;
-        if (dir != Vector3.zero)
+        if (target == null) return; 
+        
+        Vector3 direction = (target.position - transform.position).normalized;
+        direction.y = 0;
+
+        if (direction != Vector3.zero)
         {
-            Quaternion targetRot = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, Time.deltaTime * 5f);
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
     }
 
-    private void MoveToTarget()
+    private void MoveTowardsTarget()
     {
-       
+        if (target == null) return; 
+        
         animController.Walk();
-        Vector3 dir = (target.position - transform.position).normalized;
-        transform.position += dir * enemyData.moveSpeed * Time.deltaTime;
+        Vector3 direction = (target.position - transform.position).normalized;
+        transform.position += direction * enemyData.moveSpeed * Time.deltaTime;
     }
-
-    private void Attack()
+    
+    public void AnimationEvent_DealDamage()
     {
-
-        if (target == null)
-        {
-            return;
-        }
-
-        ICombat combatTarget = target.GetComponentInParent<ICombat>();
-
-        if (combatTarget != null)
+        if (target != null && target.TryGetComponent(out ICombat combatTarget))
         {
             combatTarget.TakeDamage(enemyData.damage);
         }
-
-        if (target.gameObject.activeInHierarchy  == false)
-        {
-            target = null;
-        }
-       
     }
 
-
-
-    public void TakeDamage(int amount)
+    public void TakeDamage(int damage)
     {
-        currentHealth -= amount;
+        currentHealth -= damage;
+        OnDamageTaken?.Invoke(damage);
+        
+        DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
 
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
         flashRoutine = StartCoroutine(FlashEffect());
 
         if (currentHealth <= 0)
+        {
             Die();
+        }
     }
 
-
-    public Transform GetTransform()
+    private IEnumerator FlashEffect()
     {
-        return transform;
+        SetMaterials(flashMaterial);
+        yield return new WaitForSeconds(flashDuration);
+        ResetMaterials();
+    }
+
+    private void SetMaterials(Material mat)
+    {
+        foreach (var renderer in renderers)
+        {
+            if (renderer != null)
+                renderer.material = mat;
+        }
+    }
+
+    private void ResetMaterials()
+    {
+        SetMaterials(normalMaterial);
     }
 
     private void Die()
     {
+        OnDie?.Invoke();
         Debug.Log($"{enemyData.enemyName} died.");
-        Destroy(gameObject);
+        
+        EntityPoolManager.Instance.ReleaseEntityToPool(enemyData.enemyPrefab, gameObject);
+    }
+
+    public Transform GetTransform() => transform;
+
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
     }
     
-    private IEnumerator FlashEffect()
+    public void ResetEnemy()
     {
-        foreach (var r in renderers)
-        {
-            if (r != null)
-                r.material = flashMaterial;
-        }
+        currentHealth = enemyData.health;
+        attackTimer = UnityEngine.Random.Range(0, enemyData.attackTime * 0.6f);
+        waitingForAttack = false;
+        target = null;
 
-        yield return new WaitForSeconds(flashDuration);
-
-        foreach (var r in renderers)
-        {
-            if (r != null)
-                r.material = normalMaterial;
-        }
+        animController.ResetAnimator();
+        ResetMaterials();
+        animController.Idle(); 
     }
-
 }
-
-

@@ -17,10 +17,10 @@ public class EnemyAnimatorController : MonoBehaviour
         }
     }
 
-    public void PlayAnim(string name)
+    public void PlayAnim(string name, int layer = 0)
     {
         if (!gameObject.activeInHierarchy || animator == null) return;
-        animator.CrossFadeInFixedTime(name, 0.1f, 0, 0);
+        animator.CrossFadeInFixedTime(name, 0.1f, layer, 0);
     }
     private bool IsCurrentAnimation(string animName)
     {
@@ -36,7 +36,7 @@ public class EnemyAnimatorController : MonoBehaviour
         isIdling = true;
         isWalking = false;
 
-        if (!IsCurrentAnimation(enemyData.idleAnim))
+    
             PlayAnim(enemyData.idleAnim);
     }
 
@@ -47,14 +47,12 @@ public class EnemyAnimatorController : MonoBehaviour
         isWalking = true;
         isIdling = false;
 
-        if (!IsCurrentAnimation(enemyData.walkAnim))
             PlayAnim(enemyData.walkAnim);
     }
 
     public void Attack()
     {
-        if (IsCurrentAnimation(enemyData.attackAnim)) return;
-
+    
         isWalking = false;
         isIdling = false;
 
@@ -75,5 +73,14 @@ public class EnemyAnimatorController : MonoBehaviour
     public void OnAttackAnimationHit()
     {
         //GetComponent<EnemyCombat>()?.OnAttackHit();
+    }
+    
+    
+    public void ResetAnimator()
+    {
+        if (animator == null) return;
+        animator.Rebind();  
+        animator.Update(0f); 
+        
     }
 }

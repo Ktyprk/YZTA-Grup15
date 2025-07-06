@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -22,8 +24,27 @@ public class PlayerController : MonoBehaviour, ICombat
     public int maxHealth = 100;
     private int currentHealth;
 
+    public float dashSpeed = 15f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1f;
+    private bool isDashing = false;
+    private float dashTime = 0f;
+    private float lastDashTime = -Mathf.Infinity;
+    private Vector3 dashDirection;
+
+    [Header("Damage Flash")]
+    [SerializeField] private List<SkinnedMeshRenderer> renderers;
+    [SerializeField] private Material normalMaterial;
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private float flashDuration = 0.1f;
+
+    private Coroutine flashRoutine;
+    
+    [HideInInspector] public PlayerStatsController playerStats;
+
     private void Start()
     {
+        playerStats = GetComponent<PlayerStatsController>();
         currentHealth = maxHealth;
         ChangeState(new IdleState(this));
         
@@ -32,17 +53,51 @@ public class PlayerController : MonoBehaviour, ICombat
             if (!(_currentState is AttackState))
                 ChangeState(new AttackState(this));
         };
+        
+        ControlsManager.Controls.Player.Dash.performed += ctx =>
+        {
+            TryDash();
+        };
     }
+
 
     private void Update()
     {
         MoveInput = ControlsManager.Controls.Player.Move.ReadValue<Vector2>();
+
+         if (isDashing)
+        {
+        dashTime += Time.deltaTime;
+        if (dashTime >= dashDuration)
+        {
+            isDashing = false;
+
+            if (MoveInput.sqrMagnitude > 0.01f)
+            {
+                ChangeState(new MoveState(this));
+            }
+            else
+            {
+                ChangeState(new IdleState(this));
+            }
+        }
+        }
+        else
+         {
         _currentState?.Update();
+         }
     }
 
     private void FixedUpdate()
     {
-        _currentState?.FixedUpdate();
+        if (isDashing)
+        {
+            transform.position += dashDirection * dashSpeed * Time.fixedDeltaTime;
+        }
+        else
+        {
+            _currentState?.FixedUpdate();
+        }
     }
 
     public void ChangeState(PlayerState newState)
@@ -93,22 +148,65 @@ public class PlayerController : MonoBehaviour, ICombat
         }
     }
 
-    public void TakeDamage(int amount)
+   public void TakeDamage(int amount)
     {
-        currentHealth -= amount;
+        playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.maxHealth);
+        //currentHealth -= amount;
 
-        if (currentHealth <= 0)
-        {
+        if (flashRoutine != null)
+            StopCoroutine(flashRoutine);
+        flashRoutine = StartCoroutine(FlashEffect());
+
+        if ( playerStats.currentHealth  <= 0)
             Die();
-        }
     }
+
     private void Die()
     {
-        this.gameObject.SetActive(false);
+       gameObject.SetActive(false);
     }
 
     public Transform GetTransform()
     {
         return transform;
+    }
+
+    private void TryDash()
+    {
+        if (isDashing) return;
+        if (Time.time < lastDashTime + dashCooldown) return;
+        if (MoveInput.sqrMagnitude < 0.01f) return; 
+
+        if (_currentState is AttackState)
+        {
+            ChangeState(new IdleState(this));
+        }
+
+        animator.Dash();
+        isDashing = true;
+        dashTime = 0f;
+        lastDashTime = Time.time;
+        dashDirection = new Vector3(MoveInput.x, 0, MoveInput.y).normalized;
+
+    
+        if (dashDirection.sqrMagnitude > 0.01f)
+            transform.forward = dashDirection;
+    }
+
+     private IEnumerator FlashEffect()
+    {
+        foreach (var r in renderers)
+        {
+            if (r != null)
+                r.material = flashMaterial;
+        }
+
+        yield return new WaitForSeconds(flashDuration);
+
+        foreach (var r in renderers)
+        {
+            if (r != null)
+                r.material = normalMaterial;
+        }
     }
 }
