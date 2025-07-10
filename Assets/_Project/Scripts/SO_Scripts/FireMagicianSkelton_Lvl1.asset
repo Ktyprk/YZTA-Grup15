@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b68dab71338855d47a48213213c3956a, type: 3}
+  m_Name: FireMagicianSkelton_Lvl1
+  m_EditorClassIdentifier: 
+  enemyName: Skeleton Magician
+  enemyType: 0
+  attackType: 4
+  enemyPrefab: {fileID: 919132149155446097, guid: c97be7739ce2be34bba4541a5c21a1fc, type: 3}
+  projectilePrefab: {fileID: 4418415609966599632, guid: 905aa659763d31f40bdb33370edce4a3, type: 3}
+  health: 15
+  damage: 20
+  moveSpeed: 2
+  projectileSpeed: 5
+  attackTime: 2
+  attackCooldown: 3
+  attackDistance: 7
+  idleTime: 1
+  blockTime: 0.5
+  enemyDistance: 3
+  animatorController: {fileID: 9100000, guid: 9ec2b856935dcf1439ea58ee3e8a8f6a, type: 2}
+  idleAnim: Idle
+  walkAnim: Walk
+  attackAnim: Attack
+  hitAnim: Hit
+  dieAnim: Die

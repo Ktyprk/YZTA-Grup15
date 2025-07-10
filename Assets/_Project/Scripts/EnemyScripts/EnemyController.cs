@@ -117,6 +117,12 @@ public class EnemyController : MonoBehaviour, ICombat
             case AttackType.Ranged:
                 InitializeAttackBehavior(new RangedAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed)); 
                 break;
+            case AttackType.ArcRanged:
+                 InitializeAttackBehavior(new ArcAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed));
+                break;
+            case AttackType.JumpAttack:
+                InitializeAttackBehavior(new JumpAttackBehavior(3f, 0.6f, 2f, 0.3f));
+                break;
         }
     }
     private void InitializeAttackBehavior(IEnemyAttackBehavior behavior)

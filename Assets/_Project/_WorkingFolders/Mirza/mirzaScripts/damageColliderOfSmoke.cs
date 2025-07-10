@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class damageColliderOfSmoke : MonoBehaviour
+public class damageColliderOfSmoke : MonoBehaviour , IProjectileDamageDealer
 {
     public float growDuration = 1f;   
     public Vector3 targetScale = new Vector3(2f, 1f, 2f);
@@ -34,22 +34,19 @@ public class damageColliderOfSmoke : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         //    Destroy(gameObject);
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag =="Player")
         {
             ICombat Icombat = other.gameObject.GetComponent<ICombat>();
             if (Icombat != null)
             {
-                StartCoroutine(PosionDamageInTime(Icombat));
+                StartCoroutine(giveDamage(Icombat));
                 
             }
-               
-           
-
         }
     }
-    IEnumerator PosionDamageInTime(ICombat Icombat)
+    public IEnumerator giveDamage(ICombat Icombat)
     {
         for (int i = 0; i < 3; i++)
         {
