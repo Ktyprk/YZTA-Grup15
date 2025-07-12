@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour, ICombat
 
    public void TakeDamage(int amount)
     {
-        playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.maxHealth);
+        playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
         //currentHealth -= amount;
 
         if (flashRoutine != null)

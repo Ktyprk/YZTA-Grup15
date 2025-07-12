@@ -27,7 +27,7 @@ MonoBehaviour:
   idleTime: 1
   blockTime: 0.5
   enemyDistance: 5
-  animatorController: {fileID: 9100000, guid: 9ec2b856935dcf1439ea58ee3e8a8f6a, type: 2}
+  animatorController: {fileID: 9100000, guid: 3d17864b280bb834e82109ab403f57dd, type: 2}
   idleAnim: Idle
   walkAnim: Walk
   attackAnim: Attack

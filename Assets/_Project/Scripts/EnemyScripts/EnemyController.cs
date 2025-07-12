@@ -15,6 +15,10 @@ public class EnemyController : MonoBehaviour, ICombat
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
+    [Header("Gizmos")]
+    public Vector3 attackGizmoCenter;
+    public Vector3 attackGizmoSize;
+    public bool showAttackGizmo = false;
 
     [Header("Target Settings")]
     [SerializeField] private Transform target;
@@ -130,18 +134,28 @@ public class EnemyController : MonoBehaviour, ICombat
         attackBehavior = behavior;
     }
 
+    private void OnDrawGizmos()
+    {
+        if (showAttackGizmo)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(attackGizmoCenter, attackGizmoSize);
+        }
+    }
 
     private void HandleCombat(float distanceToTarget)
     {
         if (distanceToTarget > enemyData.attackDistance)
         {
             waitingForAttack = false;
+            showAttackGizmo = false;
             attackTimer = 0f;
             return;
         }
 
         attackTimer += Time.deltaTime;
-
+      //  showAttackGizmo = false;
         if (attackTimer >= enemyData.attackCooldown || !waitingForAttack)
         {
             waitingForAttack = true;

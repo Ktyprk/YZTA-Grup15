@@ -11,7 +11,7 @@ public class RangedAttackBehavior : IEnemyAttackBehavior
         projectileSpeed = speed;
     }
 
-    public void Attack(EnemyController enemy, Transform target)
+    public void Attack( EnemyController enemy, Transform target)
     {
         Vector3 spawnPos = enemy.transform.position + Vector3.up * 1f;
         GameObject proj = GameObject.Instantiate(projectilePrefab, spawnPos, Quaternion.identity);

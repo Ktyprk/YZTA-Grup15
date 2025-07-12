@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class JumpAttackBehavior : IEnemyAttackBehavior
 {
@@ -7,7 +8,9 @@ public class JumpAttackBehavior : IEnemyAttackBehavior
     private float jumpDuration;
     private float momentumDistance;
     private float momentumDuration;
-
+    private Vector3 hitboxCenter = new Vector3(0, 1f, 0f);
+    private Vector3 hitboxSize = new Vector3(1.5f, 1.5f, 1.5f);
+    private LayerMask playerLayer;
     public JumpAttackBehavior(float jumpHeight, float jumpDuration, float momentumDistance, float momentumDuration)
     {
         this.jumpHeight = jumpHeight;
@@ -16,7 +19,7 @@ public class JumpAttackBehavior : IEnemyAttackBehavior
         this.momentumDuration = momentumDuration;
     }
 
-    public void Attack(EnemyController enemy, Transform target)
+    public void Attack( EnemyController enemy, Transform target)
     {
         Vector3 startPos = enemy.transform.position;
         Vector3 targetPos = target.position;
@@ -29,11 +32,12 @@ public class JumpAttackBehavior : IEnemyAttackBehavior
         Vector3 momentumDir = flatDirection.normalized;
 
        
-        enemy.StartCoroutine(PerformJump(enemy.transform, jumpTarget, momentumDir));
+        enemy.StartCoroutine(PerformJump(enemy, jumpTarget, momentumDir));
     }
 
-    private IEnumerator PerformJump(Transform enemyTransform, Vector3 targetPosition, Vector3 momentumDirection)
+    private IEnumerator PerformJump(EnemyController enemy, Vector3 targetPosition, Vector3 momentumDirection)
     {
+        Transform enemyTransform = enemy.transform;
         Vector3 startPos = enemyTransform.position;
         float elapsed = 0f;
 
@@ -53,7 +57,7 @@ public class JumpAttackBehavior : IEnemyAttackBehavior
 
 
 
-
+        giveDamage(enemy);
         Vector3 rayOrigin = enemyTransform.position + momentumDirection * 0.5f + Vector3.up * 1f;
 
 
@@ -83,5 +87,37 @@ public class JumpAttackBehavior : IEnemyAttackBehavior
       
 
         
+    }
+    private void giveDamage(EnemyController controller)
+    {
+        playerLayer = 1 << LayerMask.NameToLayer("Player");
+
+        Vector3 boxCenter = controller.transform.position + controller.transform.TransformDirection(hitboxCenter);
+
+        controller.attackGizmoCenter = hitboxCenter;
+        controller.attackGizmoSize = hitboxSize;
+        controller.showAttackGizmo = true;
+
+        Collider[] hits = Physics.OverlapBox(boxCenter, hitboxSize / 2f, controller.transform.rotation, playerLayer);
+
+        HashSet<GameObject> damagedEnemies = new();
+
+        foreach (Collider hit in hits)
+        {
+            GameObject enemy = hit.gameObject;
+
+            if (!damagedEnemies.Contains(enemy))
+            {
+                if (enemy.TryGetComponent<ICombat>(out var combatTarget))
+                {
+                    int minDamage = (int)controller.EnemyData.damage;
+                    int maxDamage = (int)controller.EnemyData.damage;
+
+                    int playerDamage = Random.Range(minDamage, maxDamage + 1);
+                    combatTarget.TakeDamage(playerDamage);
+                    damagedEnemies.Add(enemy);
+                }
+            }
+        }
     }
 }

@@ -18,11 +18,11 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
   projectilePrefab: {fileID: 0}
   health: 20
-  damage: 10
+  damage: 5
   moveSpeed: 2
   projectileSpeed: 10
-  attackTime: 1.2
-  attackCooldown: 2
+  attackTime: 2
+  attackCooldown: 3
   attackDistance: 1.8
   idleTime: 1
   blockTime: 0.5
