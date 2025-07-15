@@ -148,18 +148,21 @@ public class PlayerController : MonoBehaviour, ICombat
         }
     }
 
-   public void TakeDamage(int amount)
+    public void TakeDamage(int amount) 
     {
         playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
-        //currentHealth -= amount;
+    
+        playerStats.UpdateHealthBar();
 
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
         flashRoutine = StartCoroutine(FlashEffect());
 
-        if ( playerStats.currentHealth  <= 0)
+        if (playerStats.currentHealth <= 0)
             Die();
     }
+
+
 
     private void Die()
     {

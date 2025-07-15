@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStatsController : MonoBehaviour
 {
@@ -11,23 +12,33 @@ public class PlayerStatsController : MonoBehaviour
 
     [HideInInspector] public int currentHealth;
 
-  
-
     private float bonusAttack = 0;
     private int bonusMaxHealth = 0;
     private int bonusArmor = 0;
     private float bonusSpeed = 0f;
 
+    [Header("UI Elements")]
+    public Image healthBarFill;
+
     public float Attack => playerminDamage + bonusAttack;
     public int MaxHealth => maxHealth + bonusMaxHealth;
-
     public int MaxArmor => playerArmor + bonusArmor;
     public float Speed => playerSpeed + bonusSpeed;
 
     private void Awake()
     {
-        currentHealth = maxHealth;
+        currentHealth = MaxHealth;
+        UpdateHealthBar();
     }
+
+    public void UpdateHealthBar()
+    {
+        if (healthBarFill != null)
+            healthBarFill.fillAmount = (float)currentHealth / MaxHealth;
+        else
+            Debug.LogError("HealthBarFill Image not assigned!");
+    }
+
     public void ApplyBuff(buffCardsStats stats)
     {
         if (stats.type == buffType.Damage)
@@ -38,8 +49,8 @@ public class PlayerStatsController : MonoBehaviour
             bonusArmor += stats.BoostplayerArmor;
         else if (stats.type == buffType.Speed)
             bonusSpeed += stats.BoostplayerSpeed;
-            
-        
-    }
 
+        currentHealth = Mathf.Min(currentHealth, MaxHealth);
+        UpdateHealthBar();
+    }
 }
