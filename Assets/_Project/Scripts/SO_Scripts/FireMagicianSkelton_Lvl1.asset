@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Skeleton Magician
   enemyType: 0
-  attackType: 2
+  attackType: 3
   enemyPrefab: {fileID: 919132149155446097, guid: c97be7739ce2be34bba4541a5c21a1fc, type: 3}
-  projectilePrefab: {fileID: 4418415609966599632, guid: 905aa659763d31f40bdb33370edce4a3, type: 3}
+  projectilePrefab: {fileID: 4418415609966599632, guid: 92278f4c905879d43b069bb2f963fc65, type: 3}
   health: 15
   damage: 20
   moveSpeed: 2
