@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, ICombat
 {
@@ -159,14 +159,20 @@ public class PlayerController : MonoBehaviour, ICombat
         flashRoutine = StartCoroutine(FlashEffect());
 
         if (playerStats.currentHealth <= 0)
-            Die();
+            StartCoroutine(Die());
     }
 
 
 
-    private void Die()
+     public IEnumerator Die()
     {
-       gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        
+        SceneManager.LoadScene("RoomDesign");
+      //  gameObject.SetActive(false);
+        Debug.Log("öldük");
+       
+
     }
 
     public Transform GetTransform()

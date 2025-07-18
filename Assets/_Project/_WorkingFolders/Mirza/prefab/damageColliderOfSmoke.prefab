@@ -66,5 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2187c5fdf90c4ce45a68b144d7751c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growDuration: 1
+  mushroomTypes: 0
+  damage_Heal_Amount: 25
+  growDuration: 2
   targetScale: {x: 2, y: 1, z: 2}

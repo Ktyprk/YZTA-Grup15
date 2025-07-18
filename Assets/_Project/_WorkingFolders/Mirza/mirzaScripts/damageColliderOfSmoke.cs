@@ -3,6 +3,8 @@ using System.Collections;
 
 public class damageColliderOfSmoke : MonoBehaviour , IProjectileDamageDealer
 {
+    public  MushroomTypes mushroomTypes;
+    public int damage_Heal_Amount = 5;
     public float growDuration = 1f;   
     public Vector3 targetScale = new Vector3(2f, 1f, 2f);
 
@@ -48,9 +50,12 @@ public class damageColliderOfSmoke : MonoBehaviour , IProjectileDamageDealer
     }
     public IEnumerator giveDamage(ICombat Icombat)
     {
+        if (mushroomTypes == MushroomTypes.heal)
+            damage_Heal_Amount *= -1;
+
         for (int i = 0; i < 3; i++)
         {
-            Icombat.TakeDamage(2);
+            Icombat.TakeDamage(damage_Heal_Amount);
             Debug.Log("damage Verildi");
             yield return new WaitForSeconds(1f);
             

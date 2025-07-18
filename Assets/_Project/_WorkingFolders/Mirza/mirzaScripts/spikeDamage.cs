@@ -11,14 +11,20 @@ public class spikeDamage : MonoBehaviour, IProjectileDamageDealer
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("hasarlandýk");
             ICombat Icombat = other.gameObject.GetComponent<ICombat>();
             if (Icombat != null)
-                giveDamage(Icombat);
+            {
+                Debug.Log("hasarlandýk");
+                StartCoroutine( giveDamage(Icombat));
+            }
+              
 
         }
     }
     public IEnumerator giveDamage(ICombat Icombat)
     {
+        Debug.Log("damage = " + damageAmount);
         Icombat.TakeDamage(damageAmount);
         yield break;
     }

@@ -205,7 +205,7 @@ public class EnemyController : MonoBehaviour, ICombat
         OnDamageTaken?.Invoke(damage);
         
         DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
-
+        Debug.Log("flash = " + flashRoutine);
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
         flashRoutine = StartCoroutine(FlashEffect());
@@ -219,6 +219,7 @@ public class EnemyController : MonoBehaviour, ICombat
     private IEnumerator FlashEffect()
     {
         SetMaterials(flashMaterial);
+        Debug.Log("flashlandý");
         yield return new WaitForSeconds(flashDuration);
         ResetMaterials();
     }

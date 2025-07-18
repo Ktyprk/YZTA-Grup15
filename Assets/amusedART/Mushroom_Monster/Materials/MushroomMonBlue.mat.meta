@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 38e7681924061aa479b000a07b8db69d
+timeCreated: 1522338224
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115406
+  packageName: Mushroom Monster
+  packageVersion: 1.0
+  assetPath: Assets/amusedART/Mushroom_Monster/Materials/MushroomMonBlue.mat
+  uploadId: 238236
