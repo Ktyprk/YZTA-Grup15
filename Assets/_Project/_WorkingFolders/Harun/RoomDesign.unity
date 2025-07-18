@@ -514,7 +514,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &19890631
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -548,8 +548,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 1853001311}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 1853001307}
 --- !u!4 &19890633
 Transform:
@@ -1012,6 +1015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1680214780}
@@ -1789,6 +1795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 2137741884}
@@ -1839,7 +1848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &111940461
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1873,8 +1882,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 1794639367}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 1794639363}
 --- !u!4 &111940463
 Transform:
@@ -2204,6 +2216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1919883407}
@@ -2859,6 +2874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1980513878}
@@ -2909,7 +2927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &212121943
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2943,8 +2961,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 1692920416}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 1692920412}
 --- !u!4 &212121945
 Transform:
@@ -3220,6 +3241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1820182475}
@@ -3793,7 +3817,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &295314760
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3827,8 +3851,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 1809869173}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 1809869169}
 --- !u!4 &295314762
 Transform:
@@ -3863,6 +3890,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1517869258}
@@ -4568,7 +4598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &361686264
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4602,8 +4632,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 1280576907}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 1280576903}
 --- !u!4 &361686266
 Transform:
@@ -5450,6 +5483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 2076834424}
@@ -5633,6 +5669,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 579159626}
@@ -7513,6 +7552,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1791033514}
@@ -7930,7 +7972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &579159627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7964,8 +8006,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 459181465}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 459181461}
 --- !u!4 &579159629
 Transform:
@@ -9526,6 +9571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1385075558}
@@ -10070,6 +10118,67 @@ Transform:
   - {fileID: 1374614594}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &736754042
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 172614132477722681, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: mushroomTypes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480683605168414099, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_Name
+      value: ExplosiveMushhroomUpdated
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.09230391
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.708527
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6601238766252993745, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4054086eb5ea08149a3b850fcbad6fef, type: 3}
 --- !u!1001 &743235982
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12773,7 +12882,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &964945392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12807,8 +12916,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 1896230081}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 1896230077}
 --- !u!4 &964945394
 Transform:
@@ -14453,7 +14565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1067250502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14487,8 +14599,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 2115379700}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 2115379696}
 --- !u!4 &1067250504
 Transform:
@@ -17488,6 +17603,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 361686263}
@@ -17898,7 +18016,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1311814728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
   m_Name: 
@@ -19079,7 +19197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1377279013
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19113,8 +19231,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 2130761254}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 2130761250}
 --- !u!4 &1377279015
 Transform:
@@ -19265,7 +19386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1385075559
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19299,8 +19420,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 687179400}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 687179396}
 --- !u!4 &1385075561
 Transform:
@@ -20650,7 +20774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1487243497
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20684,8 +20808,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 1558240486}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 1558240482}
 --- !u!4 &1487243499
 Transform:
@@ -21017,7 +21144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1517869259
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21051,8 +21178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 301142687}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 301142683}
 --- !u!4 &1517869261
 Transform:
@@ -21899,6 +22029,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1487243496}
@@ -25354,7 +25487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1680214781
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25388,8 +25521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 62199239}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 62199240}
 --- !u!4 &1680214783
 Transform:
@@ -25575,7 +25711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1691572348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25609,8 +25745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 1816574141}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 1816574137}
 --- !u!4 &1691572350
 Transform:
@@ -25645,6 +25784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 212121942}
@@ -26893,7 +27035,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1791033515
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26927,8 +27069,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 564008687}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 564008683}
 --- !u!4 &1791033517
 Transform:
@@ -26963,6 +27108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 111940460}
@@ -27300,6 +27448,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 295314759}
@@ -27459,6 +27610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1691572347}
@@ -27509,7 +27663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1820182476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27543,8 +27697,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 251785877}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 251785873}
 --- !u!4 &1820182478
 Transform:
@@ -27852,6 +28009,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 19890630}
@@ -28617,6 +28777,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 964945391}
@@ -28836,7 +28999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1919883408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28870,8 +29033,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 152052157}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 152052153}
 --- !u!4 &1919883410
 Transform:
@@ -29768,7 +29934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1980513879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29802,8 +29968,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 209303132}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 209303128}
 --- !u!4 &1980513881
 Transform:
@@ -30907,7 +31076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2076834425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30941,8 +31110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 456033529}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 456033525}
 --- !u!4 &2076834427
 Transform:
@@ -31414,6 +31586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1067250501}
@@ -31714,6 +31889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d848b8d76cd9f664992d9828e52207d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealMushroom: {fileID: 0}
+  DamageMushroom: {fileID: 0}
+  SpeedMushroom: {fileID: 0}
   smoke: {fileID: 6813416509558619124, guid: 3b7f2c753d435d647a80f1f047a113e3, type: 3}
   smokeDamageArea: {fileID: 5757163863496016863, guid: a6045e1f609f7944d9b1f009ebf5eb1c, type: 3}
   gameObjects: {fileID: 1377279012}
@@ -31828,7 +32006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2137741885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31862,8 +32040,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e30967bfaf887c429aebc1b21e18e6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mushroomTypes: 0
   visualMushroom: {fileID: 111360563}
-  saleRate: 0.05
+  positionScaleRate: 0.01
+  scaleRate: 1
+  damage_heal_rate: 25
   colorChange: {fileID: 111360559}
 --- !u!4 &2137741887
 Transform:
@@ -32054,41 +32235,73 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3618478159930721273, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3880919372314378970, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4101495283478278244, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -61.455963
+      value: -62.279854
       objectReference: {fileID: 0}
     - target: {fileID: 4101495283478278244, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9089344
+      value: 8.35434
       objectReference: {fileID: 0}
     - target: {fileID: 4101495283478278244, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -79.15718
+      value: -77.98026
       objectReference: {fileID: 0}
     - target: {fileID: 4101495283478278244, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9382444
+      value: 0.8659628
       objectReference: {fileID: 0}
     - target: {fileID: 4101495283478278244, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22958693
+      value: 0.38103276
       objectReference: {fileID: 0}
     - target: {fileID: 4101495283478278244, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.25140187
+      value: 0.29648528
       objectReference: {fileID: 0}
     - target: {fileID: 4101495283478278244, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.061517645
+      value: -0.13045666
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222529654814474192, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222529654814474192, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: field of view
+      value: 58.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222529654814474192, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222529654814474192, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: near clip plane
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4222529654814474192, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: orthographic size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104269038425305950, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: Lens.FieldOfView
+      value: 58.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104269038425305950, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: Lens.ModeOverride
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104269038425305950, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: Lens.NearClipPlane
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5104269038425305950, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: Lens.OrthographicSize
@@ -32102,6 +32315,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7475938805318516626, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d40b71ce5e4b1fa4196f5c87cde8d886, type: 3}
     - target: {fileID: 7475938805318516626, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_FillAmount
       value: 1
@@ -32136,7 +32353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170252668370451905, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: CameraDistance
-      value: 11.4
+      value: 14.2
       objectReference: {fileID: 0}
     - target: {fileID: 8170252668370451905, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: TargetOffset.x
@@ -32144,7 +32361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170252668370451905, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: TargetOffset.y
-      value: 0.76
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170252668370451905, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: TargetOffset.z
@@ -32156,39 +32373,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -61.455963
+      value: -62.279854
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.9089344
+      value: 8.35434
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -79.15718
+      value: -77.98026
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9382444
+      value: 0.8659628
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.22958693
+      value: 0.38103276
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.25140187
+      value: 0.29648528
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.061517645
+      value: -0.13045666
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 27.5
+      value: 47.5
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 30
+      value: 37.8
       objectReference: {fileID: 0}
     - target: {fileID: 8818417513895787359, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -32332,3 +32549,4 @@ SceneRoots:
   - {fileID: 540748439}
   - {fileID: 649971694}
   - {fileID: 2000207030}
+  - {fileID: 736754042}
