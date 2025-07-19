@@ -104,7 +104,7 @@ public class MushroomBlowUp : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             oldDistanceBefore = Vector3.Distance(other.transform.position, transform.position);
-            Debug.Log("Oyuncu girdi");
+            
             visualMushroom.localScale = MinScale;
         }
     }

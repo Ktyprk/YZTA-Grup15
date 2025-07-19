@@ -2,12 +2,13 @@ using UnityEngine;
 using System.Collections;
 public class damageColliderExplosiveBarrel : MonoBehaviour, IProjectileDamageDealer
 {
-    [SerializeField] private int damageAmount;
+    [SerializeField] private int damageAmount = 100;
    
 
     void Start()
     {
-     
+
+        gameObject.GetComponent<Collider>().enabled = true;
         StartCoroutine(GrowAndDestroyRoutine());
     }
 
@@ -22,9 +23,14 @@ public class damageColliderExplosiveBarrel : MonoBehaviour, IProjectileDamageDea
     {
         if (other.gameObject.tag == "Player")
         {
+           
             ICombat Icombat = other.gameObject.GetComponent<ICombat>();
             if(Icombat!=null)
-            giveDamage(Icombat);
+            {
+                Debug.Log("patladik");
+               StartCoroutine( giveDamage(Icombat));
+            }
+           
            
         }
     }

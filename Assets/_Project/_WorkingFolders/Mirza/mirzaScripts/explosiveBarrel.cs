@@ -22,8 +22,9 @@ public class explosiveBarrel : MonoBehaviour
         {
             StartCoroutine(blowupEffect());
         }
+        
     }
-    IEnumerator blowupEffect()
+    public IEnumerator blowupEffect()
     {
         circleAroundBarrel.SetActive(true);
         yield return new WaitForSeconds(1);

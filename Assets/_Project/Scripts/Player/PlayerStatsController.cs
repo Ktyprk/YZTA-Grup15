@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStatsController : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerStatsController : MonoBehaviour
 
     [Header("UI Elements")]
     public Image healthBarFill;
+    public TMP_Text healthText;
 
     public float Attack => playerminDamage + bonusAttack;
     public int MaxHealth => maxHealth + bonusMaxHealth;
@@ -34,7 +36,15 @@ public class PlayerStatsController : MonoBehaviour
     public void UpdateHealthBar()
     {
         if (healthBarFill != null)
-            healthBarFill.fillAmount = (float)currentHealth / MaxHealth;
+        {
+            if (currentHealth > 0)
+            {
+                healthBarFill.fillAmount = (float)currentHealth / MaxHealth;
+
+                healthText.text = currentHealth.ToString();
+            }
+                
+        }
         else
             Debug.LogError("HealthBarFill Image not assigned!");
     }
