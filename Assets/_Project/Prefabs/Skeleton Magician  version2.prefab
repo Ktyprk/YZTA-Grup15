@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1070472459567892293}
   - component: {fileID: 2590188645692547589}
   - component: {fileID: 5226101599493898165}
+  - component: {fileID: 8411498102924564532}
   m_Layer: 8
   m_Name: Skeleton Magician  version2
   m_TagString: Untagged
@@ -81,7 +82,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 30
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -150,6 +151,29 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!136 &8411498102924564532
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351130665762768014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!1001 &5444397847862285770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -201,6 +225,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c97be7739ce2be34bba4541a5c21a1fc, type: 3}
       propertyPath: m_Name
       value: Skeleton_Mage
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c97be7739ce2be34bba4541a5c21a1fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3718015747574993697, guid: c97be7739ce2be34bba4541a5c21a1fc, type: 3}
       propertyPath: m_LocalScale.x
