@@ -63,6 +63,7 @@
 
 **FUNGOR**
 
+## 🎮 Oyun Logosu
 
 
 
@@ -175,3 +176,72 @@ Done: Tamamlanmış ve kabul edilmiş görevler.
     📝**İlerleme Planı**
     
      Demo için giriş menüsü ve UI prototipi, oyunun core loopunu oynanabilir hale getirme ve düşman çeşitliliği eklenmesi planlanmaktadır.
+
+
+  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  # 🚀 Sprint 2
+
+- **Sprint Notları** : User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilmektedir.
+
+- **Sprint içinde tamamlanması tahmin edilen puan** : 90 Puan
+
+- **Puan tamamlama mantığı** : Proje boyunca tamamlanması gereken toplam 300 puanlık backlog bulunmaktadır. 3 sprinte bölündüğünde ikinci sprintin 100 ile bitmesi gerektiği kararlaştırıldı.
+
+- **Backlog düzeni ve Story seçimleri** : Backlog’umuz, projenin tüm ihtiyaçlarını kapsayacak şekilde Notion’daki Task Tracker board’unda detaylı olarak oluşturulmuştur.Görevler, sprintlerin yapısına uygun olarak aşağıdaki sütunlarda yönetilmektedir:
+Not Started: Henüz başlanmamış, planlanan ve backlog’a eklenen görevler,
+In Progress: Aktif olarak üzerinde çalışılan görevler,
+In Test: Geliştirmesi tamamlanıp test veya review aşamasına alınan görevler,
+Done: Tamamlanmış ve kabul edilmiş görevler.
+
+
+
+- **Daily Scrum** : Daily Scrum toplantılarının Discord üzerinden yapılması kararlaştırılmıştır. Daily Scrum toplantılarımız ve günlük Whatsapp konuşmalarımız Imgur'da toplanmıştır : [Sprint 1 - Daily Scrum Meetings](https://imgur.com/a/cuci0KT)
+- **Sprint Board Updates** : 
+![Backlog 1](SprintAssets/meetingSS/notion2.png)
+
+<details> <summary>• <b>Oyun Durumu: Ekran Görüntüleri : </b></summary>
+  
+  <p align="center">
+  <img src="SprintAssets/gameSS/level1.png" width="700" />
+  <img src="SprintAssets/gameSS/level2.1.png" width="700" />
+  <img src="SprintAssets/gameSS/level2.gif" width="700" />
+  <img src="SprintAssets/gameSS/level1.gif" width="700" />
+  <img src="SprintAssets/gameSS/level2.gif" width="700" />
+  </p>
+  
+  </details>
+
+
+- **Sprint Review** : 
+
+   🎯 Sprint Hedefi
+  
+    Bu sprintteki temel hedefimiz, planladığımız üç adet level’ı tasarlamak ve mevcut oyun mekaniklerini bu level’lara entegre etmekti. Aynı zamanda oyun içi kullanıcı arayüzünü (Game UI) oluşturarak oyunu genel     olarak bitirmek.
+  
+   ✨ Tamamlanan İşler
+  
+    İki level tasarımı başarıyla tamamlandı ve oynanabilir hale getirildi. Health bar kullanıcı arayüzü tasarlanarak oyuna entegre edildi. Patlayan varil eklendi ve mantar asset’leri yenileriyle değiştirildi.        Ayrıca Rogue dusman(ustumuze ziplayarak hasar veren bir dusman) ve ranged(menzilli) düşman eklendi. 
+  
+   ⚠️ Tamamlanamayan / Eksik Kalanlar
+  
+    3.Level tasarımına başlandı ancak sprint süresi içerisinde tamamlanamadı. Harita tasarımında bazı öğelerin entegrasyonu ve düzenlemesi bir sonraki sprinte ertelendi.
+
+   Sprint Review katılımcıları: Melike Şahin, Ecenur Ektaş, Kutay Perk, Mirza Özmen, Harun Avaş.
+
+
+- **Sprint Retrospective** :
+
+    ✅ **İyi Gidenler**
+    
+     Ekip içi iletişim oldukça verimliydi ve görev dağılımı net şekilde yapıldığı için planlanan işlerin çoğu zamanında tamamlandı. Test işlemleri başarılı sonuçlandı. Özellikle level tasarımları ve UI
+     entegrasyonu ekip üyeleri arasında etkili bir iş birliği ile hızlı ilerledi. Yeni düşman tipinin mekanik olarak sorunsuz entegre edilmesi ve 2 level tasarımının eksiksiz tamamlanması bu sprintteki güçlü          yönlerden biri oldu.
+    
+    🔄 **İyileştirilmesi Gerekenler**
+    
+     Bazı görevlerde yeterli zaman planlaması yapılmadığı için sprint sonunda eksik kalan işler oldu. Özellikle asset değişimi sonrası yapılan testlerde zaman kaybı yaşandı. Ayrıca, oyun içinde kullanılacak bazı      UI öğeleri (game over ekranı, ses efektleri) planlamaya dahil edilse de aktif geliştirmeye başlanamadı.
+    
+    📝**İlerleme Planı**
+    
+     3.Level tasarımı tamamlanacak ve oyun deneyimini destekleyecek Menü UI, ses efektleri, cut scene geçişleri ve game over ekranı gibi öğelerin tasarım ve entegrasyonu gerçekleştirilecek. 
+
