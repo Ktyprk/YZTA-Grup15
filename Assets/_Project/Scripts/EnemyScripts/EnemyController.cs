@@ -15,6 +15,10 @@ public class EnemyController : MonoBehaviour, ICombat
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
+    [Header("Gizmos")]
+    public Vector3 attackGizmoCenter;
+    public Vector3 attackGizmoSize;
+    public bool showAttackGizmo = false;
 
     [Header("Target Settings")]
     [SerializeField] private Transform target;
@@ -117,6 +121,12 @@ public class EnemyController : MonoBehaviour, ICombat
             case AttackType.Ranged:
                 InitializeAttackBehavior(new RangedAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed)); 
                 break;
+            case AttackType.ArcRanged:
+                 InitializeAttackBehavior(new ArcAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed));
+                break;
+            case AttackType.JumpAttack:
+                InitializeAttackBehavior(new JumpAttackBehavior(3f, 0.6f, 2f, 0.3f));
+                break;
         }
     }
     private void InitializeAttackBehavior(IEnemyAttackBehavior behavior)
@@ -124,18 +134,28 @@ public class EnemyController : MonoBehaviour, ICombat
         attackBehavior = behavior;
     }
 
+    private void OnDrawGizmos()
+    {
+        if (showAttackGizmo)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(attackGizmoCenter, attackGizmoSize);
+        }
+    }
 
     private void HandleCombat(float distanceToTarget)
     {
         if (distanceToTarget > enemyData.attackDistance)
         {
             waitingForAttack = false;
+            showAttackGizmo = false;
             attackTimer = 0f;
             return;
         }
 
         attackTimer += Time.deltaTime;
-
+      //  showAttackGizmo = false;
         if (attackTimer >= enemyData.attackCooldown || !waitingForAttack)
         {
             waitingForAttack = true;
@@ -185,7 +205,7 @@ public class EnemyController : MonoBehaviour, ICombat
         OnDamageTaken?.Invoke(damage);
         
         DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
-
+        
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
         flashRoutine = StartCoroutine(FlashEffect());
@@ -199,6 +219,7 @@ public class EnemyController : MonoBehaviour, ICombat
     private IEnumerator FlashEffect()
     {
         SetMaterials(flashMaterial);
+      
         yield return new WaitForSeconds(flashDuration);
         ResetMaterials();
     }

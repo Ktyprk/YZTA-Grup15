@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: ceef6f883ed4525408dd849615e6bcd6
+timeCreated: 1522338625
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 115406
+  packageName: Mushroom Monster
+  packageVersion: 1.0
+  assetPath: Assets/amusedART/Mushroom_Monster/Animations/Damage.anim
+  uploadId: 238236

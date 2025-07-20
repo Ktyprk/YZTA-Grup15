@@ -1,0 +1,49 @@
+
+DialogueNode #title {
+    background-color: rgba(50, 50, 50, 0.91);
+    color: white; 
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+DialogueNode {
+    background-color: #3D3D3D; 
+}
+
+.connector {
+    min-width: 20px;
+    margin-right: 4px;
+}
+
+.port-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 180px;
+}
+
+.port-content TextField {
+    flex-grow: 1;
+    margin-left: 4px;
+    margin-right: 4px;
+    min-width: 100px;
+}
+
+.port-content Button {
+    width: 20px;
+    height: 20px;
+    margin-left: 4px;
+    padding: 0;
+    font-size: 10px;
+    min-width: 20px;
+}
+
+.port-content Label {
+    display: none;
+}
+
+
+.port-content > .port {
+    margin-right: 4px;
+    align-self: center;
+}

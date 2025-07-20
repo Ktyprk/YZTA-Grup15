@@ -11,11 +11,13 @@ public class RangedAttackBehavior : IEnemyAttackBehavior
         projectileSpeed = speed;
     }
 
-    public void Attack(EnemyController enemy, Transform target)
+    public void Attack( EnemyController enemy, Transform target)
     {
         Vector3 spawnPos = enemy.transform.position + Vector3.up * 1f;
         GameObject proj = GameObject.Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
-        Vector3 dir = (target.position - spawnPos).normalized;
+        Vector3 targetPos = target.position;
+        targetPos.y = spawnPos.y;
+        Vector3 dir = (targetPos - spawnPos).normalized;
         proj.GetComponent<Rigidbody>().linearVelocity = dir * projectileSpeed;
     }
 }

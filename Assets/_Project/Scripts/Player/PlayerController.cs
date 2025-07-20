@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, ICombat
 {
@@ -148,22 +148,31 @@ public class PlayerController : MonoBehaviour, ICombat
         }
     }
 
-   public void TakeDamage(int amount)
+    public void TakeDamage(int amount) 
     {
-        playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.maxHealth);
-        //currentHealth -= amount;
+        playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
+    
+        playerStats.UpdateHealthBar();
 
         if (flashRoutine != null)
             StopCoroutine(flashRoutine);
         flashRoutine = StartCoroutine(FlashEffect());
 
-        if ( playerStats.currentHealth  <= 0)
-            Die();
+        if (playerStats.currentHealth <= 0)
+            StartCoroutine(Die());
     }
 
-    private void Die()
+
+
+     public IEnumerator Die()
     {
+        yield return new WaitForSeconds(0.1f);
+        
+        SceneManager.LoadScene("RoomDesign");
        gameObject.SetActive(false);
+        Debug.Log("�ld�k");
+       
+
     }
 
     public Transform GetTransform()

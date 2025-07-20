@@ -2456,6 +2456,7 @@ GameObject:
   - component: {fileID: 1070472459567892293}
   - component: {fileID: 2590188645692547589}
   - component: {fileID: 5226101599493898165}
+  - component: {fileID: 5952553282165360840}
   m_Layer: 8
   m_Name: Skeleton_Lvl1
   m_TagString: Untagged
@@ -2514,8 +2515,12 @@ MonoBehaviour:
   normalMaterial: {fileID: -8468983757882266563, guid: 78a5212cf570899458df80afcf00e1d9, type: 3}
   flashMaterial: {fileID: 2100000, guid: f82eabeecea10324b89d115735be15d6, type: 2}
   flashDuration: 0.1
-  animController: {fileID: 1070472459567892293}
+  attackGizmoCenter: {x: 0, y: 0, z: 0}
+  attackGizmoSize: {x: 0, y: 0, z: 0}
+  showAttackGizmo: 0
+  target: {fileID: 0}
   currentHealth: 0
+  wanderRadius: 5
 --- !u!195 &2147001342639996021
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2590,6 +2595,29 @@ CapsuleCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!136 &5952553282165360840
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351130665762768014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
