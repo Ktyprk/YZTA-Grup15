@@ -186,7 +186,7 @@ Done: Tamamlanmış ve kabul edilmiş görevler.
 
 - **Sprint Notları** : User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilmektedir.
 
-- **Sprint içinde tamamlanması tahmin edilen puan** : 90 Puan
+- **Sprint içinde tamamlanması tahmin edilen puan** : 100 Puan
 
 - **Puan tamamlama mantığı** : Proje boyunca tamamlanması gereken toplam 300 puanlık backlog bulunmaktadır. 3 sprinte bölündüğünde ikinci sprintin 100 ile bitmesi gerektiği kararlaştırıldı.
 
