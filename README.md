@@ -64,7 +64,9 @@
 **FUNGOR**
 
 ## 🎮 Oyun Logosu
-
+  <p align="center">
+  <img src="SprintAssets/logo/fungor_logo.png" width="800" />
+  </p>
 
 
 
@@ -126,7 +128,7 @@ Done: Tamamlanmış ve kabul edilmiş görevler.
 
 
 
-- **Daily Scrum** : Daily Scrum toplantılarının Discord üzerinden yapılması kararlaştırılmıştır. Daily Scrum toplantılarımız ve günlük Whatsapp konuşmalarımız Imgur'da toplanmıştır : [Sprint 1 - Daily Scrum Meetings](https://imgur.com/a/xYQIZTb)
+- **Daily Scrum** : Daily Scrum toplantılarının Discord üzerinden yapılması kararlaştırılmıştır. Daily Scrum toplantılarımız ve günlük Whatsapp konuşmalarımız Imgur'da toplanmıştır : [Sprint 2 - Daily Scrum Meetings](https://imgur.com/a/xYQIZTb)
 - **Sprint Board Updates** : 
 ![Backlog 1](SprintAssets/meetingSS/notion.png)
 
@@ -205,7 +207,7 @@ Done: Tamamlanmış ve kabul edilmiş görevler.
   <p align="center">
   <img src="SprintAssets/gameSS/level1.png" width="700" />
   <img src="SprintAssets/gameSS/level2.1.png" width="700" />
-  <img src="SprintAssets/gameSS/level2.gif" width="700" />
+  <img src="SprintAssets/gameSS/level2.png" width="700" />
   <img src="SprintAssets/gameSS/level1.gif" width="700" />
   <img src="SprintAssets/gameSS/level2.gif" width="700" />
   </p>
