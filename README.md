@@ -180,9 +180,9 @@ Done: Tamamlanmış ve kabul edilmiş görevler.
      Demo için giriş menüsü ve UI prototipi, oyunun core loopunu oynanabilir hale getirme ve düşman çeşitliliği eklenmesi planlanmaktadır.
 
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-  # 🚀 Sprint 2
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+# 🚀 Sprint 2
 
 - **Sprint Notları** : User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilmektedir.
 
