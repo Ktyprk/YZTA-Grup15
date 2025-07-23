@@ -1,17 +1,15 @@
 using UnityEngine;
-
-public enum EnemyType { Aggressive, Defensive, Passive }
-public enum AttackType { Melee, Heavy, Ranged,ArcRanged,specialRangedAttack,JumpAttack }
-
-[CreateAssetMenu(menuName = "Enemy/Create New Enemy Data")]
-public class EnemyData : ScriptableObject
+[CreateAssetMenu(menuName = "Enemy/Create New BossEnemy Data")]
+public class EnemyBossData : ScriptableObject
 {
     [Header("General")]
     public string enemyName;
     public EnemyType enemyType;
     public AttackType attackType;
     public GameObject enemyPrefab;
-    public GameObject projectilePrefab; 
+    public GameObject BasicAttackProjectile;
+    public GameObject SecondAttackProjectile;
+    public GameObject Skeleton, magicianSkeleton, magicianSkeletonVersion2;
 
     [Header("Stats")]
     public int health = 100;
@@ -20,7 +18,7 @@ public class EnemyData : ScriptableObject
     public float projectileSpeed = 10f;
 
     [Header("Combat")]
-    public float attackTime = 1.2f; 
+    public float attackTime = 1.2f;
     public float attackCooldown = 2f;
     public float attackDistance = 1.5f;
     public float idleTime = 1f;
@@ -34,6 +32,11 @@ public class EnemyData : ScriptableObject
     public string idleAnim = "Idle";
     public string walkAnim = "Walk";
     public string attackAnim = "Attack";
+    public string attackAnim2 = "Attack2";
+    public string attackAnim2WithOutAttack = "Attack2Alternative";
+    public string attackAnim3 = "Attack3";
+    public string attackAnim4 = "Attack4";
+    public string Summon = "Summon";
     public string hitAnim = "Hit";
     public string dieAnim = "Die";
 }

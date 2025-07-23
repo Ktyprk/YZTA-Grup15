@@ -114,8 +114,9 @@ public class PlayerController : MonoBehaviour, ICombat
         {
             Vector3 move = new Vector3(direction.x, 0, direction.y);
             transform.position += move * Time.fixedDeltaTime * 5f;
+            Quaternion targetRotation = Quaternion.LookRotation(move);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
             
-            transform.forward = move;
         }
     }
 
