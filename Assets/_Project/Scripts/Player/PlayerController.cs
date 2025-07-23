@@ -170,8 +170,8 @@ public class PlayerController : MonoBehaviour, ICombat
         yield return new WaitForSeconds(0.1f);
         
         SceneManager.LoadScene("RoomDesign");
-      //  gameObject.SetActive(false);
-        Debug.Log("öldük");
+       gameObject.SetActive(false);
+        Debug.Log("ï¿½ldï¿½k");
        
 
     }
