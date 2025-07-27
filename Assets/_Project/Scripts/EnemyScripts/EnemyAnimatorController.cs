@@ -110,7 +110,7 @@ public class EnemyAnimatorController : MonoBehaviour
 
         if(isBoss)
         {
-            if(bossEnemyController.AttackCount>3&& !RageAttack && attackCounter<3)
+            if(bossEnemyController.AttackCount>4&& !RageAttack && attackCounter<3)
             {
                 bossEnemyController.SpecialAttack = true;
                 bossEnemyController.AttackCount = 0;
@@ -124,7 +124,7 @@ public class EnemyAnimatorController : MonoBehaviour
              
 
             }
-            else if(bossEnemyController.AttackCount<=3 && !RageAttack && attackCounter < 3)
+            else if(bossEnemyController.AttackCount<=4 && !RageAttack && attackCounter < 3)
             {
                 Debug.Log("normal attack");
                 enemyBossData.attackType = AttackType.Ranged;

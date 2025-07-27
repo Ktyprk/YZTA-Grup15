@@ -158,8 +158,9 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
     private void HandleCombat(float distanceToTarget)
     {
-        if (distanceToTarget > BossenemyData.attackDistance && SpecialAttack == false)
+        if (distanceToTarget >= BossenemyData.attackDistance && SpecialAttack == false)
         {
+
             waitingForAttack = false;
             showAttackGizmo = false;
             attackTimer = 0f;
@@ -171,6 +172,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
         if ((attackTimer >= BossenemyData.attackCooldown || !waitingForAttack) && SpecialAttack == false)
         {
 
+            Debug.Log("saaaaa");
             waitingForAttack = true;
             attackTimer = 0f;
 

@@ -6,6 +6,7 @@ public class BuffCardsUiUpdate : MonoBehaviour
 {
     private buffCardsStats buffCardsStat;
     [SerializeField] private PlayerStatsController playerStatsController;
+    [SerializeField] private GameObject buffShowTrigger;
     
     [Header("Ui Settings")]
     [SerializeField] private TMP_Text buffName;
@@ -54,5 +55,6 @@ public class BuffCardsUiUpdate : MonoBehaviour
         if(buffCardsStat!=null)
         playerStatsController.ApplyBuff(buffCardsStat);
         BuffPanel.SetActive(false);
+        buffShowTrigger.SetActive(false);
     }
 }

@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3842795953441563153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.984955, y: 0.049999952, z: 65.14684}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c8ecfaee44e1542a3cef984c41e6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossenemyData: {fileID: 0}
+  BossenemyData: {fileID: 11400000, guid: 50015258fcf62814c8876a4e7e856ff4, type: 2}
   renderers:
   - {fileID: 3889613037532836342}
   - {fileID: 5294469566282120735}
@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7860474261754567884}
-  enemyData: {fileID: 11400000, guid: 2fe0ffc788bef3f4dbc9bf4444f54e9a, type: 2}
-  enemyBossData: {fileID: 0}
+  enemyData: {fileID: 0}
+  enemyBossData: {fileID: 11400000, guid: 50015258fcf62814c8876a4e7e856ff4, type: 2}
   RageAttack: 0
 --- !u!95 &7860474261754567884
 Animator:
@@ -195,7 +195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1890116
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
       propertyPath: m_LocalPosition.y
@@ -203,7 +203,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6605835
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
       propertyPath: m_LocalRotation.w

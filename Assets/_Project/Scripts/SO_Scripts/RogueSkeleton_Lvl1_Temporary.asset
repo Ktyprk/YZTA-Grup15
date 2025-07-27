@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: RogueSkeleton
   enemyType: 0
-  attackType: 4
+  attackType: 5
   enemyPrefab: {fileID: 919132149155446097, guid: 604b43f0a1118014883d679be8436f8a, type: 3}
   projectilePrefab: {fileID: 4418415609966599632, guid: 905aa659763d31f40bdb33370edce4a3, type: 3}
   health: 20
