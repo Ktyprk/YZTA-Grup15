@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour, ICombat
     private float attackTimer;
     private bool waitingForAttack;
     public int currentHealth;
-
+    public bool summonByBoss = false;
     private void Awake()
     {
         spawner = FindAnyObjectByType<BossSpawner>();
@@ -218,7 +218,11 @@ public class EnemyController : MonoBehaviour, ICombat
             {
                 spawner.counter++; 
             }
-            
+            if(summonByBoss)
+            {
+                BossEnemyController bossEnemyController = FindAnyObjectByType<BossEnemyController>();
+                bossEnemyController.summonCountCheck--;
+            }
             Die();
         }
     }

@@ -12,6 +12,7 @@ public class EnemyBossData : ScriptableObject
     public GameObject Skeleton, magicianSkeleton, magicianSkeletonVersion2;
 
     [Header("Stats")]
+    public int Maxhealth = 100;
     public int health = 100;
     public int damage = 10;
     public float moveSpeed = 2f;
