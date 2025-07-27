@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public enum EnemyType { Aggressive, Defensive, Passive }
-public enum AttackType { Melee, Heavy, Ranged,ArcRanged,JumpAttack }
+public enum AttackType { Melee, Heavy, Ranged,ArcRanged,specialRangedAttack,JumpAttack }
 
 [CreateAssetMenu(menuName = "Enemy/Create New Enemy Data")]
 public class EnemyData : ScriptableObject

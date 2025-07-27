@@ -1,0 +1,42 @@
+using UnityEngine;
+[CreateAssetMenu(menuName = "Enemy/Create New BossEnemy Data")]
+public class EnemyBossData : ScriptableObject
+{
+    [Header("General")]
+    public string enemyName;
+    public EnemyType enemyType;
+    public AttackType attackType;
+    public GameObject enemyPrefab;
+    public GameObject BasicAttackProjectile;
+    public GameObject SecondAttackProjectile;
+    public GameObject Skeleton, magicianSkeleton, magicianSkeletonVersion2;
+
+    [Header("Stats")]
+    public int health = 100;
+    public int damage = 10;
+    public float moveSpeed = 2f;
+    public float projectileSpeed = 10f;
+
+    [Header("Combat")]
+    public float attackTime = 1.2f;
+    public float attackCooldown = 2f;
+    public float attackDistance = 1.5f;
+    public float idleTime = 1f;
+    public float blockTime = 0.5f;
+    public float enemyDistance = 1f;
+
+    [Header("Animations")]
+    public RuntimeAnimatorController animatorController;
+
+    [Header("Animation Names")]
+    public string idleAnim = "Idle";
+    public string walkAnim = "Walk";
+    public string attackAnim = "Attack";
+    public string attackAnim2 = "Attack2";
+    public string attackAnim2WithOutAttack = "Attack2Alternative";
+    public string attackAnim3 = "Attack3";
+    public string attackAnim4 = "Attack4";
+    public string Summon = "Summon";
+    public string hitAnim = "Hit";
+    public string dieAnim = "Die";
+}

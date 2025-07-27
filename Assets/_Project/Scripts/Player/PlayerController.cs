@@ -114,8 +114,9 @@ public class PlayerController : MonoBehaviour, ICombat
         {
             Vector3 move = new Vector3(direction.x, 0, direction.y);
             transform.position += move * Time.fixedDeltaTime * 5f;
+            Quaternion targetRotation = Quaternion.LookRotation(move);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
             
-            transform.forward = move;
         }
     }
 
@@ -169,8 +170,8 @@ public class PlayerController : MonoBehaviour, ICombat
         yield return new WaitForSeconds(0.1f);
         
         SceneManager.LoadScene("RoomDesign");
-      //  gameObject.SetActive(false);
-        Debug.Log("öldük");
+       gameObject.SetActive(false);
+        Debug.Log("ï¿½ldï¿½k");
        
 
     }
