@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3842795953441563153}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.984955, y: 0.049999952, z: 65.14684}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c8ecfaee44e1542a3cef984c41e6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BossenemyData: {fileID: 0}
+  BossenemyData: {fileID: 11400000, guid: 50015258fcf62814c8876a4e7e856ff4, type: 2}
   renderers:
   - {fileID: 3889613037532836342}
   - {fileID: 5294469566282120735}
@@ -66,11 +66,24 @@ MonoBehaviour:
   showAttackGizmo: 0
   target: {fileID: 0}
   currentHealth: 100
+  maxHealth: 0
   AttackCount: 0
   angleOffset: 0
   SpecialAttack: 0
   SpecialAttackAnimState: 0
-  wanderRadius: 5
+  summon: 0
+  vanished: 0
+  summons:
+  - {fileID: 8351130665762768014, guid: 33efa884633269f4bb8b409fcbf04c12, type: 3}
+  - {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
+  - {fileID: 8351130665762768014, guid: 3bf9929015899c742abf7eb94b9794e3, type: 3}
+  summonCount: 3
+  summonCountCheck: 0
+  oldmanprefab: {fileID: 7914381281005742345}
+  summonsmoke: {fileID: 2620538402441701008, guid: 8b7d567d530f3d44c92b4d853cd6692f, type: 3}
+  summoncharactersSmoke: {fileID: 1048550648207452, guid: 9352e285c4b7fc74682fcb287430f681, type: 3}
+  olmanCollider: {fileID: 6841680682248617874}
+  wanderRadius: 8
 --- !u!195 &3655316960793799508
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -106,8 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7860474261754567884}
-  enemyData: {fileID: 11400000, guid: 2fe0ffc788bef3f4dbc9bf4444f54e9a, type: 2}
-  enemyBossData: {fileID: 0}
+  enemyData: {fileID: 0}
+  enemyBossData: {fileID: 11400000, guid: 50015258fcf62814c8876a4e7e856ff4, type: 2}
   RageAttack: 0
 --- !u!95 &7860474261754567884
 Animator:
@@ -153,7 +166,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2.4
   m_Direction: 1
-  m_Center: {x: 0, y: 1.2, z: 0}
+  m_Center: {x: -0.2, y: 1.2, z: 0}
 --- !u!136 &3549437022828238322
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -176,7 +189,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2.454631
   m_Direction: 1
-  m_Center: {x: 0, y: 1.1690418, z: 0}
+  m_Center: {x: -0.2, y: 1.2, z: 0}
 --- !u!1001 &5591333243605992176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -195,7 +208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.1890116
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
       propertyPath: m_LocalPosition.y
@@ -203,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.6605835
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
       propertyPath: m_LocalRotation.w
@@ -266,6 +279,11 @@ SkinnedMeshRenderer:
 --- !u!4 &7394443825557107635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3100218782621020483, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
+  m_PrefabInstance: {fileID: 5591333243605992176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7914381281005742345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2327763020038466553, guid: 1a5768851d3ea5141ba8fc1dd7383452, type: 3}
   m_PrefabInstance: {fileID: 5591333243605992176}
   m_PrefabAsset: {fileID: 0}
 --- !u!137 &8519092047637789867 stripped

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 
@@ -36,6 +37,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
     private float attackTimer;
     private bool waitingForAttack;
     public int currentHealth;
+    public int maxHealth;
 
     [Header("special skill Settings")]
     public int AttackCount = 0;
@@ -43,6 +45,17 @@ public class BossEnemyController : MonoBehaviour, ICombat
     public float angleOffset = 0f;
     public bool SpecialAttack = false;
     public bool SpecialAttackAnimState = false;
+    public bool summon = false;
+    public bool vanished = false;
+    public GameObject[] summons;
+    public int summonCount = 3;
+    public int summonCountCheck;
+    private float Timer = 0 ;
+    public GameObject oldmanprefab;
+    public GameObject summonsmoke;
+    public GameObject summoncharactersSmoke;
+    public Collider olmanCollider;
+
     private void Awake()
     {
         SpecialAttack = false;
@@ -52,34 +65,53 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
     private void OnEnable()
     {
+        summonCountCheck = summonCount;
         ResetEnemy();
         InitializeAttackBehavior();
     }
 
     private void FixedUpdate()
     {
-        if (target == null || !target.gameObject.activeSelf)
+        if(  vanished == false)
         {
-            target = null;
-            WanderSimple();
-            //animController.Idle();
-            if (waitingForAttack)
+            if (target == null || !target.gameObject.activeSelf)
             {
-                waitingForAttack = false;
-                OnIdle?.Invoke();
+                target = null;
+                WanderSimple();
+                //animController.Idle();
+                if (waitingForAttack)
+                {
+                    waitingForAttack = false;
+                    OnIdle?.Invoke();
+                }
+                return;
             }
-            return;
+
+            RotateTowardsTarget();
+
+            float distance = Vector3.Distance(transform.position, target.position);
+            if (distance > BossenemyData.attackDistance && SpecialAttack == false)
+            {
+                MoveTowardsTarget();
+            }
+
+            HandleCombat(distance);
         }
-
-        RotateTowardsTarget();
-
-        float distance = Vector3.Distance(transform.position, target.position);
-        if (distance > BossenemyData.attackDistance && SpecialAttack == false)
+     
+        if(summonCountCheck<=0)
         {
-            MoveTowardsTarget();
-        }
 
-        HandleCombat(distance);
+            Timer += Time.deltaTime;
+            vanished = false;
+            oldmanprefab.SetActive(true);
+            olmanCollider.enabled = true;
+            if (Timer>30f)
+            {
+                Timer = 0;
+                summon = false;
+                TakeDamage(0);
+            }
+        }
     }
 
 
@@ -139,6 +171,9 @@ public class BossEnemyController : MonoBehaviour, ICombat
             case AttackType.specialRangedAttack:
                 InitializeAttackBehavior(new BossSpecialAttackBehavior(BossenemyData.BasicAttackProjectile,3f,1,this, animController, this));
                 break;
+            case AttackType.SummonAttack:
+                InitializeAttackBehavior(new BossSummonAttackBehavior(summons, summoncharactersSmoke, summonCount));
+                break;
         }
     }
     private void InitializeAttackBehavior(IBossEnemyAttackBehavior behavior)
@@ -158,8 +193,9 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
     private void HandleCombat(float distanceToTarget)
     {
-        if (distanceToTarget > BossenemyData.attackDistance && SpecialAttack == false)
+        if (distanceToTarget >= BossenemyData.attackDistance && SpecialAttack == false)
         {
+
             waitingForAttack = false;
             showAttackGizmo = false;
             attackTimer = 0f;
@@ -215,6 +251,16 @@ public class BossEnemyController : MonoBehaviour, ICombat
             SpecialAttack = false;
             angleOffset = 0f;
         }
+        else if(BossenemyData.attackType == AttackType.SummonAttack)
+        {
+            summonCountCheck = summonCount;
+            attackBehavior?.Attack(this, target);
+            GameObject smoke = Instantiate(summonsmoke,transform.position,Quaternion.identity);
+            oldmanprefab.SetActive(false);
+            olmanCollider.enabled = false;
+            Destroy(smoke,2f);
+
+        }
         else
         {
             attackBehavior?.Attack(this, target);
@@ -269,6 +315,16 @@ public class BossEnemyController : MonoBehaviour, ICombat
         {
             Die();
         }
+        if(currentHealth<=maxHealth/2 && summon==false)
+        {
+            summon = true;
+            vanished = true;
+            waitingForAttack = true;
+            attackTimer = 0f;
+
+            animController.Attack();
+            OnAttack?.Invoke();
+        }
     }
 
     private IEnumerator FlashEffect()
@@ -310,6 +366,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
     public void ResetEnemy()
     {
+        maxHealth = BossenemyData.Maxhealth;
         currentHealth = BossenemyData.health;
         attackTimer = UnityEngine.Random.Range(0, BossenemyData.attackTime * 0.6f);
         waitingForAttack = false;

@@ -1,21 +1,47 @@
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using System;
 using System.Collections;
+using System.IO;
+using Unity.VisualScripting;
+using UnityEditor.SearchService;
+using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneFader : MonoBehaviour
 {
     public Image image;
     public float customDuration = 1f;
+    [SerializeField] private string nameOfScene;
+    public static SceneFader Instance;
+    public int sceneIndex = 0;
 
+    void Awake()
+    {
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            sceneIndex = 0;
+        }
+        else
+        {
+           
+            Destroy(gameObject);
+        }
+    }
+    
     public void AAAAA()
     {
         Debug.Log("AAAAA");
     }
     public void FadeAndLoad(string sceneName)
     {
-        Debug.Log("aaaa");
+        if(sceneName=="MainMenu"||sceneName=="Mirza")
+            sceneIndex = 0;
         //StartCoroutine(FadeInAndLoad(sceneName, customDuration));
+        image = GameObject.Find("FadeImage").GetComponent<Image>();
         FadeAndLoadWithDuration(sceneName, customDuration);
     }
 
@@ -26,6 +52,7 @@ public class SceneFader : MonoBehaviour
 
     IEnumerator FadeInAndLoad(string sceneName, float fadeDuration)
     {
+         yield return new WaitForSeconds(0.1f);
         float t = 0;
         Color color = image.color;
         while (t < fadeDuration)
@@ -52,4 +79,25 @@ public class SceneFader : MonoBehaviour
 
         SceneManager.LoadScene(sceneName);
     }
+    public void loadSceneWithTrigger()
+    {
+        
+       
+        sceneIndex++;
+        if (sceneIndex > RandomMapChooseManager.Instance.SceneEndIndex)
+        {
+            sceneIndex = 0;
+            FadeAndLoad("Mirza");//mainhall it works when the last dungeon room complate succesfully and return mainhall
+            
+        }
+        else
+        {
+            string scenePath = SceneUtility.GetScenePathByBuildIndex(RandomMapChooseManager.Instance.shuffledNumbers[sceneIndex - 1]);
+            string sceneName = Path.GetFileNameWithoutExtension(scenePath);
+            Debug.Log("secene namee = " + sceneName);
+            FadeAndLoad(sceneName);
+        }
+           
+    }
+    
 }

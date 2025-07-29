@@ -109,45 +109,58 @@ public class EnemyAnimatorController : MonoBehaviour
         isIdling = false;
 
         if(isBoss)
-        {
-            if(bossEnemyController.AttackCount>3&& !RageAttack && attackCounter<3)
+        {   if(bossEnemyController.vanished)
             {
-                bossEnemyController.SpecialAttack = true;
-                bossEnemyController.AttackCount = 0;
-                enemyBossData.attackType = AttackType.specialRangedAttack;
-                bossEnemyController.InitializeAttackBehavior();
-                PlayAnim(enemyBossData.attackAnim2);
-                attackCounter++;
-               
-
-                Debug.Log("special attack");
-             
-
-            }
-            else if(bossEnemyController.AttackCount<=3 && !RageAttack && attackCounter < 3)
-            {
-                Debug.Log("normal attack");
-                enemyBossData.attackType = AttackType.Ranged;
-                bossEnemyController.InitializeAttackBehavior();
-                PlayAnim(enemyBossData.attackAnim);
-            }
-            else if (attackCounter >= 3)
-            {
-                attackCounter = 0;
                 bossEnemyController.SpecialAttack = false;
-                Debug.Log("rage attack");
-                RageAttack = true;
-                enemyBossData.attackType = AttackType.ArcRanged;
-                bossEnemyController.InitializeAttackBehavior();
-            }
-            else if (RageAttack && attackCounter < 3)
-            {
-                Debug.Log("rage attack2");
-                enemyBossData.attackType = AttackType.ArcRanged;
-                bossEnemyController.InitializeAttackBehavior();
                 bossEnemyController.AttackCount = 0;
-                PlayAnim(enemyBossData.attackAnim3);
+                attackCounter = 0;
+                RageAttack = false;
+                enemyBossData.attackType = AttackType.SummonAttack;
+                bossEnemyController.InitializeAttackBehavior();
+                PlayAnim(enemyBossData.Summon);
             }
+            else
+            {
+                if (bossEnemyController.AttackCount > 4 && !RageAttack && attackCounter < 3)
+                {
+                    bossEnemyController.SpecialAttack = true;
+                    bossEnemyController.AttackCount = 0;
+                    enemyBossData.attackType = AttackType.specialRangedAttack;
+                    bossEnemyController.InitializeAttackBehavior();
+                    PlayAnim(enemyBossData.attackAnim2);
+                    attackCounter++;
+
+
+                    Debug.Log("special attack");
+
+
+                }
+                else if (bossEnemyController.AttackCount <= 4 && !RageAttack && attackCounter < 3)
+                {
+                    Debug.Log("normal attack");
+                    enemyBossData.attackType = AttackType.Ranged;
+                    bossEnemyController.InitializeAttackBehavior();
+                    PlayAnim(enemyBossData.attackAnim);
+                }
+                else if (attackCounter >= 3)
+                {
+                    attackCounter = 0;
+                    bossEnemyController.SpecialAttack = false;
+                    Debug.Log("rage attack");
+                    RageAttack = true;
+                    enemyBossData.attackType = AttackType.ArcRanged;
+                    bossEnemyController.InitializeAttackBehavior();
+                }
+                else if (RageAttack && attackCounter < 3)
+                {
+                    Debug.Log("rage attack2");
+                    enemyBossData.attackType = AttackType.ArcRanged;
+                    bossEnemyController.InitializeAttackBehavior();
+                    bossEnemyController.AttackCount = 0;
+                    PlayAnim(enemyBossData.attackAnim3);
+                }
+            }
+            
 
         }
         else

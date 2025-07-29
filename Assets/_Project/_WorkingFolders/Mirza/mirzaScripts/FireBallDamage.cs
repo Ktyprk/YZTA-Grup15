@@ -5,7 +5,7 @@ public class FireBallDamage : MonoBehaviour , IProjectileDamageDealer
 {
     [SerializeField] private int damageAmount = 20;
     [SerializeField] private int fireDamageAmount = 5;
-
+    [SerializeField] private GameObject efect;
     public void Start()
     {
         Destroy(gameObject, 4);
@@ -26,6 +26,7 @@ public class FireBallDamage : MonoBehaviour , IProjectileDamageDealer
     {
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Collider>().enabled = false;
+        efect.SetActive(false);
         Icombat.TakeDamage(damageAmount);
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < 3; i++)

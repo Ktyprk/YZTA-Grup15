@@ -34,7 +34,7 @@ public class MushroomBlowUp : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             oldDistanceBefore = Vector3.Distance(other.transform.position, transform.position);
-            Debug.Log("Oyuncu girdi");
+            //Debug.Log("Oyuncu girdi");
         }
     }
 
@@ -43,7 +43,7 @@ public class MushroomBlowUp : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             float distance = Vector3.Distance(other.transform.position, transform.position);
-            Debug.Log("Oyuncu yakýn: old = " + oldDistanceBefore + " | new = " + distance);
+            //Debug.Log("Oyuncu yakýn: old = " + oldDistanceBefore + " | new = " + distance);
 
             ScaleVisual(distance);
      

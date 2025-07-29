@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour, ICombat
 {
     public AnimatorController animator;
     private PlayerState _currentState;
+    private SceneFader _sceneFader;
     public LayerMask enemyLayer;
 
     public Vector2 MoveInput { get; private set; }
@@ -47,7 +48,9 @@ public class PlayerController : MonoBehaviour, ICombat
         playerStats = GetComponent<PlayerStatsController>();
         currentHealth = maxHealth;
         ChangeState(new IdleState(this));
-        
+        _sceneFader = FindAnyObjectByType<SceneFader>();
+
+
         ControlsManager.Controls.Player.Attack.performed += ctx =>
         {
             if (!(_currentState is AttackState))
@@ -167,11 +170,13 @@ public class PlayerController : MonoBehaviour, ICombat
 
      public IEnumerator Die()
     {
+      //  string currentSceneName = SceneManager.GetActiveScene().name;
+         RandomMapChooseManager.Instance.Reshuffle();
         yield return new WaitForSeconds(0.1f);
-        
-        SceneManager.LoadScene("RoomDesign");
+
+        _sceneFader.FadeAndLoad("Mirza"); // will change as loby map name
        gameObject.SetActive(false);
-        Debug.Log("�ld�k");
+       
        
 
     }

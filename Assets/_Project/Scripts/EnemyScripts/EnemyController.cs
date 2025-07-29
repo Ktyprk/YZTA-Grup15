@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour, ICombat
     public event Action OnIdle;
     public event Action OnDie;
     public event Action<int> OnDamageTaken;
+    [SerializeField] private BossSpawner spawner;
 
     private EnemyAnimatorController animController;
     private Coroutine flashRoutine;
@@ -35,9 +36,10 @@ public class EnemyController : MonoBehaviour, ICombat
     private float attackTimer;
     private bool waitingForAttack;
     public int currentHealth;
-
+    public bool summonByBoss = false;
     private void Awake()
     {
+        spawner = FindAnyObjectByType<BossSpawner>();
         animController = GetComponent<EnemyAnimatorController>();
     }
 
@@ -212,6 +214,15 @@ public class EnemyController : MonoBehaviour, ICombat
 
         if (currentHealth <= 0)
         {
+            if(spawner!=null)
+            {
+                spawner.counter++; 
+            }
+            if(summonByBoss)
+            {
+                BossEnemyController bossEnemyController = FindAnyObjectByType<BossEnemyController>();
+                bossEnemyController.summonCountCheck--;
+            }
             Die();
         }
     }
