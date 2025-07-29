@@ -162,7 +162,7 @@ public class EnemyAnimatorController : MonoBehaviour
                     bossEnemyController.AttackCount = 0;
                     PlayAnim(enemyBossData.attackAnim3);
                 }
-                else if (bossEnemyController.missAttackNumber >= 5)
+                else if (bossEnemyController.missAttackNumber >= 5 && !RageAttack)
                 {
                     if(bossEnemyController.teleport)
                     {
