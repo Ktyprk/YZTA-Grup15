@@ -24,6 +24,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
     [Header("Target Settings")]
     [SerializeField] private Transform target;
+    private PlayerController playerController;
 
     public event Action OnWaitForAttack;
     public event Action OnAttack;
@@ -47,6 +48,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
     public bool SpecialAttackAnimState = false;
     public bool summon = false;
     public bool vanished = false;
+    public bool teleport = false;
     public GameObject[] summons;
     public int summonCount = 3;
     public int summonCountCheck;
@@ -54,10 +56,15 @@ public class BossEnemyController : MonoBehaviour, ICombat
     public GameObject oldmanprefab;
     public GameObject summonsmoke;
     public GameObject summoncharactersSmoke;
-    public Collider olmanCollider;
+    public Collider oldmanCollider;
+    public GameObject chargeEffect;
+    public int missAttackNumber = 0;
+    public GameObject oldman;
 
     private void Awake()
     {
+        teleport = false;
+        playerController = FindAnyObjectByType<PlayerController>();
         SpecialAttack = false;
         animController = GetComponent<EnemyAnimatorController>();
         BossenemyData.attackType = AttackType.Ranged;
@@ -72,7 +79,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
     private void FixedUpdate()
     {
-        if(  vanished == false)
+        if(  vanished == false )
         {
             if (target == null || !target.gameObject.activeSelf)
             {
@@ -98,13 +105,13 @@ public class BossEnemyController : MonoBehaviour, ICombat
             HandleCombat(distance);
         }
      
-        if(summonCountCheck<=0)
+        if(summonCountCheck<=0 && missAttackNumber < 5)
         {
 
             Timer += Time.deltaTime;
             vanished = false;
             oldmanprefab.SetActive(true);
-            olmanCollider.enabled = true;
+            oldmanCollider.enabled = true;
             if (Timer>30f)
             {
                 Timer = 0;
@@ -112,7 +119,8 @@ public class BossEnemyController : MonoBehaviour, ICombat
                 TakeDamage(0);
             }
         }
-    }
+  
+    }   
 
 
     private Vector3 wanderTarget;
@@ -150,7 +158,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
 
 
-
+    
     public void InitializeAttackBehavior()
     {
         switch (BossenemyData.attackType)
@@ -173,6 +181,12 @@ public class BossEnemyController : MonoBehaviour, ICombat
                 break;
             case AttackType.SummonAttack:
                 InitializeAttackBehavior(new BossSummonAttackBehavior(summons, summoncharactersSmoke, summonCount));
+                break;
+            case AttackType.Teleport:
+                InitializeAttackBehavior(new TeleportAttackBehavior(oldman));
+                break;
+            case AttackType.TeleportAttack:
+                InitializeAttackBehavior(new afterTeleportAttackBehavior());
                 break;
         }
     }
@@ -204,7 +218,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
         attackTimer += Time.deltaTime;
         //  showAttackGizmo = false;
-        if ((attackTimer >= BossenemyData.attackCooldown || !waitingForAttack) && SpecialAttack == false)
+        if ((attackTimer >= BossenemyData.attackCooldown || !waitingForAttack) && SpecialAttack == false && teleport ==false)
         {
 
             waitingForAttack = true;
@@ -236,13 +250,13 @@ public class BossEnemyController : MonoBehaviour, ICombat
                     animController.PlayAnim(BossenemyData.attackAnim2WithOutAttack);
                 }
 
-         
+
                 Debug.Log("animasyon baþlatýldý");
 
 
                 yield return new WaitUntil(() => SpecialAttackAnimState);
 
-  
+
                 attackBehavior?.Attack(this, target);
 
                 angleOffset += 20f;
@@ -251,18 +265,39 @@ public class BossEnemyController : MonoBehaviour, ICombat
             SpecialAttack = false;
             angleOffset = 0f;
         }
-        else if(BossenemyData.attackType == AttackType.SummonAttack)
+        else if (BossenemyData.attackType == AttackType.SummonAttack)
         {
+
             summonCountCheck = summonCount;
             attackBehavior?.Attack(this, target);
-            GameObject smoke = Instantiate(summonsmoke,transform.position,Quaternion.identity);
+            GameObject smokeGreen = Instantiate(summonsmoke, transform.position, Quaternion.identity);
             oldmanprefab.SetActive(false);
-            olmanCollider.enabled = false;
-            Destroy(smoke,2f);
+            oldmanCollider.enabled = false;
+            Destroy(smokeGreen, 2f);
+
+        }
+        else if (BossenemyData.attackType == AttackType.Teleport)
+        {
+
+            attackBehavior?.Attack(this, target);
+
+            teleport = true;
+
+            animController.Attack();
+            OnAttack?.Invoke();
+           
+
+
+        }
+        else if (BossenemyData.attackType == AttackType.TeleportAttack)
+        {
+            attackBehavior?.Attack(this, target);
+          
 
         }
         else
         {
+
             attackBehavior?.Attack(this, target);
             yield return null;
         }
@@ -375,5 +410,20 @@ public class BossEnemyController : MonoBehaviour, ICombat
         animController.ResetAnimator();
         ResetMaterials();
         animController.Idle();
+    }
+    public IEnumerator warningEffectTriggered()
+    {
+        GameObject smoke = Instantiate(chargeEffect, transform.position, Quaternion.identity);
+        
+        Destroy(smoke, 1f);
+        playerController.warningMark.SetActive(true);
+         yield return new WaitForSeconds(1);
+        playerController.warningMark.SetActive(false);
+
+    }
+    public void teleportToEnemyFinished()
+    {
+        missAttackNumber = 0;
+        teleport = false;
     }
 }

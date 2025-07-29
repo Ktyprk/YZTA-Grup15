@@ -37,8 +37,13 @@ public class EnemyController : MonoBehaviour, ICombat
     private bool waitingForAttack;
     public int currentHealth;
     public bool summonByBoss = false;
+    public bool awaken = false;
+    public bool died = false;
+    
     private void Awake()
     {
+        died = false;
+        awaken=false;
         spawner = FindAnyObjectByType<BossSpawner>();
         animController = GetComponent<EnemyAnimatorController>();
     }
@@ -47,32 +52,39 @@ public class EnemyController : MonoBehaviour, ICombat
     {
         ResetEnemy();
         InitializeAttackBehavior();
+        animController.Attack();
+        StartCoroutine(checkAwakenAnim());  
+
     }
 
     private void FixedUpdate()
     {
-        if (target == null || !target.gameObject.activeSelf)
+        if(awaken && died ==false)
         {
-            target = null;
-            WanderSimple();
-            //animController.Idle();
-            if (waitingForAttack)
+            if (target == null || !target.gameObject.activeSelf)
             {
-                waitingForAttack = false;
-                OnIdle?.Invoke();
+                target = null;
+                WanderSimple();
+                //animController.Idle();
+                if (waitingForAttack)
+                {
+                    waitingForAttack = false;
+                    OnIdle?.Invoke();
+                }
+                return;
             }
-            return;
+
+            RotateTowardsTarget();
+
+            float distance = Vector3.Distance(transform.position, target.position);
+            if (distance > enemyData.attackDistance)
+            {
+                MoveTowardsTarget();
+            }
+
+            HandleCombat(distance);
         }
-
-        RotateTowardsTarget();
-
-        float distance = Vector3.Distance(transform.position, target.position);
-        if (distance > enemyData.attackDistance)
-        {
-            MoveTowardsTarget();
-        }
-
-        HandleCombat(distance);
+        
     }
 
     
@@ -165,7 +177,7 @@ public class EnemyController : MonoBehaviour, ICombat
 
             animController.Attack();
             OnAttack?.Invoke();
-            attackBehavior?.Attack(this, target);
+            
         }
     }
 
@@ -203,28 +215,32 @@ public class EnemyController : MonoBehaviour, ICombat
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        OnDamageTaken?.Invoke(damage);
-        
-        DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
-        
-        if (flashRoutine != null)
-            StopCoroutine(flashRoutine);
-        flashRoutine = StartCoroutine(FlashEffect());
-
-        if (currentHealth <= 0)
+        if(awaken==true && died==false)
         {
-            if(spawner!=null)
+            currentHealth -= damage;
+            OnDamageTaken?.Invoke(damage);
+
+            DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
+
+            if (flashRoutine != null)
+                StopCoroutine(flashRoutine);
+            flashRoutine = StartCoroutine(FlashEffect());
+
+            if (currentHealth <= 0)
             {
-                spawner.counter++; 
+                if (spawner != null)
+                {
+                    spawner.counter++;
+                }
+                if (summonByBoss)
+                {
+                    BossEnemyController bossEnemyController = FindAnyObjectByType<BossEnemyController>();
+                    bossEnemyController.summonCountCheck--;
+                }
+                Die();
             }
-            if(summonByBoss)
-            {
-                BossEnemyController bossEnemyController = FindAnyObjectByType<BossEnemyController>();
-                bossEnemyController.summonCountCheck--;
-            }
-            Die();
         }
+      
     }
 
     private IEnumerator FlashEffect()
@@ -251,11 +267,15 @@ public class EnemyController : MonoBehaviour, ICombat
 
     private void Die()
     {
+        died = true;
+        animController.Die();
         OnDie?.Invoke();
         Debug.Log($"{enemyData.enemyName} died.");
-        
-        EntityPoolManager.Instance.ReleaseEntityToPool(enemyData.enemyPrefab, gameObject);
+        Collider collider = GetComponent<Collider>();
+        collider.enabled = false;
+       
     }
+
 
     public Transform GetTransform() => transform;
 
@@ -274,5 +294,26 @@ public class EnemyController : MonoBehaviour, ICombat
         animController.ResetAnimator();
         ResetMaterials();
         animController.Idle(); 
+    }
+    public void doAttack()
+    {
+        attackBehavior?.Attack(this, target);
+    }
+     public void awakenAnimFinished()
+    {
+        awaken = true;
+    }
+    public void DieAnimFinished()
+    {
+        
+        EntityPoolManager.Instance.ReleaseEntityToPool(enemyData.enemyPrefab, gameObject);
+    }
+    private IEnumerator checkAwakenAnim()
+    {
+        yield return new WaitForSeconds(3f);
+        if(awaken=false)
+        {
+            animController.Attack();
+        }
     }
 }

@@ -6,10 +6,20 @@ public class ExplosiveFireBallDamage : MonoBehaviour
     [SerializeField] private int damageAmount = 20;
     [SerializeField] private int fireDamageAmount = 5;
     [SerializeField] private GameObject bouncedObject;
-
+    private Vector3 rotationAxis;
+    [SerializeField] private float rotationSpeed = 90f;
     public void Start()
     {
+        rotationAxis = new Vector3(
+           Random.Range(-1f, 1f),
+           Random.Range(-1f, 1f),
+           Random.Range(-1f, 1f)
+       ).normalized;
         Destroy(gameObject, 4);
+    }
+    private void Update()
+    {
+        transform.Rotate(rotationAxis * rotationSpeed * Time.deltaTime);
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -29,9 +39,10 @@ public class ExplosiveFireBallDamage : MonoBehaviour
     }
     public IEnumerator giveDamage(ICombat Icombat)
     {
-        BounceObject();
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Collider>().enabled = false;
+        BounceObject();
+       
         Icombat.TakeDamage(damageAmount);
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < 3; i++)

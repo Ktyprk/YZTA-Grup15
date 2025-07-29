@@ -6,6 +6,7 @@ public class EnemyAnimatorController : MonoBehaviour
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private EnemyBossData enemyBossData;
     private BossEnemyController bossEnemyController;
+    private EnemyController enemyController;
 
     private bool isIdling;
     private bool isWalking;
@@ -19,6 +20,7 @@ public class EnemyAnimatorController : MonoBehaviour
     private void Awake()
     {
         bossEnemyController = GetComponent<BossEnemyController>();
+        enemyController = GetComponent<EnemyController>();
 
         RageAttack = false;
         if (bossEnemyController != null && enemyBossData != null)
@@ -119,9 +121,10 @@ public class EnemyAnimatorController : MonoBehaviour
                 bossEnemyController.InitializeAttackBehavior();
                 PlayAnim(enemyBossData.Summon);
             }
+ 
             else
             {
-                if (bossEnemyController.AttackCount > 4 && !RageAttack && attackCounter < 3)
+                if (bossEnemyController.AttackCount > 4 && !RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 5)
                 {
                     bossEnemyController.SpecialAttack = true;
                     bossEnemyController.AttackCount = 0;
@@ -135,7 +138,7 @@ public class EnemyAnimatorController : MonoBehaviour
 
 
                 }
-                else if (bossEnemyController.AttackCount <= 4 && !RageAttack && attackCounter < 3)
+                else if (bossEnemyController.AttackCount <= 4 && !RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 5)
                 {
                     Debug.Log("normal attack");
                     enemyBossData.attackType = AttackType.Ranged;
@@ -151,7 +154,7 @@ public class EnemyAnimatorController : MonoBehaviour
                     enemyBossData.attackType = AttackType.ArcRanged;
                     bossEnemyController.InitializeAttackBehavior();
                 }
-                else if (RageAttack && attackCounter < 3)
+                else if (RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 5)
                 {
                     Debug.Log("rage attack2");
                     enemyBossData.attackType = AttackType.ArcRanged;
@@ -159,13 +162,52 @@ public class EnemyAnimatorController : MonoBehaviour
                     bossEnemyController.AttackCount = 0;
                     PlayAnim(enemyBossData.attackAnim3);
                 }
+                else if (bossEnemyController.missAttackNumber >= 5)
+                {
+                    if(bossEnemyController.teleport)
+                    {
+                        Debug.Log("teleport2");
+                        enemyBossData.attackType = AttackType.TeleportAttack;
+                        bossEnemyController.InitializeAttackBehavior();
+                        bossEnemyController.vanished = false;
+                        bossEnemyController.SpecialAttack = false;
+                        
+                      
+                        RageAttack = false;
+
+                        PlayAnim(enemyBossData.Stab);
+                        
+                    }
+                    else
+                    {
+                        Debug.Log("teleport");
+                        enemyBossData.attackType = AttackType.Teleport;
+                        bossEnemyController.InitializeAttackBehavior();
+                        bossEnemyController.vanished = false;
+                        bossEnemyController.SpecialAttack = false;
+                        
+                      
+                        RageAttack = false;
+
+                        PlayAnim(enemyBossData.Charge);
+                    }
+                        
+                }
             }
             
 
         }
         else
         {
-            PlayAnim(enemyData.attackAnim);
+            if(enemyController.awaken==false)
+            {
+                PlayAnim(enemyData.Awaken);
+            }
+            else
+            {
+                PlayAnim(enemyData.attackAnim);
+            }
+                
         }
            
     }

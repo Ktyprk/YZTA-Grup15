@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 748447f0da4b8134697a1ab3d8d49f5b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302106
+  packageName: VFX Graph - Fire Ball 02
+  packageVersion: 1.0
+  assetPath: Assets/TwoUncleVFX/Settings/TwoUncleVFX_Global Volume Profile.asset
+  uploadId: 707322

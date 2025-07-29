@@ -15,10 +15,13 @@ public class BossRangedAttackBehavior : IBossEnemyAttackBehavior
     {
         Vector3 spawnPos = enemy.transform.position + Vector3.up * 1f;
         GameObject proj = GameObject.Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+        FireBallDamage fireBallDamage = proj.GetComponent<FireBallDamage>();
+        fireBallDamage.isSummonByBoss = true;
         Vector3 targetPos = target.position;
         targetPos.y = spawnPos.y;
         Vector3 dir = (targetPos - spawnPos).normalized;
         proj.GetComponent<Rigidbody>().linearVelocity = dir * projectileSpeed;
+       
     }
 }
 

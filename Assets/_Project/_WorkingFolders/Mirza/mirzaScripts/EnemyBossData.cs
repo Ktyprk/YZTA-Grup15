@@ -38,6 +38,8 @@ public class EnemyBossData : ScriptableObject
     public string attackAnim3 = "Attack3";
     public string attackAnim4 = "Attack4";
     public string Summon = "Summon";
+    public string Stab = "Stab";
+    public string Charge = "Charge";
     public string hitAnim = "Hit";
     public string dieAnim = "Die";
 }

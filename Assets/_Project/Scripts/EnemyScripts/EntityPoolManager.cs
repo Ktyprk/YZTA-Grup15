@@ -29,10 +29,16 @@ public class EntityPoolManager : MonoBehaviour
         public GameObject SpawnEntity(GameObject prefab, Vector3 position, Quaternion rotation)
         {
             GameObject entity = GetEntityPool(prefab).GetFromPool();
-            
+            EnemyController controller = entity.GetComponent<EnemyController>();
             entity.transform.position = position;
             entity.transform.rotation = rotation;
-            
+        if(controller!=null)
+        {
+            controller.awaken = false;
+            controller.died = false;
+            Collider collider = entity.GetComponent<Collider>();
+            collider.enabled = true;
+        }
             entity.SetActive(true);
             return entity;
         }

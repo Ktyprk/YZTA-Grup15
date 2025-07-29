@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e1260c1148f6143b28bae5ace5e9c5d1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302106
+  packageName: VFX Graph - Fire Ball 02
+  packageVersion: 1.0
+  assetPath: Assets/TwoUncleVFX/Settings/TwoUncleVFX_URP-Balanced.asset
+  uploadId: 707322

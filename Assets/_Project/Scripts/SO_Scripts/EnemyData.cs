@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public enum EnemyType { Aggressive, Defensive, Passive }
-public enum AttackType { Melee, Heavy, Ranged,ArcRanged,specialRangedAttack,JumpAttack,SummonAttack }
+public enum AttackType { Melee, Heavy, Ranged,ArcRanged,specialRangedAttack,JumpAttack,SummonAttack,TeleportAttack,Teleport}
 
 [CreateAssetMenu(menuName = "Enemy/Create New Enemy Data")]
 public class EnemyData : ScriptableObject
@@ -31,6 +31,7 @@ public class EnemyData : ScriptableObject
     public RuntimeAnimatorController animatorController;
 
     [Header("Animation Names")]
+    public string Awaken = "Awaken";
     public string idleAnim = "Idle";
     public string walkAnim = "Walk";
     public string attackAnim = "Attack";

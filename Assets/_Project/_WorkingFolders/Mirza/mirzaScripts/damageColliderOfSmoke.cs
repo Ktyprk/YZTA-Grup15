@@ -22,7 +22,7 @@ public class damageColliderOfSmoke : MonoBehaviour , IProjectileDamageDealer
         while (elapsed < growDuration)
         {
             elapsed += Time.deltaTime;
-            float t = elapsed / growDuration;
+            float t = elapsed*2 / growDuration;
 
            
             float newX = Mathf.Lerp(startScale.x, targetScale.x, t);

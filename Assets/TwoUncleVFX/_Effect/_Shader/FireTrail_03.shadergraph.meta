@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 9f4d38bd5041f5e45a3e3ec9219e0a86
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302106
+  packageName: VFX Graph - Fire Ball 02
+  packageVersion: 1.0
+  assetPath: Assets/TwoUncleVFX/_Effect/_Shader/FireTrail_03.shadergraph
+  uploadId: 707322

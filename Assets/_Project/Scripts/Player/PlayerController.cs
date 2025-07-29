@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -38,6 +39,10 @@ public class PlayerController : MonoBehaviour, ICombat
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
+    [SerializeField] private GameObject healEffect;
+    public GameObject warningMark;
+    [Header("Slash Effect")]
+    [SerializeField] private ParticleSystem sparkEffect;
 
     private Coroutine flashRoutine;
     
@@ -49,6 +54,7 @@ public class PlayerController : MonoBehaviour, ICombat
         currentHealth = maxHealth;
         ChangeState(new IdleState(this));
         _sceneFader = FindAnyObjectByType<SceneFader>();
+     
 
 
         ControlsManager.Controls.Player.Attack.performed += ctx =>
@@ -135,6 +141,7 @@ public class PlayerController : MonoBehaviour, ICombat
                 break;
             case "Attack":
                 animator.PlayAnim("Attack");
+                
                 break;
             default:
                 animator.Idle();
@@ -154,13 +161,26 @@ public class PlayerController : MonoBehaviour, ICombat
 
     public void TakeDamage(int amount) 
     {
-        playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
-    
-        playerStats.UpdateHealthBar();
+        if(amount<0)
+        {
+            playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
+            GameObject effect = Instantiate(healEffect,transform.position, Quaternion.identity);
+            playerStats.UpdateHealthBar();
+            Destroy(effect, 1f);
 
-        if (flashRoutine != null)
-            StopCoroutine(flashRoutine);
-        flashRoutine = StartCoroutine(FlashEffect());
+
+        }
+        else
+        {
+            playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
+
+            playerStats.UpdateHealthBar();
+
+            if (flashRoutine != null)
+                StopCoroutine(flashRoutine);
+            flashRoutine = StartCoroutine(FlashEffect());
+        }
+            
 
         if (playerStats.currentHealth <= 0)
             StartCoroutine(Die());
@@ -208,7 +228,19 @@ public class PlayerController : MonoBehaviour, ICombat
             transform.forward = dashDirection;
     }
 
-     private IEnumerator FlashEffect()
+    public void TriggerEffect()
+    {
+        if (sparkEffect.isPlaying)
+        {
+            sparkEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+
+        sparkEffect.Play();
+    }
+
+
+
+    private IEnumerator FlashEffect()
     {
         foreach (var r in renderers)
         {

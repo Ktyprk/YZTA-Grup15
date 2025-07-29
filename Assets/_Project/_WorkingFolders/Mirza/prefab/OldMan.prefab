@@ -73,6 +73,7 @@ MonoBehaviour:
   SpecialAttackAnimState: 0
   summon: 0
   vanished: 0
+  teleport: 0
   summons:
   - {fileID: 8351130665762768014, guid: 33efa884633269f4bb8b409fcbf04c12, type: 3}
   - {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
@@ -82,7 +83,10 @@ MonoBehaviour:
   oldmanprefab: {fileID: 7914381281005742345}
   summonsmoke: {fileID: 2620538402441701008, guid: 8b7d567d530f3d44c92b4d853cd6692f, type: 3}
   summoncharactersSmoke: {fileID: 1048550648207452, guid: 9352e285c4b7fc74682fcb287430f681, type: 3}
-  olmanCollider: {fileID: 6841680682248617874}
+  oldmanCollider: {fileID: 6841680682248617874}
+  chargeEffect: {fileID: 6441873369525384307, guid: 0f3d407feb92ebb49b98d0157de5008a, type: 3}
+  missAttackNumber: 0
+  oldman: {fileID: 3842795953441563153}
   wanderRadius: 8
 --- !u!195 &3655316960793799508
 NavMeshAgent:
@@ -135,7 +139,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 9469d42d42983b84682168240f27f9d3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0

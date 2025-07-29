@@ -72,7 +72,7 @@ public class MushroomColorChange : MonoBehaviour
             var main = smokes.GetComponent<ParticleSystem>().main;
             main.startColor = Color.blue;
         }
-        Destroy(gameObjects, 0.2f);
+        Destroy(gameObjects, 0.5f);
     }
     public void getMetarials(MushroomTypes type)
     {

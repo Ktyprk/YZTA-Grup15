@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 01cd90f8eb60db0478ca3f7ea86c925a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302106
+  packageName: VFX Graph - Fire Ball 02
+  packageVersion: 1.0
+  assetPath: Assets/TwoUncleVFX/Common/Ground/GroundMat.mat
+  uploadId: 707322
