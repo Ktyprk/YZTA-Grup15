@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using Unity.VisualScripting;
-using UnityEditor.SearchService;
+
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
@@ -18,7 +18,7 @@ public class SceneFader : MonoBehaviour
 
     void Awake()
     {
-
+     
         if (Instance == null)
         {
             Instance = this;
@@ -62,7 +62,8 @@ public class SceneFader : MonoBehaviour
             image.color = color;
             yield return null;
         }
-        
+      
+        color.a = 0;
         SceneManager.LoadScene(sceneName);
     }
 
@@ -81,13 +82,19 @@ public class SceneFader : MonoBehaviour
     }
     public void loadSceneWithTrigger()
     {
-        
-       
+
+        string activeSceneName = SceneManager.GetActiveScene().name;
+        if (activeSceneName == "BoosRoom")
+        {
+            sceneIndex = 0;
+            FadeAndLoad("StartPoint");
+            return;
+        }
         sceneIndex++;
         if (sceneIndex > RandomMapChooseManager.Instance.SceneEndIndex)
         {
-            sceneIndex = 0;
-            FadeAndLoad("Mirza");//mainhall it works when the last dungeon room complate succesfully and return mainhall
+            
+            FadeAndLoad("BoosRoom");//mainhall it works when the last dungeon room complate succesfully and return mainhall
             
         }
         else

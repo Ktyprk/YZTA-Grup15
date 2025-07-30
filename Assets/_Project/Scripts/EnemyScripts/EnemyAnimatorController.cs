@@ -124,7 +124,7 @@ public class EnemyAnimatorController : MonoBehaviour
  
             else
             {
-                if (bossEnemyController.AttackCount > 4 && !RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 5)
+                if (bossEnemyController.AttackCount > 4 && !RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 6)
                 {
                     bossEnemyController.SpecialAttack = true;
                     bossEnemyController.AttackCount = 0;
@@ -138,8 +138,9 @@ public class EnemyAnimatorController : MonoBehaviour
 
 
                 }
-                else if (bossEnemyController.AttackCount <= 4 && !RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 5)
+                else if (bossEnemyController.AttackCount <= 4 && !RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 6)
                 {
+                    bossEnemyController.SpecialAttack = false;
                     Debug.Log("normal attack");
                     enemyBossData.attackType = AttackType.Ranged;
                     bossEnemyController.InitializeAttackBehavior();
@@ -147,6 +148,7 @@ public class EnemyAnimatorController : MonoBehaviour
                 }
                 else if (attackCounter >= 3)
                 {
+                    bossEnemyController.missAttackNumber = 0;
                     attackCounter = 0;
                     bossEnemyController.SpecialAttack = false;
                     Debug.Log("rage attack");
@@ -154,7 +156,7 @@ public class EnemyAnimatorController : MonoBehaviour
                     enemyBossData.attackType = AttackType.ArcRanged;
                     bossEnemyController.InitializeAttackBehavior();
                 }
-                else if (RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 5)
+                else if (RageAttack && attackCounter < 3 && bossEnemyController.missAttackNumber < 6)
                 {
                     Debug.Log("rage attack2");
                     enemyBossData.attackType = AttackType.ArcRanged;
@@ -162,7 +164,7 @@ public class EnemyAnimatorController : MonoBehaviour
                     bossEnemyController.AttackCount = 0;
                     PlayAnim(enemyBossData.attackAnim3);
                 }
-                else if (bossEnemyController.missAttackNumber >= 5 && !RageAttack)
+                else if (bossEnemyController.missAttackNumber >= 6 )
                 {
                     if(bossEnemyController.teleport)
                     {

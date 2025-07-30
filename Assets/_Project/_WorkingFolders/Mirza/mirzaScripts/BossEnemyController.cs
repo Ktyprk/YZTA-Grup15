@@ -85,7 +85,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
             {
                 target = null;
                 WanderSimple();
-                //animController.Idle();
+                animController.Idle();
                 if (waitingForAttack)
                 {
                     waitingForAttack = false;
@@ -105,7 +105,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
             HandleCombat(distance);
         }
      
-        if(summonCountCheck<=0 && missAttackNumber < 5)
+        if(summonCountCheck<=0 && missAttackNumber < 6)
         {
 
             Timer += Time.deltaTime;

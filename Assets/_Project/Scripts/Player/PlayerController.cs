@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class PlayerController : MonoBehaviour, ICombat
 {
@@ -10,6 +12,7 @@ public class PlayerController : MonoBehaviour, ICombat
     private PlayerState _currentState;
     private SceneFader _sceneFader;
     public LayerMask enemyLayer;
+    public TimelineClip timelineClip;
 
     public Vector2 MoveInput { get; private set; }
     
@@ -20,6 +23,7 @@ public class PlayerController : MonoBehaviour, ICombat
     public Vector3 attackGizmoCenter;
     public Vector3 attackGizmoSize;
     public bool showAttackGizmo = false;
+    public PlayableDirector TimelineScene;
     
     public System.Action<PlayerState> OnStateChange;
     
@@ -31,6 +35,7 @@ public class PlayerController : MonoBehaviour, ICombat
     public float dashCooldown = 1f;
     private bool isDashing = false;
     private float dashTime = 0f;
+    private bool died = false;
     private float lastDashTime = -Mathf.Infinity;
     private Vector3 dashDirection;
 
@@ -50,6 +55,7 @@ public class PlayerController : MonoBehaviour, ICombat
 
     private void Start()
     {
+        died = false;
         playerStats = GetComponent<PlayerStatsController>();
         currentHealth = maxHealth;
         ChangeState(new IdleState(this));
@@ -182,19 +188,29 @@ public class PlayerController : MonoBehaviour, ICombat
         }
             
 
-        if (playerStats.currentHealth <= 0)
-            StartCoroutine(Die());
+        if (playerStats.currentHealth <= 0&& died == false)
+        {
+            died = true;    
+            PlayerController playerController = GetComponent<PlayerController>();
+            SceneFader sceneFader = FindAnyObjectByType<SceneFader>();
+            sceneFader.sceneIndex = 0;
+            animator.PlayAnim("Die");
+            
+            playerController.enabled = false;
+        }
+            
     }
 
 
 
      public IEnumerator Die()
     {
-      //  string currentSceneName = SceneManager.GetActiveScene().name;
-         RandomMapChooseManager.Instance.Reshuffle();
-        yield return new WaitForSeconds(0.1f);
+        TimelineScene.Play();
+        //  string currentSceneName = SceneManager.GetActiveScene().name;
+        RandomMapChooseManager.Instance.Reshuffle();
+        yield return new WaitForSeconds(5f);
 
-        _sceneFader.FadeAndLoad("Mirza"); // will change as loby map name
+        _sceneFader.FadeAndLoad("StartPoint"); // will change as loby map name
        gameObject.SetActive(false);
        
        
@@ -230,11 +246,12 @@ public class PlayerController : MonoBehaviour, ICombat
 
     public void TriggerEffect()
     {
+        Debug.Log("effecttriggered");
         if (sparkEffect.isPlaying)
         {
             sparkEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
-
+        Debug.Log("effecttriggered2");
         sparkEffect.Play();
     }
 
