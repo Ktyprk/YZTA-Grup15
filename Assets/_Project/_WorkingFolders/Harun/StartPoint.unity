@@ -3405,9 +3405,11 @@ MonoBehaviour:
   hasSpokenBefore: 0
   positiveDialogues:
   - {fileID: 11400000, guid: e0d9b5215a8cf8746b6355ae6b1be923, type: 2}
-  negativeDialogues: []
-  defaultDialogues: []
-  useLocalReputationOnly: 1
+  negativeDialogues:
+  - {fileID: 11400000, guid: e0d9b5215a8cf8746b6355ae6b1be923, type: 2}
+  defaultDialogues:
+  - {fileID: 11400000, guid: e0d9b5215a8cf8746b6355ae6b1be923, type: 2}
+  useLocalReputationOnly: 0
   characterReputation: 0
   useTrigger: 1
   useRaycast: 0
@@ -13259,7 +13261,7 @@ GameObject:
   - component: {fileID: 984645302}
   - component: {fileID: 984645301}
   m_Layer: 0
-  m_Name: Manager
+  m_Name: Dialogue Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
