@@ -3401,14 +3401,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f8113e4d1082c4b9e4fb0381674948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstTimeDialogue: {fileID: 11400000, guid: e0d9b5215a8cf8746b6355ae6b1be923, type: 2}
+  firstTimeDialogue: {fileID: 11400000, guid: 136473a94220a0944908754afe2cf5da, type: 2}
   hasSpokenBefore: 0
   positiveDialogues:
-  - {fileID: 11400000, guid: e0d9b5215a8cf8746b6355ae6b1be923, type: 2}
+  - {fileID: 11400000, guid: 136473a94220a0944908754afe2cf5da, type: 2}
   negativeDialogues:
-  - {fileID: 11400000, guid: e0d9b5215a8cf8746b6355ae6b1be923, type: 2}
+  - {fileID: 11400000, guid: 136473a94220a0944908754afe2cf5da, type: 2}
   defaultDialogues:
-  - {fileID: 11400000, guid: e0d9b5215a8cf8746b6355ae6b1be923, type: 2}
+  - {fileID: 11400000, guid: 136473a94220a0944908754afe2cf5da, type: 2}
   useLocalReputationOnly: 0
   characterReputation: 0
   useTrigger: 1
@@ -14081,6 +14081,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.08796525
       objectReference: {fileID: 0}
+    - target: {fileID: -4292154010595695564, guid: efe95c1381f35394c82cf43bd8f9bc65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.094
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: efe95c1381f35394c82cf43bd8f9bc65, type: 3}
       propertyPath: m_Name
       value: Fance (1)
@@ -19859,8 +19863,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56f85496678285e418914a26da77e44c, type: 2}
+  m_sharedMaterial: {fileID: 8513719277969513422, guid: 56f85496678285e418914a26da77e44c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

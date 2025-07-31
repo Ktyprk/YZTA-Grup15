@@ -1,0 +1,154 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: OldMan_Meeting
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 
+    PortName: Next
+    TargetNodeGUID: 21b157f9-e7bf-4889-baed-9313d3785b0e
+  - BaseNodeGUID: 21b157f9-e7bf-4889-baed-9313d3785b0e
+    PortName: Option 1
+    TargetNodeGUID: 081e7171-f274-4a02-a693-ad3e6cd9360a
+  - BaseNodeGUID: 081e7171-f274-4a02-a693-ad3e6cd9360a
+    PortName: Next
+    TargetNodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
+  - BaseNodeGUID: 4a181d6e-8490-4635-8494-435a374b4855
+    PortName: Next
+    TargetNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
+  - BaseNodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
+    PortName: Option 1
+    TargetNodeGUID: 4a181d6e-8490-4635-8494-435a374b4855
+  - BaseNodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
+    PortName: Option 2
+    TargetNodeGUID: 3cd00eaf-05a9-46e6-9d01-d7538ebf5f5b
+  - BaseNodeGUID: 3cd00eaf-05a9-46e6-9d01-d7538ebf5f5b
+    PortName: Next
+    TargetNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
+  - BaseNodeGUID: 1c85867e-7323-47e1-91fd-f181e8e2469e
+    PortName: Next
+    TargetNodeGUID: a8baa624-6b76-4245-8598-46f5cc906482
+  - BaseNodeGUID: acc2f2f4-4292-4d73-ab96-9b4b9c32adb5
+    PortName: Next
+    TargetNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
+  - BaseNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
+    PortName: Option 2
+    TargetNodeGUID: 1c85867e-7323-47e1-91fd-f181e8e2469e
+  - BaseNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
+    PortName: Option 1
+    TargetNodeGUID: acc2f2f4-4292-4d73-ab96-9b4b9c32adb5
+  DialogueNodeData:
+  - NodeGUID: 
+    DialogueText: 
+    Position: {x: 100, y: 200}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 1
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 21b157f9-e7bf-4889-baed-9313d3785b0e
+    DialogueText: 
+    Position: {x: 209, y: 215}
+    Choices:
+    - Merhaba ihtiyar.
+    - ' Merhaba.'
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: 081e7171-f274-4a02-a693-ad3e6cd9360a
+    DialogueText: "Selam evlat. Senin ad\u0131n Arthur'du, yan\u0131lm\u0131yorum
+      de\u011Fil mi?"
+    Position: {x: 727, y: 215}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
+    DialogueText: 
+    Position: {x: 1103, y: 215}
+    Choices:
+    - "Ad\u0131m\u0131 nereden biliyorsun?"
+    - "Ad\u0131m\u0131 s\xF6yledi\u011Fine g\xF6re beni tan\u0131yorsun."
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
+    DialogueText: 
+    Position: {x: 1936, y: 280}
+    Choices:
+    - " Buras\u0131 neden bu halde?"
+    - "buradan nas\u0131 kurtulabilirim?"
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: a8baa624-6b76-4245-8598-46f5cc906482
+    DialogueText: 
+    Position: {x: 3189, y: 552}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 1
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 3cd00eaf-05a9-46e6-9d01-d7538ebf5f5b
+    DialogueText: "Pek \xE7ok \u015Fey bilirim."
+    Position: {x: 1615, y: 421}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 4a181d6e-8490-4635-8494-435a374b4855
+    DialogueText: "Sand\u0131\u011F\u0131ndan fazlas\u0131n\u0131 duydum, \xF6\u011Frendim."
+    Position: {x: 1633, y: 123}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: acc2f2f4-4292-4d73-ab96-9b4b9c32adb5
+    DialogueText: "\u015Eu kap\u0131y\u0131 g\xF6r\xFCyor musun? Oran\u0131n ard\u0131nda
+      kadim zamanlardan kalan zindanlar var. Krall\u0131k buray\u0131 kapatt\u0131
+      ve kilidini bana verdi. Oysaki ben de burada mahkumdum. O zamandan beridir
+      koruyorum buray\u0131. Neden korudu\u011Fumu bile unuttum. Sonra buran\u0131n
+      ard\u0131nda bir salg\u0131n ba\u015Flad\u0131. Her yerden mantarlar f\u0131\u015Fk\u0131rmaya
+      ba\u015Flad\u0131 o\u011Flum. Gardiyanlar da ka\xE7t\u0131 gitti."
+    Position: {x: 2568, y: -60}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 1c85867e-7323-47e1-91fd-f181e8e2469e
+    DialogueText: "Hadi bir anla\u015Fma yapal\u0131m o\u011Flum\u2026 Sen bana istediklerimi
+      getir, ben de sana iyi e\u015Fyalar vereyim."
+    Position: {x: 2477, y: 406}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  ExposedProperties: []
+  CommentBlockData: []
