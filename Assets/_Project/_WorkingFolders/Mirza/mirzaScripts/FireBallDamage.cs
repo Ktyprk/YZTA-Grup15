@@ -10,6 +10,8 @@ public class FireBallDamage : MonoBehaviour , IProjectileDamageDealer
     public bool isSummonByBoss = false;
     private BossEnemyController bossEnemyController;
     private float timer;
+    public EnemyData enemyData;
+    private string skillName = "RangedAttack";
     public void Start()
     {
         timer = 0;
@@ -32,6 +34,7 @@ public class FireBallDamage : MonoBehaviour , IProjectileDamageDealer
                 {
                     bossEnemyController.missAttackNumber = 0;
                 }
+             
                 StartCoroutine(giveDamage(Icombat));
 
             }
@@ -48,13 +51,16 @@ public class FireBallDamage : MonoBehaviour , IProjectileDamageDealer
         gameObject.GetComponent<Collider>().enabled = false;
         if(efect!=null)
         efect.SetActive(false);
-
+        PlayerController playerController = FindAnyObjectByType<PlayerController>();
         Icombat.TakeDamage(damageAmount);
+        playerController.AddAttack(enemyData.name, skillName, damageAmount);
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < 3; i++)
         {
             Icombat.TakeDamage(fireDamageAmount);
             Debug.Log("damage Verildi");
+            if(playerController!=null)
+            playerController.AddAttack(enemyData.name, skillName, fireDamageAmount);
             yield return new WaitForSeconds(1f);
 
         }
