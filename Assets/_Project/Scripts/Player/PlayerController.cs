@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour, ICombat
     public System.Action<PlayerState> OnStateChange;
     
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
 
     public float dashSpeed = 15f;
     public float dashDuration = 0.2f;
@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour, ICombat
             PlayerController playerController = GetComponent<PlayerController>();
             SceneFader sceneFader = FindAnyObjectByType<SceneFader>();
             sceneFader.sceneIndex = 0;
+            playerStats.UpdateHealthBar();
             animator.PlayAnim("Die");
             
             playerController.enabled = false;

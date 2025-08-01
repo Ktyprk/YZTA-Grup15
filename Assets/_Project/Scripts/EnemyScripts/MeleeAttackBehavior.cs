@@ -45,8 +45,8 @@ public class MeleeAttackBehavior : IEnemyAttackBehavior
                     
 
                     int playerDamage = Random.Range(minDamage, maxDamage + 1);
-                    if (playerTarget != null)
-                        playerTarget.AddAttack(enemyData.name, meleeAttack, playerDamage);
+                    if (playerTarget != null && playerTarget.currentHealth>0)
+                        playerTarget.AddAttack(enemyData.enemyName, meleeAttack, playerDamage);
                     combatTarget.TakeDamage(playerDamage);
                     damagedEnemies.Add(enemy);
                 }

@@ -119,8 +119,8 @@ public class JumpAttackBehavior : IEnemyAttackBehavior
                     hit.TryGetComponent<PlayerController>(out var playerTarget);
 
                     int playerDamage = Random.Range(minDamage, maxDamage + 1);
-                    if (playerTarget != null)
-                        playerTarget.AddAttack(enemyData.name, jumpAttack, playerDamage);
+                    if (playerTarget != null&&playerTarget.currentHealth>0)
+                        playerTarget.AddAttack(enemyData.enemyName, jumpAttack, playerDamage);
                     combatTarget.TakeDamage(playerDamage);
                     damagedEnemies.Add(enemy);
                 }

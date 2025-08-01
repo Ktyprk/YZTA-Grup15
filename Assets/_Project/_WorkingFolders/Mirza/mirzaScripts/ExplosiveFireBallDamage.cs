@@ -46,7 +46,12 @@ public class ExplosiveFireBallDamage : MonoBehaviour
         BounceObject();
         PlayerController playerController = FindAnyObjectByType<PlayerController>();
         Icombat.TakeDamage(damageAmount);
-        playerController.AddAttack(enemyData.name, RangedBomb, damageAmount);
+        if(playerController.currentHealth>0)
+        {
+            if (playerController != null)
+                playerController.AddAttack(enemyData.enemyName, RangedBomb, damageAmount);
+        }
+       
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < 3; i++)
         {

@@ -28,6 +28,11 @@ public class BladeDamage : MonoBehaviour, IProjectileDamageDealer
     }
     public IEnumerator giveDamage(ICombat Icombat)
     {
+        PlayerController playerController = FindAnyObjectByType<PlayerController>();
+        if (playerController != null && playerController.currentHealth > 0)
+        {
+            playerController.AddAttack("swinging knife Trap", "Blade", damageAmount);
+        }
         Debug.Log("damage = " + damageAmount);
         Icombat.TakeDamage(damageAmount);
         yield break;

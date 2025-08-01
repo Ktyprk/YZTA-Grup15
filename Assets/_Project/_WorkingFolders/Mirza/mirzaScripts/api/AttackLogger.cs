@@ -6,7 +6,7 @@ public class AttackLogger : MonoBehaviour
 {
     public static AttackLogger Instance { get; private set; }
 
-    private Dictionary<string, Dictionary<string, int>> attackData = new Dictionary<string, Dictionary<string, int>>();
+    public Dictionary<string, Dictionary<string, int>> attackData = new Dictionary<string, Dictionary<string, int>>();
 
     private void Awake()
     {

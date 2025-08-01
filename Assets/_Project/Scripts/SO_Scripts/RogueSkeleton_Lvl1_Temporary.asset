@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68dab71338855d47a48213213c3956a, type: 3}
   m_Name: RogueSkeleton_Lvl1_Temporary
   m_EditorClassIdentifier: 
-  enemyName: RogueSkeleton
+  enemyName: Rogue Skeleton
   enemyType: 0
   attackType: 5
   enemyPrefab: {fileID: 919132149155446097, guid: 604b43f0a1118014883d679be8436f8a, type: 3}
@@ -28,6 +28,7 @@ MonoBehaviour:
   blockTime: 0.5
   enemyDistance: 5
   animatorController: {fileID: 9100000, guid: 3d17864b280bb834e82109ab403f57dd, type: 2}
+  Awaken: Awaken
   idleAnim: Idle
   walkAnim: Walk
   attackAnim: Attack

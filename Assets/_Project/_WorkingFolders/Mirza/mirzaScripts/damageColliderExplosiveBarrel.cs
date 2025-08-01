@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class damageColliderExplosiveBarrel : MonoBehaviour, IProjectileDamageDealer
 {
-    [SerializeField] private int damageAmount = 100;
+    [SerializeField] private int damageAmount = 30;
    
 
     void Start()
@@ -33,9 +33,27 @@ public class damageColliderExplosiveBarrel : MonoBehaviour, IProjectileDamageDea
            
            
         }
+        else if(other.gameObject.tag =="Enemy")
+        {
+            ICombat Icombat = other.gameObject.GetComponent<ICombat>();
+            if (Icombat != null)
+            {
+                Debug.Log("patladikEnemy");
+                StartCoroutine(giveDamageVersionTwo(Icombat,other.gameObject));
+            }
+        }
     }
     public IEnumerator giveDamage(ICombat Icombat)
     {
+        PlayerController playerController= FindAnyObjectByType<PlayerController>();
+        playerController.AddAttack("Explosive Barrel", "Explosion", damageAmount);
+        Icombat.TakeDamage(damageAmount);
+        yield break;
+    }
+    public IEnumerator giveDamageVersionTwo(ICombat Icombat,GameObject gameObject)
+    {
+        Debug.Log("ENEMYDAMAGE ");
+        
         Icombat.TakeDamage(damageAmount);
         yield break;
     }
