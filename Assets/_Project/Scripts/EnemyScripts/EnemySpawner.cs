@@ -33,7 +33,23 @@ public class EnemySpawner : MonoBehaviour
         }
     }
     
-    
+    public void spawnBoss(GameObject enemyPrefab,GameObject spawnPosition,GameObject target)
+    {
+        
+        if (spawnOnlyOnce && hasSpawned) return;
+
+        hasSpawned = true;
+
+        Transform playerTransform = target.transform;
+
+        Vector3 spawnPos =  spawnPosition.transform.position;
+        GameObject enemyGO = EntityPoolManager.Instance.SpawnEntity(enemyPrefab, spawnPos, Quaternion.identity);
+        BossEnemyController ec = enemyGO.GetComponent<BossEnemyController>();
+        if (ec != null)
+        {
+            ec.SetTarget(playerTransform);
+        }
+    }
 
 
     private Vector3 GetRandomSpawnPosition()

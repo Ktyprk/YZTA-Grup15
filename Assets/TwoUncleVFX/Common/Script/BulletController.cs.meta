@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 411cffdc8f64b864da5d25a5a22ed2c0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302106
+  packageName: VFX Graph - Fire Ball 02
+  packageVersion: 1.0
+  assetPath: Assets/TwoUncleVFX/Common/Script/BulletController.cs
+  uploadId: 707322

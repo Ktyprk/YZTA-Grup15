@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 739829a130c49934a80dc219ece94c67, type: 3}
+  m_Name: OldMan
+  m_EditorClassIdentifier: 
+  enemyName: Old Man
+  enemyType: 0
+  attackType: 2
+  enemyPrefab: {fileID: 3842795953441563153, guid: c54a21123473f554fa843175108839c2, type: 3}
+  BasicAttackProjectile: {fileID: 4418415609966599632, guid: 905aa659763d31f40bdb33370edce4a3, type: 3}
+  SecondAttackProjectile: {fileID: 4418415609966599632, guid: 46b54b6983a6e464584e05dccaf40fc7, type: 3}
+  Skeleton: {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
+  magicianSkeleton: {fileID: 8351130665762768014, guid: 3bf9929015899c742abf7eb94b9794e3, type: 3}
+  magicianSkeletonVersion2: {fileID: 8351130665762768014, guid: 33efa884633269f4bb8b409fcbf04c12, type: 3}
+  Maxhealth: 100
+  health: 100
+  damage: 1
+  moveSpeed: 2
+  projectileSpeed: 10
+  attackTime: 1.2
+  attackCooldown: 2
+  attackDistance: 10
+  idleTime: 1
+  blockTime: 0.5
+  enemyDistance: 1
+  animatorController: {fileID: 9100000, guid: 9469d42d42983b84682168240f27f9d3, type: 2}
+  idleAnim: Idle
+  walkAnim: Walk
+  attackAnim: Attack
+  attackAnim2: Attack2
+  attackAnim2WithOutAttack: Attack2Alternative
+  attackAnim3: Attack3
+  attackAnim4: Attack4
+  Summon: Summon
+  Stab: Stab
+  Charge: Charge
+  hitAnim: Hit
+  dieAnim: Die

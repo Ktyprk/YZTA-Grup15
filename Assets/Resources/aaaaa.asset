@@ -19,7 +19,13 @@ MonoBehaviour:
   - BaseNodeGUID: 5bc6cfff-958b-4dc7-88bb-e13e273e73df
     PortName: Option 1
     TargetNodeGUID: 0ae72b04-2572-4026-b54a-fc6174e83291
+  - BaseNodeGUID: 5bc6cfff-958b-4dc7-88bb-e13e273e73df
+    PortName: Option 2
+    TargetNodeGUID: 089dbaba-e55c-4e7c-97fd-ff8059d25b93
   - BaseNodeGUID: 0ae72b04-2572-4026-b54a-fc6174e83291
+    PortName: Next
+    TargetNodeGUID: 5bc6cfff-958b-4dc7-88bb-e13e273e73df
+  - BaseNodeGUID: 089dbaba-e55c-4e7c-97fd-ff8059d25b93
     PortName: Next
     TargetNodeGUID: 462a807f-1782-43aa-b0ad-f1da251a0269
   DialogueNodeData:
@@ -34,30 +40,40 @@ MonoBehaviour:
     CloseDialogAfterThis: 0
   - NodeGUID: 5bc6cfff-958b-4dc7-88bb-e13e273e73df
     DialogueText: 
-    Position: {x: 222, y: 281}
+    Position: {x: 217, y: 268}
     Choices:
     - aaaaa
-    ReputationChanges: 00000000
+    - BBBBB
+    ReputationChanges: 0000000000000000
     EntryPoint: 0
     IsEndNode: 0
     IsPlayerNode: 1
     CloseDialogAfterThis: 0
-  - NodeGUID: 462a807f-1782-43aa-b0ad-f1da251a0269
-    DialogueText: 
-    Position: {x: 1034, y: 444}
-    Choices: []
-    ReputationChanges: 
-    EntryPoint: 0
-    IsEndNode: 1
-    IsPlayerNode: 0
-    CloseDialogAfterThis: 0
   - NodeGUID: 0ae72b04-2572-4026-b54a-fc6174e83291
     DialogueText: aaa
-    Position: {x: 643, y: 364}
+    Position: {x: 833, y: 200}
     Choices: []
     ReputationChanges: 
     EntryPoint: 0
     IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 089dbaba-e55c-4e7c-97fd-ff8059d25b93
+    DialogueText: BBBB
+    Position: {x: 799, y: 493}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 462a807f-1782-43aa-b0ad-f1da251a0269
+    DialogueText: 
+    Position: {x: 1176, y: 363}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 1
     IsPlayerNode: 0
     CloseDialogAfterThis: 0
   ExposedProperties: []

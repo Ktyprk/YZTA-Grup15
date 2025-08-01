@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: f4f0c0e480c2914498bec61d45854fe5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302106
+  packageName: VFX Graph - Fire Ball 02
+  packageVersion: 1.0
+  assetPath: Assets/TwoUncleVFX/Common/Script/ChangeFXParameter.cs
+  uploadId: 707322

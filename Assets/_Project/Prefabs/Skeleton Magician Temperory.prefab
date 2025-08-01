@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2147001342639996021}
   - component: {fileID: 1070472459567892293}
   - component: {fileID: 2590188645692547589}
+  - component: {fileID: 506974482792425003}
   - component: {fileID: 5226101599493898165}
   m_Layer: 8
   m_Name: Skeleton Magician Temperory
@@ -66,7 +67,11 @@ MonoBehaviour:
   attackGizmoSize: {x: 0, y: 0, z: 0}
   showAttackGizmo: 0
   target: {fileID: 0}
+  spawner: {fileID: 0}
   currentHealth: 0
+  summonByBoss: 0
+  awaken: 0
+  died: 0
   wanderRadius: 5
 --- !u!195 &2147001342639996021
 NavMeshAgent:
@@ -104,6 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2590188645692547589}
   enemyData: {fileID: 11400000, guid: 091d9f0be3b5f464680ca94f4d468ce2, type: 2}
+  enemyBossData: {fileID: 0}
+  RageAttack: 0
 --- !u!95 &2590188645692547589
 Animator:
   serializedVersion: 7
@@ -114,7 +121,7 @@ Animator:
   m_GameObject: {fileID: 8351130665762768014}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 78a5212cf570899458df80afcf00e1d9, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ec2b856935dcf1439ea58ee3e8a8f6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -126,6 +133,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &506974482792425003
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351130665762768014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.454631
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.1690418, z: 0}
 --- !u!136 &5226101599493898165
 CapsuleCollider:
   m_ObjectHideFlags: 0

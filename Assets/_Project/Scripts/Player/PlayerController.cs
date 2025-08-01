@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 public class PlayerController : MonoBehaviour, ICombat
 {
     public AnimatorController animator;
     private PlayerState _currentState;
+    private SceneFader _sceneFader;
     public LayerMask enemyLayer;
+    public TimelineClip timelineClip;
 
     public Vector2 MoveInput { get; private set; }
     
@@ -18,6 +23,7 @@ public class PlayerController : MonoBehaviour, ICombat
     public Vector3 attackGizmoCenter;
     public Vector3 attackGizmoSize;
     public bool showAttackGizmo = false;
+    public PlayableDirector TimelineScene;
     
     public System.Action<PlayerState> OnStateChange;
     
@@ -29,6 +35,7 @@ public class PlayerController : MonoBehaviour, ICombat
     public float dashCooldown = 1f;
     private bool isDashing = false;
     private float dashTime = 0f;
+    private bool died = false;
     private float lastDashTime = -Mathf.Infinity;
     private Vector3 dashDirection;
 
@@ -37,6 +44,10 @@ public class PlayerController : MonoBehaviour, ICombat
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
+    [SerializeField] private GameObject healEffect;
+    public GameObject warningMark;
+    [Header("Slash Effect")]
+    [SerializeField] private ParticleSystem sparkEffect;
 
     private Coroutine flashRoutine;
     
@@ -44,10 +55,14 @@ public class PlayerController : MonoBehaviour, ICombat
 
     private void Start()
     {
+        died = false;
         playerStats = GetComponent<PlayerStatsController>();
         currentHealth = maxHealth;
         ChangeState(new IdleState(this));
-        
+        _sceneFader = FindAnyObjectByType<SceneFader>();
+     
+
+
         ControlsManager.Controls.Player.Attack.performed += ctx =>
         {
             if (!(_currentState is AttackState))
@@ -114,8 +129,9 @@ public class PlayerController : MonoBehaviour, ICombat
         {
             Vector3 move = new Vector3(direction.x, 0, direction.y);
             transform.position += move * Time.fixedDeltaTime * 5f;
+            Quaternion targetRotation = Quaternion.LookRotation(move);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * 10f);
             
-            transform.forward = move;
         }
     }
 
@@ -131,6 +147,7 @@ public class PlayerController : MonoBehaviour, ICombat
                 break;
             case "Attack":
                 animator.PlayAnim("Attack");
+                
                 break;
             default:
                 animator.Idle();
@@ -150,27 +167,52 @@ public class PlayerController : MonoBehaviour, ICombat
 
     public void TakeDamage(int amount) 
     {
-        playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
-    
-        playerStats.UpdateHealthBar();
+        if(amount<0)
+        {
+            playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
+            GameObject effect = Instantiate(healEffect,transform.position, Quaternion.identity);
+            playerStats.UpdateHealthBar();
+            Destroy(effect, 1f);
 
-        if (flashRoutine != null)
-            StopCoroutine(flashRoutine);
-        flashRoutine = StartCoroutine(FlashEffect());
 
-        if (playerStats.currentHealth <= 0)
-            StartCoroutine(Die());
+        }
+        else
+        {
+            playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth - amount, 0, playerStats.MaxHealth);
+
+            playerStats.UpdateHealthBar();
+
+            if (flashRoutine != null)
+                StopCoroutine(flashRoutine);
+            flashRoutine = StartCoroutine(FlashEffect());
+        }
+            
+
+        if (playerStats.currentHealth <= 0&& died == false)
+        {
+            died = true;    
+            PlayerController playerController = GetComponent<PlayerController>();
+            SceneFader sceneFader = FindAnyObjectByType<SceneFader>();
+            sceneFader.sceneIndex = 0;
+            animator.PlayAnim("Die");
+            
+            playerController.enabled = false;
+        }
+            
     }
 
 
 
      public IEnumerator Die()
     {
-        yield return new WaitForSeconds(0.1f);
-        
-        SceneManager.LoadScene("RoomDesign");
+        TimelineScene.Play();
+        //  string currentSceneName = SceneManager.GetActiveScene().name;
+        RandomMapChooseManager.Instance.Reshuffle();
+        yield return new WaitForSeconds(5f);
+
+        _sceneFader.FadeAndLoad("StartPoint"); // will change as loby map name
        gameObject.SetActive(false);
-        Debug.Log("�ld�k");
+       
        
 
     }
@@ -202,7 +244,20 @@ public class PlayerController : MonoBehaviour, ICombat
             transform.forward = dashDirection;
     }
 
-     private IEnumerator FlashEffect()
+    public void TriggerEffect()
+    {
+        Debug.Log("effecttriggered");
+        if (sparkEffect.isPlaying)
+        {
+            sparkEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+        Debug.Log("effecttriggered2");
+        sparkEffect.Play();
+    }
+
+
+
+    private IEnumerator FlashEffect()
     {
         foreach (var r in renderers)
         {

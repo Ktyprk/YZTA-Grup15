@@ -1,0 +1,10 @@
+This package needs to be unzipped.
+It can help you install
+"com.unity.render-pipelines.core": "14.0.9",
+"com.unity.render-pipelines.universal": "14.0.9",
+"com.unity.shadergraph": "14.0.9",
+"com.unity.visualeffectgraph": "14.0.9".
+
+But if your unity version is not 2022.3,please install them by yourself!
+Otherwise you will insall them fall.
+Then you can open the package manager and update them to the latest version.
