@@ -28774,6 +28774,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7219e0d31edc794293ebe9c66897375, type: 3}
+--- !u!1 &1204050344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 458103744958346417, guid: d7219e0d31edc794293ebe9c66897375, type: 3}
+  m_PrefabInstance: {fileID: 1204050343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1205070138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34747,6 +34752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: INITIALIZATION
       objectReference: {fileID: 0}
+    - target: {fileID: 2203599677981405329, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: buffShowTrigger
+      value: 
+      objectReference: {fileID: 1204050344}
     - target: {fileID: 4101495283478278244, guid: ec515225265dfce42a5d710b099236b5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.297034
@@ -34787,6 +34796,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7960848153920722611, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: buffShowTrigger
+      value: 
+      objectReference: {fileID: 1204050344}
+    - target: {fileID: 8325772711998663551, guid: ec515225265dfce42a5d710b099236b5, type: 3}
+      propertyPath: buffShowTrigger
+      value: 
+      objectReference: {fileID: 1204050344}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

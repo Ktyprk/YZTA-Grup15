@@ -50,12 +50,14 @@ public class damageColliderOfSmoke : MonoBehaviour , IProjectileDamageDealer
     }
     public IEnumerator giveDamage(ICombat Icombat)
     {
+        PlayerController playerController = FindAnyObjectByType<PlayerController>(); 
         if (mushroomTypes == MushroomTypes.heal)
             damage_Heal_Amount *= -1;
 
         for (int i = 0; i < 3; i++)
         {
             Icombat.TakeDamage(damage_Heal_Amount);
+            playerController.AddAttack("BlowUp Mushroom", "Posion Gas", damage_Heal_Amount);
             Debug.Log("damage Verildi");
             yield return new WaitForSeconds(1f);
             

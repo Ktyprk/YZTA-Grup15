@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68dab71338855d47a48213213c3956a, type: 3}
   m_Name: FireMagicianSkelton_temp_Lvl1 1
   m_EditorClassIdentifier: 
-  enemyName: Skeleton Magician
+  enemyName: Skeleton Sorcerer
   enemyType: 0
   attackType: 2
   enemyPrefab: {fileID: 8351130665762768014, guid: 33efa884633269f4bb8b409fcbf04c12, type: 3}
@@ -28,6 +28,7 @@ MonoBehaviour:
   blockTime: 0.5
   enemyDistance: 3
   animatorController: {fileID: 9100000, guid: 9ec2b856935dcf1439ea58ee3e8a8f6a, type: 2}
+  Awaken: Awaken
   idleAnim: Idle
   walkAnim: Walk
   attackAnim: Attack

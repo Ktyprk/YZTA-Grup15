@@ -18,5 +18,5 @@ MonoBehaviour:
   BoostplayermaxDamage: 0
   BoostplayerArmor: 0
   BoostplayerSpeed: 10
-  buffName: Speed Boost
-  BuffInformation: your speed will be increase
+  buffName: "H\u0131z Art\u0131\u015F\u0131"
+  BuffInformation: "Bu g\xFC\xE7lendirme seni h\u0131zland\u0131r\u0131r :"

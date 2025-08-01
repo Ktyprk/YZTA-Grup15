@@ -43,6 +43,12 @@ public class PlayerStatsController : MonoBehaviour
 
                 healthText.text = currentHealth.ToString();
             }
+            else
+            {
+                healthBarFill.fillAmount = 0;
+
+                healthText.text = currentHealth.ToString();
+            }
                 
         }
         else

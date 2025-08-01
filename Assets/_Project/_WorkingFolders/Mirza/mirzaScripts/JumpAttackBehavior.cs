@@ -11,12 +11,16 @@ public class JumpAttackBehavior : IEnemyAttackBehavior
     private Vector3 hitboxCenter = new Vector3(0, 1f, 0f);
     private Vector3 hitboxSize = new Vector3(1.5f, 1.5f, 1.5f);
     private LayerMask playerLayer;
-    public JumpAttackBehavior(float jumpHeight, float jumpDuration, float momentumDistance, float momentumDuration)
+    EnemyData enemyData;
+    private string jumpAttack = "JumpAttack";
+
+    public JumpAttackBehavior(EnemyData enemyData,    float jumpHeight, float jumpDuration, float momentumDistance, float momentumDuration)
     {
         this.jumpHeight = jumpHeight;
         this.jumpDuration = jumpDuration;
         this.momentumDistance = momentumDistance;
         this.momentumDuration = momentumDuration;
+        this.enemyData = enemyData;
     }
 
     public void Attack( EnemyController enemy, Transform target)
@@ -112,8 +116,11 @@ public class JumpAttackBehavior : IEnemyAttackBehavior
                 {
                     int minDamage = (int)controller.EnemyData.damage;
                     int maxDamage = (int)controller.EnemyData.damage;
+                    hit.TryGetComponent<PlayerController>(out var playerTarget);
 
                     int playerDamage = Random.Range(minDamage, maxDamage + 1);
+                    if (playerTarget != null&&playerTarget.currentHealth>0)
+                        playerTarget.AddAttack(enemyData.enemyName, jumpAttack, playerDamage);
                     combatTarget.TakeDamage(playerDamage);
                     damagedEnemies.Add(enemy);
                 }

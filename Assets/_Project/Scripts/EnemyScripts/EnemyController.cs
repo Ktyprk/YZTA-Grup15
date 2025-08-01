@@ -129,17 +129,17 @@ public class EnemyController : MonoBehaviour, ICombat
         switch (enemyData.attackType)
         {
             case AttackType.Melee:
-                InitializeAttackBehavior(new MeleeAttackBehavior());
+                InitializeAttackBehavior(new MeleeAttackBehavior(enemyData));
                 break;
 
             case AttackType.Ranged:
-                InitializeAttackBehavior(new RangedAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed)); 
+                InitializeAttackBehavior(new RangedAttackBehavior(enemyData,enemyData.projectilePrefab, enemyData.projectileSpeed)); 
                 break;
             case AttackType.ArcRanged:
-                 InitializeAttackBehavior(new ArcAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed));
+                 InitializeAttackBehavior(new ArcAttackBehavior(enemyData, enemyData.projectilePrefab, enemyData.projectileSpeed));
                 break;
             case AttackType.JumpAttack:
-                InitializeAttackBehavior(new JumpAttackBehavior(3f, 0.6f, 2f, 0.3f));
+                InitializeAttackBehavior(new JumpAttackBehavior(enemyData,3f, 0.6f, 2f, 0.3f));
                 break;
         }
     }

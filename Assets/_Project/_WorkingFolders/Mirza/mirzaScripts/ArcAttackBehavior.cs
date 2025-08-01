@@ -5,11 +5,12 @@ public class ArcAttackBehavior : IEnemyAttackBehavior
     private GameObject projectilePrefab;
     private float projectileSpeed;
     private float Shotingangle = 45f;
-
-    public ArcAttackBehavior(GameObject prefab, float speed)
+    EnemyData enemyData;
+    public ArcAttackBehavior(EnemyData enemyData,GameObject prefab, float speed)
     {
         projectilePrefab = prefab;
         projectileSpeed = speed;
+        this.enemyData = enemyData;
     }
 
     public void Attack(EnemyController enemy, Transform target)
@@ -17,6 +18,9 @@ public class ArcAttackBehavior : IEnemyAttackBehavior
         Vector3 spawnPos = enemy.transform.position + Vector3.up * 1f;
         GameObject proj = GameObject.Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
         Rigidbody rb = proj.GetComponent<Rigidbody>();
+        ExplosiveFireBallDamage ArcfireBallDamage = proj.GetComponent<ExplosiveFireBallDamage>();
+        if(ArcfireBallDamage != null )
+            ArcfireBallDamage.enemyData = enemyData;
         Vector3 targetPos = target.position;
         Vector3 dir = targetPos - spawnPos;
         float h = dir.y;
