@@ -18,5 +18,5 @@ MonoBehaviour:
   BoostplayermaxDamage: 0
   BoostplayerArmor: 10
   BoostplayerSpeed: 0
-  buffName: buff armor
-  BuffInformation: 'this armor will upgrade your armor '
+  buffName: "Armor art\u0131\u015F\u0131"
+  BuffInformation: "Bu geli\u015Ftirme armorunu art\u0131r\u0131r :"
