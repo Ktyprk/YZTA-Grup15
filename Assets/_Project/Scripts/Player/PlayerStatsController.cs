@@ -69,4 +69,18 @@ public class PlayerStatsController : MonoBehaviour
         currentHealth = Mathf.Min(currentHealth, MaxHealth);
         UpdateHealthBar();
     }
+    public void ApplyBuffMarket(marketCardsStats stats)
+    {
+        if (stats.type == buffType.Damage)
+            bonusAttack += stats.BoostplayermaxDamage;
+        else if (stats.type == buffType.MaxHealth)
+            bonusMaxHealth += stats.BoostmaxHealth;
+        else if (stats.type == buffType.Armor)
+            bonusArmor += stats.BoostplayerArmor;
+        else if (stats.type == buffType.Speed)
+            bonusSpeed += stats.BoostplayerSpeed;
+
+        currentHealth = Mathf.Min(currentHealth, MaxHealth);
+        UpdateHealthBar();
+    }
 }

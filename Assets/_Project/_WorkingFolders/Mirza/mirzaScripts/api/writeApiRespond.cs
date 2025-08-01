@@ -14,6 +14,7 @@ public class writeApiRespond : MonoBehaviour
     {
         openClose = false;
         apiManager = FindAnyObjectByType<APIManager>();
+        if(RequesText != null )
         apiManager.sendRequest();
     }
     private void Update()
@@ -24,6 +25,7 @@ public class writeApiRespond : MonoBehaviour
             if (openClose == false)
             {
                 openClose = true;
+                if(chatUi != null) 
                 chatUi.SetActive(openClose);
 
                 warningSign.SetActive(false);
@@ -31,13 +33,16 @@ public class writeApiRespond : MonoBehaviour
             else
             {
                 openClose = false;
-                chatUi.SetActive(openClose);
+                if (chatUi != null)
+                    chatUi.SetActive(openClose);
             }
+            if(RequesText != null)
             RequesText.text = promptResond;
 
         }
         else if(!control)
-            chatUi.SetActive(false);
+            if (chatUi != null)
+                chatUi.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {

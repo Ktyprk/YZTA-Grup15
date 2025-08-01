@@ -52,8 +52,10 @@ public class APIManager : MonoBehaviour
             if (string.IsNullOrEmpty(attackData))
             {
              header = "Henüz Tanrýlarý etkileyecek Hamleler yapamadýn \n\n";
-            writeApiRespond writeApiRespond = FindAnyObjectByType<writeApiRespond>();
-            
+            GameObject go = GameObject.Find("MushroomFungi");
+            writeApiRespond writeApiRespond = go.GetComponent<writeApiRespond>();
+
+
             if (writeApiRespond != null)
                 writeApiRespond.promptResond = header;
             Debug.LogError("HASAR VERÝSÝ BOÞ! Gönderilecek saldýrý verisi bulunamadý.");
@@ -84,7 +86,8 @@ public class APIManager : MonoBehaviour
 
         if (www.result == UnityWebRequest.Result.Success)
         {
-            writeApiRespond writeApiRespond = FindAnyObjectByType<writeApiRespond>();
+            GameObject go = GameObject.Find("MushroomFungi");
+            writeApiRespond writeApiRespond = go.GetComponent<writeApiRespond>();
             Debug.Log($"<color=green>BAÞARILI CEVAP:</color>\n{www.downloadHandler.text}");
             if(writeApiRespond != null)
             writeApiRespond.promptResond = www.downloadHandler.text;
@@ -93,7 +96,8 @@ public class APIManager : MonoBehaviour
         }
         else
         {
-            writeApiRespond writeApiRespond = FindAnyObjectByType<writeApiRespond>();
+            GameObject go = GameObject.Find("MushroomFungi");
+            writeApiRespond writeApiRespond = go.GetComponent<writeApiRespond>();
             // KONTROL 2: Gelen hata mesajýný tam olarak görelim
             Debug.LogError($"<color=red>HATA GELDÝ:</color>\nKod: {www.responseCode}\nMesaj: {www.downloadHandler.text}");
             if (writeApiRespond != null)
