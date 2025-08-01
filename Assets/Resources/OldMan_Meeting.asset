@@ -22,9 +22,6 @@ MonoBehaviour:
   - BaseNodeGUID: 081e7171-f274-4a02-a693-ad3e6cd9360a
     PortName: Next
     TargetNodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
-  - BaseNodeGUID: 4a181d6e-8490-4635-8494-435a374b4855
-    PortName: Next
-    TargetNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
   - BaseNodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
     PortName: Option 1
     TargetNodeGUID: 4a181d6e-8490-4635-8494-435a374b4855
@@ -34,18 +31,84 @@ MonoBehaviour:
   - BaseNodeGUID: 3cd00eaf-05a9-46e6-9d01-d7538ebf5f5b
     PortName: Next
     TargetNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
-  - BaseNodeGUID: 1c85867e-7323-47e1-91fd-f181e8e2469e
-    PortName: Next
-    TargetNodeGUID: a8baa624-6b76-4245-8598-46f5cc906482
-  - BaseNodeGUID: acc2f2f4-4292-4d73-ab96-9b4b9c32adb5
+  - BaseNodeGUID: 4a181d6e-8490-4635-8494-435a374b4855
     PortName: Next
     TargetNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
-  - BaseNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
+  - BaseNodeGUID: 21b157f9-e7bf-4889-baed-9313d3785b0e
     PortName: Option 2
-    TargetNodeGUID: 1c85867e-7323-47e1-91fd-f181e8e2469e
+    TargetNodeGUID: d6a0a373-da9b-409b-b444-7eadd59f9144
+  - BaseNodeGUID: d6a0a373-da9b-409b-b444-7eadd59f9144
+    PortName: Next
+    TargetNodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
   - BaseNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
     PortName: Option 1
     TargetNodeGUID: acc2f2f4-4292-4d73-ab96-9b4b9c32adb5
+  - BaseNodeGUID: baa6fcfb-234b-405e-a415-eeb501441a32
+    PortName: Option 2
+    TargetNodeGUID: 1c85867e-7323-47e1-91fd-f181e8e2469e
+  - BaseNodeGUID: acc2f2f4-4292-4d73-ab96-9b4b9c32adb5
+    PortName: Next
+    TargetNodeGUID: 2c3f6130-a59b-4d91-9487-328b6ca05b81
+  - BaseNodeGUID: 1c85867e-7323-47e1-91fd-f181e8e2469e
+    PortName: Next
+    TargetNodeGUID: 2c3f6130-a59b-4d91-9487-328b6ca05b81
+  - BaseNodeGUID: 2c3f6130-a59b-4d91-9487-328b6ca05b81
+    PortName: Option 1
+    TargetNodeGUID: 4eb38015-ed05-4dfe-bf0a-cb10c86fd053
+  - BaseNodeGUID: 2c3f6130-a59b-4d91-9487-328b6ca05b81
+    PortName: Option 2
+    TargetNodeGUID: 1c8808a8-5f6d-4d52-9896-845da6be902d
+  - BaseNodeGUID: 4eb38015-ed05-4dfe-bf0a-cb10c86fd053
+    PortName: Next
+    TargetNodeGUID: 1ee71dc4-7011-4bdc-acea-0065792a52f6
+  - BaseNodeGUID: 1c8808a8-5f6d-4d52-9896-845da6be902d
+    PortName: Next
+    TargetNodeGUID: 1ee71dc4-7011-4bdc-acea-0065792a52f6
+  - BaseNodeGUID: 1ee71dc4-7011-4bdc-acea-0065792a52f6
+    PortName: Option 1
+    TargetNodeGUID: 5b1ca9e4-2d7b-40af-9cc0-235f4c068e26
+  - BaseNodeGUID: 1ee71dc4-7011-4bdc-acea-0065792a52f6
+    PortName: Option 2
+    TargetNodeGUID: 8a960bee-3eae-4652-a624-569ab5e479d4
+  - BaseNodeGUID: 5b1ca9e4-2d7b-40af-9cc0-235f4c068e26
+    PortName: Next
+    TargetNodeGUID: 059bd663-6afe-4d35-8272-2fe48b0a75f7
+  - BaseNodeGUID: 8a960bee-3eae-4652-a624-569ab5e479d4
+    PortName: Next
+    TargetNodeGUID: 059bd663-6afe-4d35-8272-2fe48b0a75f7
+  - BaseNodeGUID: 059bd663-6afe-4d35-8272-2fe48b0a75f7
+    PortName: Option 1
+    TargetNodeGUID: 94b25908-e74a-4927-b7c2-a66cf117265a
+  - BaseNodeGUID: 059bd663-6afe-4d35-8272-2fe48b0a75f7
+    PortName: Option 2
+    TargetNodeGUID: 94b25908-e74a-4927-b7c2-a66cf117265a
+  - BaseNodeGUID: 94b25908-e74a-4927-b7c2-a66cf117265a
+    PortName: Next
+    TargetNodeGUID: 167bc7a2-b2ad-4875-858d-12f5922f332b
+  - BaseNodeGUID: 167bc7a2-b2ad-4875-858d-12f5922f332b
+    PortName: Option 1
+    TargetNodeGUID: 8547a275-a0d9-46a8-9e53-afa4047845f3
+  - BaseNodeGUID: 167bc7a2-b2ad-4875-858d-12f5922f332b
+    PortName: Option 2
+    TargetNodeGUID: 8547a275-a0d9-46a8-9e53-afa4047845f3
+  - BaseNodeGUID: 8547a275-a0d9-46a8-9e53-afa4047845f3
+    PortName: Next
+    TargetNodeGUID: 8e3d5932-6326-4db2-a49d-640bd74b6fe7
+  - BaseNodeGUID: 8e3d5932-6326-4db2-a49d-640bd74b6fe7
+    PortName: Option 1
+    TargetNodeGUID: cdb3fa2f-c92c-49de-9d0f-3aa550a7dbaf
+  - BaseNodeGUID: 8e3d5932-6326-4db2-a49d-640bd74b6fe7
+    PortName: Option 2
+    TargetNodeGUID: cdb3fa2f-c92c-49de-9d0f-3aa550a7dbaf
+  - BaseNodeGUID: cdb3fa2f-c92c-49de-9d0f-3aa550a7dbaf
+    PortName: Next
+    TargetNodeGUID: 366de24d-ff94-411f-a01d-c35dc895f801
+  - BaseNodeGUID: 366de24d-ff94-411f-a01d-c35dc895f801
+    PortName: Option 1
+    TargetNodeGUID: 6cd9f246-3649-4d39-9d8c-097f3178e38b
+  - BaseNodeGUID: 366de24d-ff94-411f-a01d-c35dc895f801
+    PortName: Option 2
+    TargetNodeGUID: 6cd9f246-3649-4d39-9d8c-097f3178e38b
   DialogueNodeData:
   - NodeGUID: 
     DialogueText: 
@@ -56,33 +119,60 @@ MonoBehaviour:
     IsEndNode: 0
     IsPlayerNode: 0
     CloseDialogAfterThis: 0
-  - NodeGUID: 21b157f9-e7bf-4889-baed-9313d3785b0e
+  - NodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
     DialogueText: 
-    Position: {x: 209, y: 215}
+    Position: {x: 1103.2, y: 214.40001}
     Choices:
-    - Merhaba ihtiyar.
-    - ' Merhaba.'
+    - "Ad\u0131m\u0131 nereden biliyorsun?"
+    - "Ad\u0131m\u0131 s\xF6yledi\u011Fine g\xF6re beni tan\u0131yorsun."
     ReputationChanges: 0000000000000000
     EntryPoint: 0
     IsEndNode: 0
     IsPlayerNode: 1
     CloseDialogAfterThis: 0
-  - NodeGUID: 081e7171-f274-4a02-a693-ad3e6cd9360a
-    DialogueText: "Selam evlat. Senin ad\u0131n Arthur'du, yan\u0131lm\u0131yorum
-      de\u011Fil mi?"
-    Position: {x: 727, y: 215}
+  - NodeGUID: 3cd00eaf-05a9-46e6-9d01-d7538ebf5f5b
+    DialogueText: "Pek \xE7ok \u015Fey bilirim."
+    Position: {x: 1615.2, y: 420.80002}
     Choices: []
     ReputationChanges: 
     EntryPoint: 0
     IsEndNode: 0
     IsPlayerNode: 0
     CloseDialogAfterThis: 0
-  - NodeGUID: 85804190-113f-4e07-8f40-4dd642c41a98
+  - NodeGUID: 4a181d6e-8490-4635-8494-435a374b4855
+    DialogueText: "Sand\u0131\u011F\u0131ndan fazlas\u0131n\u0131 duydum, \xF6\u011Frendim."
+    Position: {x: 1632.8, y: 122.4}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 081e7171-f274-4a02-a693-ad3e6cd9360a
+    DialogueText: "Selam evlat. Senin ad\u0131n Arthur'du, yan\u0131lm\u0131yorum
+      de\u011Fil mi?"
+    Position: {x: 740, y: 211.20001}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: d6a0a373-da9b-409b-b444-7eadd59f9144
+    DialogueText: "Merhaba o\u011Flum. Arthur\u2019du de\u011Fil mi?"
+    Position: {x: 742.4, y: 467.2}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 21b157f9-e7bf-4889-baed-9313d3785b0e
     DialogueText: 
-    Position: {x: 1103, y: 215}
+    Position: {x: 208.8, y: 214.40001}
     Choices:
-    - "Ad\u0131m\u0131 nereden biliyorsun?"
-    - "Ad\u0131m\u0131 s\xF6yledi\u011Fine g\xF6re beni tan\u0131yorsun."
+    - Merhaba ihtiyar.
+    - ' Merhaba.'
     ReputationChanges: 0000000000000000
     EntryPoint: 0
     IsEndNode: 0
@@ -93,38 +183,11 @@ MonoBehaviour:
     Position: {x: 1936, y: 280}
     Choices:
     - " Buras\u0131 neden bu halde?"
-    - "buradan nas\u0131 kurtulabilirim?"
+    - Burada neler oldu?
     ReputationChanges: 0000000000000000
     EntryPoint: 0
     IsEndNode: 0
     IsPlayerNode: 1
-    CloseDialogAfterThis: 0
-  - NodeGUID: a8baa624-6b76-4245-8598-46f5cc906482
-    DialogueText: 
-    Position: {x: 3189, y: 552}
-    Choices: []
-    ReputationChanges: 
-    EntryPoint: 0
-    IsEndNode: 1
-    IsPlayerNode: 0
-    CloseDialogAfterThis: 0
-  - NodeGUID: 3cd00eaf-05a9-46e6-9d01-d7538ebf5f5b
-    DialogueText: "Pek \xE7ok \u015Fey bilirim."
-    Position: {x: 1615, y: 421}
-    Choices: []
-    ReputationChanges: 
-    EntryPoint: 0
-    IsEndNode: 0
-    IsPlayerNode: 0
-    CloseDialogAfterThis: 0
-  - NodeGUID: 4a181d6e-8490-4635-8494-435a374b4855
-    DialogueText: "Sand\u0131\u011F\u0131ndan fazlas\u0131n\u0131 duydum, \xF6\u011Frendim."
-    Position: {x: 1633, y: 123}
-    Choices: []
-    ReputationChanges: 
-    EntryPoint: 0
-    IsEndNode: 0
-    IsPlayerNode: 0
     CloseDialogAfterThis: 0
   - NodeGUID: acc2f2f4-4292-4d73-ab96-9b4b9c32adb5
     DialogueText: "\u015Eu kap\u0131y\u0131 g\xF6r\xFCyor musun? Oran\u0131n ard\u0131nda
@@ -133,7 +196,7 @@ MonoBehaviour:
       koruyorum buray\u0131. Neden korudu\u011Fumu bile unuttum. Sonra buran\u0131n
       ard\u0131nda bir salg\u0131n ba\u015Flad\u0131. Her yerden mantarlar f\u0131\u015Fk\u0131rmaya
       ba\u015Flad\u0131 o\u011Flum. Gardiyanlar da ka\xE7t\u0131 gitti."
-    Position: {x: 2568, y: -60}
+    Position: {x: 2451.2, y: -25.6}
     Choices: []
     ReputationChanges: 
     EntryPoint: 0
@@ -141,13 +204,182 @@ MonoBehaviour:
     IsPlayerNode: 0
     CloseDialogAfterThis: 0
   - NodeGUID: 1c85867e-7323-47e1-91fd-f181e8e2469e
-    DialogueText: "Hadi bir anla\u015Fma yapal\u0131m o\u011Flum\u2026 Sen bana istediklerimi
-      getir, ben de sana iyi e\u015Fyalar vereyim."
-    Position: {x: 2477, y: 406}
+    DialogueText: " Zindan\u0131 arkandaki b\xFCy\xFCk kap\u0131n\u0131n ard\u0131na
+      m\xFCh\xFCrlediler. Bir zamanlar ben de buran\u0131n tutsa\u011F\u0131yd\u0131m,
+      ama sonra bana bu lanetli yerin anahtar\u0131n\u0131 verdiler. Y\u0131llar
+      ge\xE7ti, salg\u0131n ba\u015Flad\u0131, mantarlar istilaya ba\u015Flad\u0131.
+      G\xF6zc\xFCler korkup ka\xE7t\u0131."
+    Position: {x: 2468.8, y: 410.4}
     Choices: []
     ReputationChanges: 
     EntryPoint: 0
     IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 2c3f6130-a59b-4d91-9487-328b6ca05b81
+    DialogueText: 
+    Position: {x: 3773.6, y: 324.80002}
+    Choices:
+    - "Anlad\u0131m \u0130htiyar. Buradan \xE7\u0131kman\u0131n bir yolu yok mu peki?"
+    - "Peki ama buradan nas\u0131l kurtulabilirim?"
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: 4eb38015-ed05-4dfe-bf0a-cb10c86fd053
+    DialogueText: "Zindanlardan oldu\u011Fu gibi \xE7\u0131kamazs\u0131n. Kimse i\xE7eriyi
+      umursamasa da d\u0131\u015Far\u0131s\u0131n\u0131 \xE7evrelediler. Zindan\u0131n
+      derinliklerinden ka\xE7arsan belki ka\xE7ars\u0131n."
+    Position: {x: 4392.8, y: 64}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 1c8808a8-5f6d-4d52-9896-845da6be902d
+    DialogueText: "Zindandan do\u011Frudan \xE7\u0131kmak imkans\u0131z. D\u0131\u015Far\u0131s\u0131
+      h\xE2l\xE2 korunuyor. Ama a\u015Fa\u011F\u0131ya, derinlere inersen... orada
+      bir umut olabilir."
+    Position: {x: 4300, y: 600}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 1ee71dc4-7011-4bdc-acea-0065792a52f6
+    DialogueText: 
+    Position: {x: 5100.8, y: 405.6}
+    Choices:
+    - "Zindan\u0131n derinliklerinden nas\u0131l ka\xE7\u0131l\u0131r peki? Nereden
+      biliyorsun bunu?"
+    - "Bunu nereden biliyorsun? Derinliklerde ne oldu\u011Funu g\xF6rd\xFCn m\xFC?"
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: 8a960bee-3eae-4652-a624-569ab5e479d4
+    DialogueText: "Bu koridorlar\u0131n sessizli\u011Fi bile \xE7\u0131\u011Fl\u0131k
+      dolu o\u011Flum. Pek \xE7ok ki\u015Fi kap\u0131ya y\xFCr\xFCmeye kalkt\u0131,
+      kimse geri d\xF6nmedi. Ama biri... biri derinliklere indi. B\xFCy\xFCk bir
+      sava\u015F\xE7\u0131yd\u0131. Geri d\xF6nd\xFC\u011F\xFCnde... sanki ruhu i\xE7eride
+      kalm\u0131\u015F gibiydi. Sadece, \u201CSonunda bir ge\xE7it var, terk edilmi\u015F,\u201D
+      dedi. Ama oradan neden \xE7\u0131kmad\u0131\u011F\u0131n\u0131 hi\xE7birimiz
+      anlayamad\u0131k. G\xF6zleri her \u015Feyi anlat\u0131yordu."
+    Position: {x: 5594.4, y: 660.8}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 5b1ca9e4-2d7b-40af-9cc0-235f4c068e26
+    DialogueText: "Buralar neden bo\u015F san\u0131yorsun? Herkes bir \xE7\u0131k\u0131\u015F
+      yolu denedi. Kap\u0131dan y\xFCr\xFCy\xFCp \xE7\u0131kmaya \xE7al\u0131\u015Fanlar\u0131n
+      da zindana girenlerin de ac\u0131 \xE7\u0131\u011Fl\u0131klar\u0131yla yank\u0131land\u0131
+      bu koridorlar. Ancak birisi zindan\u0131n derinliklerine inmeyi ba\u015Fard\u0131
+      o\u011Flum. \xC7ok g\xFC\xE7l\xFC biriydi, ama geri d\xF6nd\xFC derinliklerden.
+      Harap olmu\u015Ftu kocaman adam. Ben de d\xF6n\xFC\u015F\xFCne \u015Fahit oldum.
+      Bana \u2018Buran\u0131n sonunda bir \xE7\u0131k\u0131\u015F kap\u0131s\u0131
+      var. Zaman\u0131nda gardiyanlar oradan girip \xE7\u0131k\u0131yormu\u015F.
+      \xC7evresinde de kimseler yok.\u2019 dedi. Neden \xE7\u0131kmad\u0131n diye
+      sordu\u011Fumuzda bize cevap vermedi ama g\xF6zlerindeki korku fazlas\u0131yla
+      yeterliydi."
+    Position: {x: 5592, y: 48.799995}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 059bd663-6afe-4d35-8272-2fe48b0a75f7
+    DialogueText: 
+    Position: {x: 7568, y: 617.6}
+    Choices:
+    - "Anlad\u0131m ihtiyar."
+    - "Bu dediklerin kula\u011Fa deli sa\xE7mas\u0131 gibi geliyor ama \xF6yle olsun."
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: 94b25908-e74a-4927-b7c2-a66cf117265a
+    DialogueText: "Sana bir teklifim var. Hadi bir anla\u015Fma yapal\u0131m. Sen
+      bana istediklerimi getir, ben de sana kar\u015F\u0131l\u0131\u011F\u0131nda
+      i\u015Fine yarayacak e\u015Fyalar vereyim."
+    Position: {x: 8394.4, y: 592.8}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 167bc7a2-b2ad-4875-858d-12f5922f332b
+    DialogueText: 
+    Position: {x: 9162.4, y: 594.39996}
+    Choices:
+    - "\u0130\u015Fini de biliyorsun ihtiyar. S\xF6yle bakal\u0131m, ne istiyorsun."
+    - "Ne tarz bir sa\xE7mal\u0131k duyaca\u011F\u0131m acaba? Dinliyorum ihtiyar."
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: 8547a275-a0d9-46a8-9e53-afa4047845f3
+    DialogueText: "Biraz mavi kristal. 4 - 5 tane \xFCzerinde mantar yeti\u015Fmi\u015F
+      kaval kemi\u011Fi. \xD6zellikle mor ve par\u0131ldayan olanlar\u0131ndan bulabilirsen
+      g\xFCzel olur. Paslanm\u0131\u015F demir y\xFCz\xFCk, neyden bahsettti\u011Fimi
+      g\xF6rd\xFC\u011F\xFCnde anlars\u0131n. Toplayabildi\u011Fin mantar \xE7e\u015Fitlerinin
+      hepsi, ne kadar \xE7ok o kadar iyi."
+    Position: {x: 9676, y: 586.39996}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 8e3d5932-6326-4db2-a49d-640bd74b6fe7
+    DialogueText: 
+    Position: {x: 11118.4, y: 616.8}
+    Choices:
+    - "Bunlar\u0131... Neden istiyorsun?"
+    - Neden..?
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: cdb3fa2f-c92c-49de-9d0f-3aa550a7dbaf
+    DialogueText: "Oras\u0131 bende kals\u0131n o\u011Flum, sen bana kabul ediyor
+      musun onu s\xF6yle."
+    Position: {x: 11640.8, y: 601.6}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 0
+    CloseDialogAfterThis: 0
+  - NodeGUID: 366de24d-ff94-411f-a01d-c35dc895f801
+    DialogueText: 
+    Position: {x: 12103.2, y: 605.6}
+    Choices:
+    - "Anla\u015Ft\u0131k ihtiyar."
+    - "Acaba ba\u015F\u0131ma neler gelecek? Tamam, \xF6yle olsun."
+    ReputationChanges: 0000000000000000
+    EntryPoint: 0
+    IsEndNode: 0
+    IsPlayerNode: 1
+    CloseDialogAfterThis: 0
+  - NodeGUID: 6cd9f246-3649-4d39-9d8c-097f3178e38b
+    DialogueText: 
+    Position: {x: 12758.4, y: 618.39996}
+    Choices: []
+    ReputationChanges: 
+    EntryPoint: 0
+    IsEndNode: 1
     IsPlayerNode: 0
     CloseDialogAfterThis: 0
   ExposedProperties: []
