@@ -18,5 +18,6 @@ MonoBehaviour:
   BoostplayermaxDamage: 10
   BoostplayerArmor: 0
   BoostplayerSpeed: 0
-  buffName: increase your damage
-  BuffInformation: 'this buff will increase your damage '
+  buffName: "Hasar Art\u0131\u015F\u0131"
+  BuffInformation: "Bu g\xFC\xE7lendirme sald\u0131r\u0131n\u0131 art\u0131r\u0131r
+    :"

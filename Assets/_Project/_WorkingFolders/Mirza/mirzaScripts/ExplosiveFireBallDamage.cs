@@ -8,6 +8,8 @@ public class ExplosiveFireBallDamage : MonoBehaviour
     [SerializeField] private GameObject bouncedObject;
     private Vector3 rotationAxis;
     [SerializeField] private float rotationSpeed = 90f;
+    public EnemyData enemyData;
+    private string RangedBomb = "RangedBomb";
     public void Start()
     {
         rotationAxis = new Vector3(
@@ -42,8 +44,14 @@ public class ExplosiveFireBallDamage : MonoBehaviour
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Collider>().enabled = false;
         BounceObject();
-       
+        PlayerController playerController = FindAnyObjectByType<PlayerController>();
         Icombat.TakeDamage(damageAmount);
+        if(playerController.currentHealth>0)
+        {
+            if (playerController != null)
+                playerController.AddAttack(enemyData.enemyName, RangedBomb, damageAmount);
+        }
+       
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < 3; i++)
         {
@@ -68,6 +76,9 @@ public class ExplosiveFireBallDamage : MonoBehaviour
         {
             Vector3 spawnPos = gameObject.transform.position + Vector3.up * 1f;
             GameObject proj = GameObject.Instantiate(bouncedObject, spawnPos, Quaternion.identity);
+            FireBallDamage fireBallDamage = proj.GetComponent<FireBallDamage>();
+            if (fireBallDamage != null)
+                fireBallDamage.enemyData = enemyData;
             Rigidbody rb = proj.GetComponent<Rigidbody>();
             rb.useGravity = true;
             Vector3 dir = targetPositions[i] - spawnPos;

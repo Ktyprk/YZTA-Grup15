@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour, ICombat
     private SceneFader _sceneFader;
     public LayerMask enemyLayer;
     public TimelineClip timelineClip;
-
+    private AttackLogger attackLogger;
     public Vector2 MoveInput { get; private set; }
     
     public AnimatorOverrideController idleOverride;
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour, ICombat
     public System.Action<PlayerState> OnStateChange;
     
     public int maxHealth = 100;
-    private int currentHealth;
+    public int currentHealth;
 
     public float dashSpeed = 15f;
     public float dashDuration = 0.2f;
@@ -60,8 +60,8 @@ public class PlayerController : MonoBehaviour, ICombat
         currentHealth = maxHealth;
         ChangeState(new IdleState(this));
         _sceneFader = FindAnyObjectByType<SceneFader>();
-     
 
+        attackLogger = FindAnyObjectByType<AttackLogger>();
 
         ControlsManager.Controls.Player.Attack.performed += ctx =>
         {
@@ -194,6 +194,7 @@ public class PlayerController : MonoBehaviour, ICombat
             PlayerController playerController = GetComponent<PlayerController>();
             SceneFader sceneFader = FindAnyObjectByType<SceneFader>();
             sceneFader.sceneIndex = 0;
+            playerStats.UpdateHealthBar();
             animator.PlayAnim("Die");
             
             playerController.enabled = false;
@@ -272,5 +273,9 @@ public class PlayerController : MonoBehaviour, ICombat
             if (r != null)
                 r.material = normalMaterial;
         }
+    }
+    public void AddAttack(string attacker, string skill, int damage)
+    {
+        attackLogger.AddAttack(attacker, skill, damage);
     }
 }

@@ -52,7 +52,7 @@ public class AttackState : PlayerState
         controller.attackGizmoSize = hitboxSize;
         controller.showAttackGizmo = true;
 
-        // Enemy ve Interactable layer'larý birleþtiriliyor
+        // Enemy ve Interactable layer'larÄ± birleÅŸtiriliyor
         LayerMask combinedMask = enemyLayer | interactableLayer;
 
         Collider[] hits = Physics.OverlapBox(

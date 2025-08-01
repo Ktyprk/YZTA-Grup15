@@ -181,6 +181,7 @@ MonoBehaviour:
   anim: {fileID: 1250029596285770146}
   coolDown: 3
   projectileSpeed: 5
+  enemyData: {fileID: 11400000, guid: fa3ce7c11f666834eb2c28cc5598a6a1, type: 2}
 --- !u!136 &2608276543982210999
 CapsuleCollider:
   m_ObjectHideFlags: 0

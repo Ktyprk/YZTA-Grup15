@@ -6,6 +6,7 @@ public class MushroomTurret : MonoBehaviour
     [SerializeField] private Animation anim;
     [SerializeField] private int coolDown;
     [SerializeField] private float projectileSpeed;
+    [SerializeField] private EnemyData enemyData;
 
     private float timer = 0 ;
     private Vector3 spawnLocation;
@@ -30,6 +31,12 @@ public class MushroomTurret : MonoBehaviour
     private void Fire()
     {
      GameObject spawnedProjectile = GameObject.Instantiate(projectile, spawnLocation, Quaternion.identity);
+        FireBallDamage fireball = spawnedProjectile.GetComponent<FireBallDamage>();
+        if(fireball!=null )
+        {
+            fireball.enemyData = enemyData;
+        }
+
         Vector3 dir = gameObject.transform.forward;
         spawnedProjectile.GetComponent<Rigidbody>().linearVelocity = dir * projectileSpeed;
     }

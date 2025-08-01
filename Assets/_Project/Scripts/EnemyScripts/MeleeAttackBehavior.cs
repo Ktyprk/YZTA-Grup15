@@ -7,7 +7,12 @@ public class MeleeAttackBehavior : IEnemyAttackBehavior
     private Vector3 hitboxCenter = new Vector3(0, 1f, 1f);
     private Vector3 hitboxSize = new Vector3(1f, 1f, 1f);
     private LayerMask playerLayer;
-
+    EnemyData enemyData;
+    private string meleeAttack = "meleeAttack";
+    public MeleeAttackBehavior(EnemyData enemyData)
+    {
+        this.enemyData = enemyData;
+    }
     public void Attack(EnemyController controller, Transform target)
     {
         /* if (target.TryGetComponent(out ICombat combatTarget))
@@ -36,8 +41,12 @@ public class MeleeAttackBehavior : IEnemyAttackBehavior
                 {
                     int minDamage = (int)controller.EnemyData.damage;
                     int maxDamage = (int)controller.EnemyData.damage;
+                    hit.TryGetComponent<PlayerController>(out var playerTarget);
+                    
 
                     int playerDamage = Random.Range(minDamage, maxDamage + 1);
+                    if (playerTarget != null && playerTarget.currentHealth>0)
+                        playerTarget.AddAttack(enemyData.enemyName, meleeAttack, playerDamage);
                     combatTarget.TakeDamage(playerDamage);
                     damagedEnemies.Add(enemy);
                 }
