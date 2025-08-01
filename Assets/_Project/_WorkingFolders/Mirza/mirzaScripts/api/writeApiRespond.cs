@@ -51,6 +51,7 @@ public class writeApiRespond : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            warningSign.SetActive(false);
             press_E_Scene.SetActive(false);
 
             control = false;
