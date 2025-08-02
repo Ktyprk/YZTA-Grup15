@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour, ICombat
     public float dashCooldown = 1f;
     private bool isDashing = false;
     private float dashTime = 0f;
-    private bool died = false;
+    public bool died = false;
     private float lastDashTime = -Mathf.Infinity;
     private Vector3 dashDirection;
 

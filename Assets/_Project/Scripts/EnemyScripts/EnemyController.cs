@@ -61,13 +61,26 @@ public class EnemyController : MonoBehaviour, ICombat
 
     private void FixedUpdate()
     {
-        if(awaken && died ==false)
+        if (awaken && died == false)
         {
             if (target == null || !target.gameObject.activeSelf)
             {
                 target = null;
                 WanderSimple();
-                //animController.Idle();
+                if (waitingForAttack)
+                {
+                    waitingForAttack = false;
+                    OnIdle?.Invoke();
+                }
+                return;
+            }
+
+            // PlayerController'da died kontrolü
+            var playerController = target.GetComponent<PlayerController>();
+            if (playerController != null && playerController.died)
+            {
+                target = null;
+                WanderSimple();
                 if (waitingForAttack)
                 {
                     waitingForAttack = false;
@@ -86,7 +99,6 @@ public class EnemyController : MonoBehaviour, ICombat
 
             HandleCombat(distance);
         }
-        
     }
 
     
