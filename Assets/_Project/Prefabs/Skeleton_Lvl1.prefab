@@ -2457,6 +2457,7 @@ GameObject:
   - component: {fileID: 2590188645692547589}
   - component: {fileID: 5952553282165360840}
   - component: {fileID: 5226101599493898165}
+  - component: {fileID: 3195409557730234429}
   m_Layer: 8
   m_Name: Skeleton_Lvl1
   m_TagString: Untagged
@@ -2502,6 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 292e2a0024a88da45ac2886979251f2f, type: 2}
+  coinDropSystem: {fileID: 3195409557730234429}
   renderers:
   - {fileID: 2681852678517707386}
   - {fileID: 4210911113269400550}
@@ -2631,6 +2633,21 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!114 &3195409557730234429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351130665762768014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e8a05f5833e4149aa9a538eacec0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coin: {fileID: 8401380578997415541, guid: 958eb50e9ec318c4f9745707301ec07e, type: 3}
+  dropRateBaseOnPercentage: 40
+  isDrop: 0
 --- !u!1 &8551155583770797373
 GameObject:
   m_ObjectHideFlags: 0
