@@ -7,40 +7,36 @@ public class TimelineCameraBinder : MonoBehaviour
 {
     [SerializeField] private PlayableDirector director;
 
-    void Start()
+    private void Awake()
     {
         if (director == null)
+            director = GetComponent<PlayableDirector>();
+
+        BindCinemachineTrack();
+    }
+
+    private void BindCinemachineTrack()
+    {
+        if (director.playableAsset == null)
         {
-            Debug.LogError("PlayableDirector atanmadı.");
+            Debug.LogWarning("PlayableAsset atanmadı.");
             return;
         }
 
-        TimelineAsset timeline = director.playableAsset as TimelineAsset;
-        if (timeline == null)
+        foreach (var output in director.playableAsset.outputs)
         {
-            Debug.LogError("Timeline asset bulunamadı.");
-            return;
-        }
-
-        foreach (var output in timeline.outputs)
-        {
-            // Cinemachine Track’leri hedef al
-            if (output.outputTargetType == typeof(CinemachineVirtualCameraBase))
+            // Cinemachine track'i bul ve sahnedeki CinemachineBrain ile eşleştir
+            if (output.sourceObject is CinemachineTrack)
             {
-                var virtualCam = FindObjectOfType<CinemachineVirtualCameraBase>();
-                if (virtualCam != null)
+                var brain = FindObjectOfType<CinemachineBrain>();
+                if (brain != null)
                 {
-                    director.SetGenericBinding(output.sourceObject, virtualCam);
-                    Debug.Log("Cinemachine Virtual Camera başarıyla bağlandı.");
+                    director.SetGenericBinding(output.sourceObject, brain);
+                    Debug.Log("CinemachineBrain Timeline’a başarıyla bind edildi.");
                 }
-            }
-            else if (output.outputTargetType == typeof(GameObject)) // Bazı durumlarda GameObject olabilir
-            {
-                GameObject go = Camera.main.gameObject;
-                if (go.GetComponent<CinemachineBrain>() != null)
+                else
                 {
-                    director.SetGenericBinding(output.sourceObject, go);
-                    Debug.Log("CinemachineBrain içeren kamera başarıyla bağlandı.");
+                    Debug.LogError("CinemachineBrain sahnede bulunamadı!");
                 }
             }
         }

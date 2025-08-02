@@ -204,20 +204,6 @@ public class PlayerController : MonoBehaviour, ICombat
         }
             
     }
-    public IEnumerator Die()
-    {
-        TimelineScene.Play();
-        //  string currentSceneName = SceneManager.GetActiveScene().name;
-        //RandomMapChooseManager.Instance.Reshuffle();
-        yield return new WaitForSeconds(5f);
-
-        // _sceneFader.FadeAndLoad("StartPoint"); // will change as loby map name
-        NewSceneLoader.Instance.LoadSceneWithPlayer("StartPoint", "StartPoint");
-        gameObject.SetActive(false);
-       
-       
-
-    }
 
 
      public IEnumerator Die()
