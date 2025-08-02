@@ -2069,6 +2069,7 @@ MonoBehaviour:
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
     m_DisplayName: 
+  playerController: {fileID: 4353679085419812068}
   idleOverride: {fileID: 22100000, guid: a1ac2086ff35f164dacf909ce8c43e64, type: 2}
   moveOverride: {fileID: 22100000, guid: a1ac2086ff35f164dacf909ce8c43e64, type: 2}
   attackOverride: {fileID: 22100000, guid: a1ac2086ff35f164dacf909ce8c43e64, type: 2}
@@ -2094,6 +2095,8 @@ MonoBehaviour:
   flashDuration: 0.1
   healEffect: {fileID: 339158821923109191, guid: 108ca465382c11742bd2c91fe4fdb13f, type: 3}
   warningMark: {fileID: 1308907912296065049}
+  PressEbutton: {fileID: 6467680164900303570}
+  marketUi: {fileID: 2196652182929069776}
   sparkEffect: {fileID: 8563782680520221914}
   BuffCards: {fileID: 3609015443773624675}
   playerStats: {fileID: 0}
@@ -4068,9 +4071,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MarketControlScript, Assembly-CSharp
-        m_MethodName: close
+      - m_Target: {fileID: 4353679085419812068}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: closemarket
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9114,6 +9117,11 @@ PrefabInstance:
 --- !u!4 &5947566786832017512 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 121455035113484126, guid: d5c764509ed1b9e40b1baafc927b16c7, type: 3}
+  m_PrefabInstance: {fileID: 5991334298875561782}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6467680164900303570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 784943664356881892, guid: d5c764509ed1b9e40b1baafc927b16c7, type: 3}
   m_PrefabInstance: {fileID: 5991334298875561782}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6665933817299619876

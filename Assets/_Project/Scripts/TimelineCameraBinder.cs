@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using Unity.Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class TimelineCameraBinder : MonoBehaviour
 {
@@ -41,17 +42,37 @@ public class TimelineCameraBinder : MonoBehaviour
             
             if (output.sourceObject is AnimationTrack)
             {
-                GameObject animator = GameObject.FindGameObjectWithTag("Player");
-                var animatorComponent = animator?.GetComponent<Animator>();
-                if (animator != null)
+                string currentScene = SceneManager.GetActiveScene().name;
+                if(currentScene == "BoosRoom")
                 {
-                    director.SetGenericBinding(output.sourceObject, animatorComponent);
-                    Debug.Log("Animator Timeline’a bağlandı.");
+                    GameObject animator = GameObject.FindGameObjectWithTag("Enemy");
+                    var animatorComponent = animator?.GetComponent<Animator>();
+                    if (animator != null)
+                    {
+                        director.SetGenericBinding(output.sourceObject, animatorComponent);
+                        Debug.Log("Animator Timeline’a bağlandı.");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Animator sahnede bulunamadı.");
+                    }
                 }
                 else
                 {
-                    Debug.LogWarning("Animator sahnede bulunamadı.");
+                    GameObject animator = GameObject.FindGameObjectWithTag("Player");
+                    var animatorComponent = animator?.GetComponent<Animator>();
+                    if (animator != null)
+                    {
+                        director.SetGenericBinding(output.sourceObject, animatorComponent);
+                        Debug.Log("Animator Timeline’a bağlandı.");
+                    }
+                    else
+                    {
+                        Debug.LogWarning("Animator sahnede bulunamadı.");
+                    }
                 }
+
+              
             }
         }
     }

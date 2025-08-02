@@ -12,6 +12,8 @@ public class writeApiRespond : MonoBehaviour
     private bool control = false;
     private void Start()
     {
+        PlayerController controller = FindAnyObjectByType<PlayerController>();
+        press_E_Scene = controller.PressEbutton;
         openClose = false;
         apiManager = FindAnyObjectByType<APIManager>();
         if(RequesText != null )

@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour, ICombat
     public LayerMask enemyLayer;
     public TimelineClip timelineClip;
     private AttackLogger attackLogger;
+    public PlayerController playerController;
     public Vector2 MoveInput { get; private set; }
     
     public AnimatorOverrideController idleOverride;
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour, ICombat
     [SerializeField] private float flashDuration = 0.1f;
     [SerializeField] private GameObject healEffect;
     public GameObject warningMark;
+    public GameObject PressEbutton;
+    public GameObject marketUi;
     [Header("Slash Effect")]
     [SerializeField] private ParticleSystem sparkEffect;
 
@@ -194,7 +197,7 @@ public class PlayerController : MonoBehaviour, ICombat
         if (playerStats.currentHealth <= 0&& died == false)
         {
             died = true;    
-            PlayerController playerController = GetComponent<PlayerController>();
+            
             SceneFader sceneFader = FindAnyObjectByType<SceneFader>();
             sceneFader.sceneIndex = 0;
             playerStats.UpdateHealthBar();
@@ -208,16 +211,24 @@ public class PlayerController : MonoBehaviour, ICombat
 
      public IEnumerator Die()
     {
+       
         TimelineScene.Play();
         //  string currentSceneName = SceneManager.GetActiveScene().name;
         //RandomMapChooseManager.Instance.Reshuffle();
         yield return new WaitForSeconds(5f);
+        GradualActivator gradualActivator = GetComponent<GradualActivator>();
+        gradualActivator.deActive();
+        playerStats.currentHealth = 100;
+        animator.Idle();
 
-       // _sceneFader.FadeAndLoad("StartPoint"); // will change as loby map name
-       NewSceneLoader.Instance.LoadSceneWithPlayer("StartPoint", "StartPoint");
-       gameObject.SetActive(false);
-       
-       
+        // _sceneFader.FadeAndLoad("StartPoint"); // will change as loby map name
+        playerController.enabled = true;
+        playerStats.UpdateHealthBar();
+        died = false;
+        NewSceneLoader.Instance.LoadSceneWithPlayer("StartPoint", "StartPoint");
+     //  gameObject.SetActive(false);
+        
+
 
     }
 
@@ -280,5 +291,10 @@ public class PlayerController : MonoBehaviour, ICombat
     public void AddAttack(string attacker, string skill, int damage)
     {
         attackLogger.AddAttack(attacker, skill, damage);
+    }
+    public void closemarket()
+    {
+       MarketControlScript marketControlScript=FindAnyObjectByType<MarketControlScript>();
+        marketControlScript.close();
     }
 }

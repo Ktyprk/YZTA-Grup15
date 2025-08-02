@@ -9,12 +9,15 @@ public class MarketControlScript : MonoBehaviour
     private bool canopen = false;
     void Start()
     {
-        
+        PlayerController controller = FindAnyObjectByType<PlayerController>();
+        press_E_Scene = controller.PressEbutton;
+        MarketUi = controller.marketUi;
     }
 
     // Update is called once per frame
     void Update()
     {
+      
         if (Input.GetKeyUp(KeyCode.E)&& canopen)
         {
             close();

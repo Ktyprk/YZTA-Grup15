@@ -41,4 +41,12 @@ public class GradualActivator : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
     }
+    public void deActive()
+    {
+        for (int i = 0; i < objectsToActivate.Count; i++)
+        {
+            if (objectsToActivate[i] != null)
+                objectsToActivate[i].SetActive(false);
+        }
+    }
 }
