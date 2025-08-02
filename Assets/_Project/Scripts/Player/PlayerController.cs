@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour, ICombat
         RandomMapChooseManager.Instance.Reshuffle();
         yield return new WaitForSeconds(5f);
 
-        _sceneFader.FadeAndLoad("StartPoint"); // will change as loby map name
+       // _sceneFader.FadeAndLoad("StartPoint"); // will change as loby map name
        gameObject.SetActive(false);
        
        

@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
-using Unity.VisualScripting;
-
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,99 +9,68 @@ public class SceneFader : MonoBehaviour
 {
     public Image image;
     public float customDuration = 1f;
-    [SerializeField] private string nameOfScene;
     public static SceneFader Instance;
     public int sceneIndex = 0;
 
     void Awake()
     {
-     
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            sceneIndex = 0;
         }
         else
         {
-           
             Destroy(gameObject);
         }
     }
-    
-    public void AAAAA()
+
+    public void FadeThenExecute(float duration, Action onFadeComplete)
     {
-        Debug.Log("AAAAA");
-    }
-    public void FadeAndLoad(string sceneName)
-    {
-        if(sceneName=="MainMenu"||sceneName=="Mirza")
-            sceneIndex = 0;
-        //StartCoroutine(FadeInAndLoad(sceneName, customDuration));
-        image = GameObject.Find("FadeImage").GetComponent<Image>();
-        FadeAndLoadWithDuration(sceneName, customDuration);
+        image = GameObject.Find("FadeImage")?.GetComponent<Image>();
+        if (image == null)
+        {
+            Debug.LogError("FadeImage bulunamadı!");
+            onFadeComplete?.Invoke();
+            return;
+        }
+
+        StartCoroutine(FadeRoutine(duration, onFadeComplete));
     }
 
-    public void FadeAndLoadWithDuration(string sceneName, float fadeDuration)
+    private IEnumerator FadeRoutine(float duration, Action onFadeComplete)
     {
-        StartCoroutine(FadeInAndLoad(sceneName, fadeDuration));
-    }
+        yield return new WaitForEndOfFrame(); // küçük bir gecikme, yeni sahne geçişi varsa uyumsuzluk yaşanmasın
 
-    IEnumerator FadeInAndLoad(string sceneName, float fadeDuration)
-    {
-         yield return new WaitForSeconds(0.1f);
-        float t = 0;
+        // FADE-IN
+        float t = 0f;
         Color color = image.color;
-        while (t < fadeDuration)
+        while (t < duration)
         {
             t += Time.deltaTime;
-            color.a = t / fadeDuration;
+            color.a = Mathf.Clamp01(t / duration);
             image.color = color;
             yield return null;
         }
-      
-        color.a = 0;
-        SceneManager.LoadScene(sceneName);
-    }
 
-    IEnumerator FadeOutAndLoad(string sceneName, float fadeDuration)
-    {
-        float t = 0;
-        Color color = image.color;
-        while (t < fadeDuration)
+        // Callback ile sahne yüklemesi yapılır
+        onFadeComplete?.Invoke();
+
+        // 1 frame sahne yüklenmesini bekleyip FADE-OUT başlatıyoruz
+        yield return new WaitForSeconds(0.1f);
+
+        // FADE-OUT
+        t = 0f;
+        while (t < duration)
         {
             t += Time.deltaTime;
-            color.a = Mathf.Clamp01(1 - (t / fadeDuration));
+            color.a = Mathf.Clamp01(1f - (t / duration));
+            image.color = color;
             yield return null;
         }
 
-        SceneManager.LoadScene(sceneName);
+        // Tam sıfırla
+        color.a = 0f;
+        image.color = color;
     }
-    public void loadSceneWithTrigger()
-    {
-
-        string activeSceneName = SceneManager.GetActiveScene().name;
-        if (activeSceneName == "BoosRoom")
-        {
-            sceneIndex = 0;
-            FadeAndLoad("StartPoint");
-            return;
-        }
-        sceneIndex++;
-        if (sceneIndex > RandomMapChooseManager.Instance.SceneEndIndex)
-        {
-            
-            FadeAndLoad("BoosRoom");//mainhall it works when the last dungeon room complate succesfully and return mainhall
-            
-        }
-        else
-        {
-            string scenePath = SceneUtility.GetScenePathByBuildIndex(RandomMapChooseManager.Instance.shuffledNumbers[sceneIndex - 1]);
-            string sceneName = Path.GetFileNameWithoutExtension(scenePath);
-            Debug.Log("secene namee = " + sceneName);
-            FadeAndLoad(sceneName);
-        }
-           
-    }
-    
 }

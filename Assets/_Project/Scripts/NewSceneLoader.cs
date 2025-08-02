@@ -14,7 +14,7 @@ public class NewSceneLoader : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+    
         Instance = this;
         DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -28,12 +28,14 @@ public class NewSceneLoader : MonoBehaviour
         if (player != null)
         {
             GameObject rootObject = player.transform.root.gameObject;
+            DontDestroyOnLoad(rootObject); 
 
             // Önce hizala — Player alt nesne olduğu için local offset sıfırlanır
             AlignTransform(player.transform, rootObject.transform);
         }
 
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+       // SceneFader.Instance.loadSceneWithTrigger();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

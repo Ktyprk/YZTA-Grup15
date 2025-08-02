@@ -7,7 +7,7 @@ public class SceneLoader : MonoBehaviour
     {
         if(other.gameObject.tag=="Player")
         {
-            SceneFader.Instance.loadSceneWithTrigger();
+            //SceneFader.Instance.loadSceneWithTrigger();
         }
     }
 }

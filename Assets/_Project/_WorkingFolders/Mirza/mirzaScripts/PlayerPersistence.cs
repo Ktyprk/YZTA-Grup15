@@ -2,16 +2,14 @@ using UnityEngine;
 
 public class PlayerPersistence : MonoBehaviour
 {
-    private static PlayerPersistence instance;
+    private static PlayerPersistence Instance;
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance == null)
         {
-            Destroy(gameObject); // Aynı karakterden 2 tane olmasın
-            return;
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
-
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    } }
+    }
+}
