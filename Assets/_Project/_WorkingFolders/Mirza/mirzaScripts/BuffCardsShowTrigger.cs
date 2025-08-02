@@ -10,9 +10,19 @@ public class BuffCardsShowTrigger : MonoBehaviour
     [SerializeField] private UniqueRandomGenerator randomGenerateNumber;
 
     [SerializeField]  private int[] randomValues;
+    public GameObject buffCardsParent;
+
+ 
     private void Start()
     {
+        PlayerController controller = FindAnyObjectByType<PlayerController>();
+
+        buffCardsParent = controller.BuffCards;
+        buffMenu = controller.BuffCards;
+        buffcards = buffCardsParent.GetComponentsInChildren<BuffCardsUiUpdate>();
+
         randomValues = new int[buffs.Length];
+
     }
     private void OnTriggerEnter(Collider other)
     {
