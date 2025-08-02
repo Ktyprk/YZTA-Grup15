@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/_Project/_WorkingFolders/Harun/BoosRoom.unity
     guid: 68ba9e79132e57343a6bbb91b031abed
   - enabled: 1
-    path: Assets/_Project/_WorkingFolders/Harun/StartPoint.unity
+    path: Assets/_Project/Scenes/StartPoint.unity
     guid: 6da1b21095e0441469bf16d5f7fbb456
   - enabled: 1
     path: Assets/_Project/_WorkingFolders/Mirza/Mirza.unity
