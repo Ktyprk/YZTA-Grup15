@@ -1910,6 +1910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5945554976603045142}
   - component: {fileID: 6539728859919462121}
+  - component: {fileID: 4672476790233489298}
   m_Layer: 0
   m_Name: timelineDead
   m_TagString: Untagged
@@ -1954,6 +1955,19 @@ PlayableDirector:
     - 54d8ebc2ca6e91946ac01eaa5b6e9881: {fileID: 5104269038425305950}
     - 1f39362a6a5ac0e41bdbe38415da436a: {fileID: 7356242452195494897}
     - 4914d7be6e938dd41ba45815ae4fcf30: {fileID: 2504825116938637376}
+--- !u!114 &4672476790233489298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063260189657049202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1fa5b25969806d4996cef548c06cf29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 6539728859919462121}
 --- !u!1 &2096890630642989694
 GameObject:
   m_ObjectHideFlags: 0

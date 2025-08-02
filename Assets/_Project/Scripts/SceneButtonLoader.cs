@@ -9,7 +9,9 @@ public class SceneButtonLoader : MonoBehaviour
     public float fadeDuration = 1f;
 
     [Header("Spawn ID (isteğe bağlı)")]
-    public string spawnId = "default";
+    public string spawnId = "StartPoint";
+    
+    public GameObject player;
 
     public void LoadSceneWithFade()
     {
@@ -17,7 +19,9 @@ public class SceneButtonLoader : MonoBehaviour
         {
             SceneFader.Instance.FadeThenExecute(fadeDuration, () =>
             {
+                Instantiate(player, Vector3.zero, Quaternion.identity);
                 NewSceneLoader.Instance.LoadSceneWithPlayer(sceneName, spawnId);
+                
             });
         }
         else

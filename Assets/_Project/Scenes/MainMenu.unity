@@ -401,7 +401,7 @@ Transform:
   m_GameObject: {fileID: 182530868}
   serializedVersion: 2
   m_LocalRotation: {x: 0.38103276, y: 0.29648528, z: -0.13045667, w: 0.8659628}
-  m_LocalPosition: {x: -19.300694, y: -5.0501165, z: 19.996824}
+  m_LocalPosition: {x: -1.0770352, y: 10.809883, z: -44.483494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -520,7 +520,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: StartPoint
   fadeDuration: 1
-  spawnId: default
+  spawnId: StartPoint
+  player: {fileID: 1715256631383110470, guid: ec515225265dfce42a5d710b099236b5, type: 3}
 --- !u!1 &825759618
 GameObject:
   m_ObjectHideFlags: 0

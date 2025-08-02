@@ -25,7 +25,6 @@ public class TimelineCameraBinder : MonoBehaviour
 
         foreach (var output in director.playableAsset.outputs)
         {
-            // Cinemachine track'i bul ve sahnedeki CinemachineBrain ile eşleştir
             if (output.sourceObject is CinemachineTrack)
             {
                 var brain = FindObjectOfType<CinemachineBrain>();
@@ -37,6 +36,21 @@ public class TimelineCameraBinder : MonoBehaviour
                 else
                 {
                     Debug.LogError("CinemachineBrain sahnede bulunamadı!");
+                }
+            }
+            
+            if (output.sourceObject is AnimationTrack)
+            {
+                GameObject animator = GameObject.FindGameObjectWithTag("Player");
+                var animatorComponent = animator?.GetComponent<Animator>();
+                if (animator != null)
+                {
+                    director.SetGenericBinding(output.sourceObject, animatorComponent);
+                    Debug.Log("Animator Timeline’a bağlandı.");
+                }
+                else
+                {
+                    Debug.LogWarning("Animator sahnede bulunamadı.");
                 }
             }
         }
