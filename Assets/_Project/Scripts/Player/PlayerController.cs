@@ -225,7 +225,11 @@ public class PlayerController : MonoBehaviour, ICombat
         playerController.enabled = true;
         playerStats.UpdateHealthBar();
         died = false;
-        NewSceneLoader.Instance.LoadSceneWithPlayer("StartPoint", "StartPoint");
+        SceneFader.Instance.FadeThenExecute(1f, () =>
+        {
+            NewSceneLoader.Instance.LoadSceneWithPlayer("StartPoint", "StartPoint");
+        });
+        
      //  gameObject.SetActive(false);
         
 
