@@ -50,7 +50,10 @@ public class PlayerController : MonoBehaviour, ICombat
     [SerializeField] private ParticleSystem sparkEffect;
 
     private Coroutine flashRoutine;
-    
+    [Header("Ui buffCards")]
+    public GameObject BuffCards;
+
+
     [HideInInspector] public PlayerStatsController playerStats;
 
     private void Start()
