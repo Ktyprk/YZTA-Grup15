@@ -6,6 +6,9 @@ public class MushroomColorChange : MonoBehaviour
     private Renderer rend;
     private Material[] materials;
     private Color[] originalColors;
+    [SerializeField] private Material HealMushroom;
+    [SerializeField] private Material DamageMushroom;
+    [SerializeField] private Material SpeedMushroom;
     [SerializeField] private GameObject smoke;
     [SerializeField] private GameObject smokeDamageArea;
     [SerializeField] private GameObject gameObjects;
@@ -20,27 +23,21 @@ public class MushroomColorChange : MonoBehaviour
         transformLocation = transform.position;
         transformLocation2 = transform.position;
         transformLocation.y += 1f;
-        rend = GetComponent<Renderer>();
-        materials = rend.materials; // Tüm materyalleri al
-
-        // Her bir materialin orijinal rengini sakla
-        originalColors = new Color[materials.Length];
-        for (int i = 0; i < materials.Length; i++)
-        {
-            originalColors[i] = materials[i].color;
-        }
+     
     }
 
-    public IEnumerator FlashForOneSecond()
+    public IEnumerator FlashForOneSecond(Vector3 spawnLocation,MushroomTypes type,int damage_Heal_Amount)
     {
         float elapsed = 0f;
-
+        damageColliderOfSmoke damageColliderOfsmoke = smokeDamageArea.GetComponent<damageColliderOfSmoke>();
+        damageColliderOfsmoke.damage_Heal_Amount = damage_Heal_Amount;
+        damageColliderOfsmoke.mushroomTypes = type;
         while (elapsed < totalFlashDuration)
         {
             // Tüm materyalleri beyaza çevir
             for (int i = 0; i < materials.Length; i++)
             {
-                materials[i].color = Color.white;
+                materials[i].color = Color.darkRed;
             }
 
             yield return new WaitForSeconds(flashInterval / 2f);
@@ -56,8 +53,56 @@ public class MushroomColorChange : MonoBehaviour
             elapsed += flashInterval;
         }
 
-        Instantiate(smoke, transformLocation, Quaternion.identity);
-        Instantiate(smokeDamageArea, transformLocation2, Quaternion.identity);
-        Destroy(gameObjects, 0.2f);
+
+    GameObject smokes =    Instantiate(smoke, spawnLocation, Quaternion.identity);
+        Instantiate(smokeDamageArea, spawnLocation, Quaternion.identity);
+        if (type == MushroomTypes.heal)
+        {
+            var main = smokes.GetComponent<ParticleSystem>().main;
+            main.startColor = Color.green;
+        }
+        else if (type == MushroomTypes.damage)
+        {
+            var main = smokes.GetComponent<ParticleSystem>().main;
+            main.startColor = Color.rebeccaPurple;
+        }
+        else if (type == MushroomTypes.speed)
+        {
+            
+            var main = smokes.GetComponent<ParticleSystem>().main;
+            main.startColor = Color.blue;
+        }
+        Destroy(gameObjects, 0.5f);
+    }
+    public void getMetarials(MushroomTypes type)
+    {
+        rend = GetComponent<Renderer>();
+        if(type== MushroomTypes.heal)
+        {
+            rend.material = HealMushroom;
+            var main = smoke.GetComponent<ParticleSystem>().main;
+            main.startColor = Color.green;
+        }
+        else if(type == MushroomTypes.damage)
+        {
+            rend.material = DamageMushroom;
+            var main = smoke.GetComponent<ParticleSystem>().main;
+            main.startColor = Color.rebeccaPurple;
+        }
+        else if(type == MushroomTypes.speed)
+        {
+            rend.material = SpeedMushroom;
+            var main = smoke.GetComponent<ParticleSystem>().main;
+            main.startColor = Color.blue;
+        }
+        
+        materials = rend.materials; // Tüm materyalleri al
+
+        // Her bir materialin orijinal rengini sakla
+        originalColors = new Color[materials.Length];
+        for (int i = 0; i < materials.Length; i++)
+        {
+            originalColors[i] = materials[i].color;
+        }
     }
 }

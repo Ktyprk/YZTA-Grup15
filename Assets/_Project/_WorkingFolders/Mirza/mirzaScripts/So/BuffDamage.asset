@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e05a10a0cb72b469463b9780cfe108, type: 3}
+  m_Name: BuffDamage
+  m_EditorClassIdentifier: 
+  type: 1
+  BoostmaxHealth: 0
+  BoostplayerminDamage: 5
+  BoostplayermaxDamage: 10
+  BoostplayerArmor: 0
+  BoostplayerSpeed: 0
+  buffName: "Hasar Art\u0131\u015F\u0131"
+  BuffInformation: "Bu g\xFC\xE7lendirme sald\u0131r\u0131n\u0131 art\u0131r\u0131r
+    :"

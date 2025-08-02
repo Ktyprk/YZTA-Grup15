@@ -1,0 +1,37 @@
+GridBackground {
+    --grid-background-color: #282828;
+    --line-color: rgba(193, 196, 192, 0.1);
+    --thick-line-color: rgba(193, 196, 192, 0.1);
+    --spacing: 10;
+}
+
+.port-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 50px;
+}
+
+.port-content TextField {
+    flex-grow: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.port-content Button {
+    width: 20px;
+    margin-left: 5px;
+}
+
+
+.reputation-label {
+    font-size: 11px;
+    margin-left: 5px;
+    margin-right: 5px;
+    min-width: 40px;
+}
+
+.reputation-field {
+    width: 50px;
+    margin-left: 5px;
+}

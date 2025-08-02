@@ -2455,7 +2455,9 @@ GameObject:
   - component: {fileID: 2147001342639996021}
   - component: {fileID: 1070472459567892293}
   - component: {fileID: 2590188645692547589}
+  - component: {fileID: 5952553282165360840}
   - component: {fileID: 5226101599493898165}
+  - component: {fileID: 3195409557730234429}
   m_Layer: 8
   m_Name: Skeleton_Lvl1
   m_TagString: Untagged
@@ -2501,6 +2503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 292e2a0024a88da45ac2886979251f2f, type: 2}
+  coinDropSystem: {fileID: 3195409557730234429}
   renderers:
   - {fileID: 2681852678517707386}
   - {fileID: 4210911113269400550}
@@ -2514,8 +2517,16 @@ MonoBehaviour:
   normalMaterial: {fileID: -8468983757882266563, guid: 78a5212cf570899458df80afcf00e1d9, type: 3}
   flashMaterial: {fileID: 2100000, guid: f82eabeecea10324b89d115735be15d6, type: 2}
   flashDuration: 0.1
-  animController: {fileID: 1070472459567892293}
+  attackGizmoCenter: {x: 0, y: 0, z: 0}
+  attackGizmoSize: {x: 0, y: 0, z: 0}
+  showAttackGizmo: 0
+  target: {fileID: 0}
+  spawner: {fileID: 0}
   currentHealth: 0
+  summonByBoss: 0
+  awaken: 0
+  died: 0
+  wanderRadius: 5
 --- !u!195 &2147001342639996021
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2552,6 +2563,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2590188645692547589}
   enemyData: {fileID: 11400000, guid: 292e2a0024a88da45ac2886979251f2f, type: 2}
+  enemyBossData: {fileID: 0}
+  RageAttack: 0
 --- !u!95 &2590188645692547589
 Animator:
   serializedVersion: 7
@@ -2562,7 +2575,7 @@ Animator:
   m_GameObject: {fileID: 8351130665762768014}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 78a5212cf570899458df80afcf00e1d9, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0e48b86fb8f6f84fa5e56e0976aa365, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2574,6 +2587,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!136 &5952553282165360840
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351130665762768014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!136 &5226101599493898165
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2597,6 +2633,21 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!114 &3195409557730234429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351130665762768014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e8a05f5833e4149aa9a538eacec0c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coin: {fileID: 8401380578997415541, guid: 958eb50e9ec318c4f9745707301ec07e, type: 3}
+  dropRateBaseOnPercentage: 40
+  isDrop: 0
 --- !u!1 &8551155583770797373
 GameObject:
   m_ObjectHideFlags: 0

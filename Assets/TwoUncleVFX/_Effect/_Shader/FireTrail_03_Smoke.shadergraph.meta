@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 96544f764c8971143b986c7382635d2a
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 625f186215c104763be7675aa2d941aa, type: 3}
+AssetOrigin:
+  serializedVersion: 1
+  productId: 302106
+  packageName: VFX Graph - Fire Ball 02
+  packageVersion: 1.0
+  assetPath: Assets/TwoUncleVFX/_Effect/_Shader/FireTrail_03_Smoke.shadergraph
+  uploadId: 707322

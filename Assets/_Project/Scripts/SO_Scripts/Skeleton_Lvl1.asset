@@ -18,16 +18,17 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
   projectilePrefab: {fileID: 0}
   health: 20
-  damage: 10
+  damage: 2
   moveSpeed: 2
   projectileSpeed: 10
-  attackTime: 1.2
-  attackCooldown: 2
+  attackTime: 2
+  attackCooldown: 3
   attackDistance: 1.8
   idleTime: 1
   blockTime: 0.5
   enemyDistance: 1
-  animatorController: {fileID: 9100000, guid: 47deda16815701e499d6e66bcb61e339, type: 2}
+  animatorController: {fileID: 9100000, guid: c0e48b86fb8f6f84fa5e56e0976aa365, type: 2}
+  Awaken: Awaken
   idleAnim: Idle
   walkAnim: Walk
   attackAnim: Attack

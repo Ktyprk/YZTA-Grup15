@@ -9,12 +9,17 @@ public class EnemyController : MonoBehaviour, ICombat
     [Header("Enemy Settings")]
     [SerializeField] private EnemyData enemyData;
     private IEnemyAttackBehavior attackBehavior;
+    [SerializeField]  private CoinDropSystem coinDropSystem;
 
     [Header("Damage Flash Settings")]
     [SerializeField] private List<SkinnedMeshRenderer> renderers;
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
+    [Header("Gizmos")]
+    public Vector3 attackGizmoCenter;
+    public Vector3 attackGizmoSize;
+    public bool showAttackGizmo = false;
 
     [Header("Target Settings")]
     [SerializeField] private Transform target;
@@ -24,6 +29,7 @@ public class EnemyController : MonoBehaviour, ICombat
     public event Action OnIdle;
     public event Action OnDie;
     public event Action<int> OnDamageTaken;
+    [SerializeField] private BossSpawner spawner;
 
     private EnemyAnimatorController animController;
     private Coroutine flashRoutine;
@@ -31,42 +37,68 @@ public class EnemyController : MonoBehaviour, ICombat
     private float attackTimer;
     private bool waitingForAttack;
     public int currentHealth;
-
+    public bool summonByBoss = false;
+    public bool awaken = false;
+    public bool died = false;
+    
     private void Awake()
     {
+        died = false;
+        awaken=false;
+        spawner = FindAnyObjectByType<BossSpawner>();
         animController = GetComponent<EnemyAnimatorController>();
+        CoinDropSystem coinDropSystem = GetComponent<CoinDropSystem>();  
     }
 
     private void OnEnable()
     {
         ResetEnemy();
         InitializeAttackBehavior();
+        animController.Attack();
+        StartCoroutine(checkAwakenAnim());  
+
     }
 
     private void FixedUpdate()
     {
-        if (target == null || !target.gameObject.activeSelf)
+        if (awaken && died == false)
         {
-            target = null;
-            WanderSimple();
-            //animController.Idle();
-            if (waitingForAttack)
+            if (target == null || !target.gameObject.activeSelf)
             {
-                waitingForAttack = false;
-                OnIdle?.Invoke();
+                target = null;
+                WanderSimple();
+                if (waitingForAttack)
+                {
+                    waitingForAttack = false;
+                    OnIdle?.Invoke();
+                }
+                return;
             }
-            return;
+
+            // PlayerController'da died kontrolü
+            var playerController = target.GetComponent<PlayerController>();
+            if (playerController != null && playerController.died)
+            {
+                target = null;
+                WanderSimple();
+                if (waitingForAttack)
+                {
+                    waitingForAttack = false;
+                    OnIdle?.Invoke();
+                }
+                return;
+            }
+
+            RotateTowardsTarget();
+
+            float distance = Vector3.Distance(transform.position, target.position);
+            if (distance > enemyData.attackDistance)
+            {
+                MoveTowardsTarget();
+            }
+
+            HandleCombat(distance);
         }
-
-        RotateTowardsTarget();
-
-        float distance = Vector3.Distance(transform.position, target.position);
-        if (distance > enemyData.attackDistance)
-        {
-            MoveTowardsTarget();
-        }
-
-        HandleCombat(distance);
     }
 
     
@@ -111,11 +143,17 @@ public class EnemyController : MonoBehaviour, ICombat
         switch (enemyData.attackType)
         {
             case AttackType.Melee:
-                InitializeAttackBehavior(new MeleeAttackBehavior());
+                InitializeAttackBehavior(new MeleeAttackBehavior(enemyData));
                 break;
 
             case AttackType.Ranged:
-                InitializeAttackBehavior(new RangedAttackBehavior(enemyData.projectilePrefab, enemyData.projectileSpeed)); 
+                InitializeAttackBehavior(new RangedAttackBehavior(enemyData,enemyData.projectilePrefab, enemyData.projectileSpeed)); 
+                break;
+            case AttackType.ArcRanged:
+                 InitializeAttackBehavior(new ArcAttackBehavior(enemyData, enemyData.projectilePrefab, enemyData.projectileSpeed));
+                break;
+            case AttackType.JumpAttack:
+                InitializeAttackBehavior(new JumpAttackBehavior(enemyData,3f, 0.6f, 2f, 0.3f));
                 break;
         }
     }
@@ -124,18 +162,28 @@ public class EnemyController : MonoBehaviour, ICombat
         attackBehavior = behavior;
     }
 
+    private void OnDrawGizmos()
+    {
+        if (showAttackGizmo)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(attackGizmoCenter, attackGizmoSize);
+        }
+    }
 
     private void HandleCombat(float distanceToTarget)
     {
         if (distanceToTarget > enemyData.attackDistance)
         {
             waitingForAttack = false;
+            showAttackGizmo = false;
             attackTimer = 0f;
             return;
         }
 
         attackTimer += Time.deltaTime;
-
+      //  showAttackGizmo = false;
         if (attackTimer >= enemyData.attackCooldown || !waitingForAttack)
         {
             waitingForAttack = true;
@@ -143,7 +191,7 @@ public class EnemyController : MonoBehaviour, ICombat
 
             animController.Attack();
             OnAttack?.Invoke();
-            attackBehavior?.Attack(this, target);
+            
         }
     }
 
@@ -181,24 +229,38 @@ public class EnemyController : MonoBehaviour, ICombat
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        OnDamageTaken?.Invoke(damage);
-        
-        DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
-
-        if (flashRoutine != null)
-            StopCoroutine(flashRoutine);
-        flashRoutine = StartCoroutine(FlashEffect());
-
-        if (currentHealth <= 0)
+        if(awaken==true && died==false)
         {
-            Die();
+            currentHealth -= damage;
+            OnDamageTaken?.Invoke(damage);
+
+            DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
+
+            if (flashRoutine != null)
+                StopCoroutine(flashRoutine);
+            flashRoutine = StartCoroutine(FlashEffect());
+
+            if (currentHealth <= 0)
+            {
+                if (spawner != null)
+                {
+                    spawner.counter++;
+                }
+                if (summonByBoss)
+                {
+                    BossEnemyController bossEnemyController = FindAnyObjectByType<BossEnemyController>();
+                    bossEnemyController.summonCountCheck--;
+                }
+                Die();
+            }
         }
+      
     }
 
     private IEnumerator FlashEffect()
     {
         SetMaterials(flashMaterial);
+      
         yield return new WaitForSeconds(flashDuration);
         ResetMaterials();
     }
@@ -219,11 +281,16 @@ public class EnemyController : MonoBehaviour, ICombat
 
     private void Die()
     {
+        died = true;
+        coinDropSystem.DropCoin();
+        animController.Die();
         OnDie?.Invoke();
         Debug.Log($"{enemyData.enemyName} died.");
-        
-        EntityPoolManager.Instance.ReleaseEntityToPool(enemyData.enemyPrefab, gameObject);
+        Collider collider = GetComponent<Collider>();
+        collider.enabled = false;
+       
     }
+
 
     public Transform GetTransform() => transform;
 
@@ -242,5 +309,26 @@ public class EnemyController : MonoBehaviour, ICombat
         animController.ResetAnimator();
         ResetMaterials();
         animController.Idle(); 
+    }
+    public void doAttack()
+    {
+        attackBehavior?.Attack(this, target);
+    }
+     public void awakenAnimFinished()
+    {
+        awaken = true;
+    }
+    public void DieAnimFinished()
+    {
+        
+        EntityPoolManager.Instance.ReleaseEntityToPool(enemyData.enemyPrefab, gameObject);
+    }
+    private IEnumerator checkAwakenAnim()
+    {
+        yield return new WaitForSeconds(3f);
+        if(awaken=false)
+        {
+            animController.Attack();
+        }
     }
 }
