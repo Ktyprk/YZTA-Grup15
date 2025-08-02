@@ -4481,9 +4481,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1395846591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3248835f66bdb6419b16843dc623b35, type: 3}
+  m_Script: {fileID: 11500000, guid: f469c21ecc560254793b1b411e899c5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: BoosRoom
+  targetSpawnId: BoosRoom
+  useFade: 1
+  fadeDuration: 1
 --- !u!1001 &1405429452
 PrefabInstance:
   m_ObjectHideFlags: 0
