@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour, ICombat
     [Header("Enemy Settings")]
     [SerializeField] private EnemyData enemyData;
     private IEnemyAttackBehavior attackBehavior;
+    [SerializeField]  private CoinDropSystem coinDropSystem;
 
     [Header("Damage Flash Settings")]
     [SerializeField] private List<SkinnedMeshRenderer> renderers;
@@ -46,6 +47,7 @@ public class EnemyController : MonoBehaviour, ICombat
         awaken=false;
         spawner = FindAnyObjectByType<BossSpawner>();
         animController = GetComponent<EnemyAnimatorController>();
+        CoinDropSystem coinDropSystem = GetComponent<CoinDropSystem>();  
     }
 
     private void OnEnable()
@@ -268,6 +270,7 @@ public class EnemyController : MonoBehaviour, ICombat
     private void Die()
     {
         died = true;
+        coinDropSystem.DropCoin();
         animController.Die();
         OnDie?.Invoke();
         Debug.Log($"{enemyData.enemyName} died.");

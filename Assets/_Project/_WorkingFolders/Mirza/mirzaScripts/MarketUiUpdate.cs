@@ -68,8 +68,5 @@ public class MarketUiUpdate : MonoBehaviour
         }
        
     }
-    public void close()
-    {
-        MarketPanel.SetActive(false);
-    }
+ 
 }
