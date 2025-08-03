@@ -18,6 +18,8 @@ public class BossEnemyController : MonoBehaviour, ICombat
     [SerializeField] private Material normalMaterial;
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float flashDuration = 0.1f;
+    [SerializeField] private GameObject endingScene;
+    [SerializeField] private GameObject HealthBar;
     [Header("Gizmos")]
     public Vector3 attackGizmoCenter;
     public Vector3 attackGizmoSize;
@@ -355,6 +357,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
         if (currentHealth <= 0)
         {
+       
             Die();
         }
 
@@ -395,6 +398,8 @@ public class BossEnemyController : MonoBehaviour, ICombat
 
     private void Die()
     {
+        HealthBar.SetActive(false);
+        endingScene.SetActive(true);
         OnDie?.Invoke();
         Debug.Log($"{BossenemyData.enemyName} died.");
 
@@ -436,5 +441,9 @@ public class BossEnemyController : MonoBehaviour, ICombat
     {
         missAttackNumber = 0;
         teleport = false;
+    }
+    public void close()
+    {
+        endingScene.SetActive(false);
     }
 }
