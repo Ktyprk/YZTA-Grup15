@@ -56,6 +56,7 @@ public class MushroomColorChange : MonoBehaviour
 
     GameObject smokes =    Instantiate(smoke, spawnLocation, Quaternion.identity);
         Instantiate(smokeDamageArea, spawnLocation, Quaternion.identity);
+        SoundManager.Instance.PlayAudio("mushroom",0.5f);
         if (type == MushroomTypes.heal)
         {
             var main = smokes.GetComponent<ParticleSystem>().main;
