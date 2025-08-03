@@ -1,6 +1,9 @@
-using UnityEngine;
-using UnityEngine.UI;
+using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerStatsController : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class PlayerStatsController : MonoBehaviour
     public float playermaxDamage = 5f;
     public int playerArmor = 0;
     public int playerSpeed = 5;
+    private Dictionary<buffType,float> stackStats = new Dictionary<buffType,float>();
 
     [HideInInspector] public int currentHealth;
 
@@ -31,8 +35,22 @@ public class PlayerStatsController : MonoBehaviour
     {
         currentHealth = MaxHealth;
         UpdateHealthBar();
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        if (scene.name == "StartPoint") // Sadece StartPoint sahnesinde çalýþsýn
+        {
+            deActiveBuff();
+        } // Yeni sahne yüklenince tekrar çalýþýr
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     public void UpdateHealthBar()
     {
         if (healthBarFill != null)
@@ -57,17 +75,101 @@ public class PlayerStatsController : MonoBehaviour
 
     public void ApplyBuff(buffCardsStats stats)
     {
+       
+
         if (stats.type == buffType.Damage)
+        {
             bonusAttack += stats.BoostplayermaxDamage;
+            if (stackStats.ContainsKey(stats.type))
+            {
+                stackStats[stats.type] += stats.BoostplayermaxDamage; 
+            }
+            else
+            {
+                stackStats.Add(stats.type, stats.BoostplayermaxDamage); 
+            }
+
+        }
         else if (stats.type == buffType.MaxHealth)
+        {
             bonusMaxHealth += stats.BoostmaxHealth;
+            
+            if (stackStats.ContainsKey(stats.type))
+            {
+                stackStats[stats.type] += stats.BoostmaxHealth;
+            }
+            else
+            {
+                stackStats.Add(stats.type, stats.BoostmaxHealth);
+            }
+        }
+           
         else if (stats.type == buffType.Armor)
+        {
             bonusArmor += stats.BoostplayerArmor;
+            
+            if (stackStats.ContainsKey(stats.type))
+            {
+                stackStats[stats.type] += stats.BoostplayerArmor;
+            }
+            else
+            {
+                stackStats.Add(stats.type, stats.BoostplayerArmor);
+            }
+        }
+            
         else if (stats.type == buffType.Speed)
+        {
             bonusSpeed += stats.BoostplayerSpeed;
+            
+            if (stackStats.ContainsKey(stats.type))
+            {
+                stackStats[stats.type] += stats.BoostplayerSpeed;
+            }
+            else
+            {
+                stackStats.Add(stats.type, stats.BoostplayerSpeed);
+            }
+        }
+           
 
         currentHealth = Mathf.Min(currentHealth, MaxHealth);
         UpdateHealthBar();
+    }
+    public void deActiveBuff()
+    {
+        if(stackStats !=null)
+        {
+            foreach (var item in stackStats)
+            {
+
+                if (item.Key == buffType.Damage)
+                {
+                    bonusAttack -= item.Value;
+
+                }
+                else if (item.Key == buffType.MaxHealth)
+                {
+                    bonusMaxHealth -= (int)item.Value;
+                }
+
+                else if (item.Key == buffType.Armor)
+                {
+                    bonusArmor -= (int)item.Value;
+                }
+
+                else if (item.Key == buffType.Speed)
+                {
+                    bonusSpeed -= item.Value;
+                }
+            }
+            stackStats.Clear();
+        }
+    
+
+
+    
+
     }
     public void ApplyBuffMarket(marketCardsStats stats)
     {

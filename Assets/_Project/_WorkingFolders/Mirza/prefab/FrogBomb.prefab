@@ -151,8 +151,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 20
-  fireDamageAmount: 5
+  fireDamageAmount: 1
   bouncedObject: {fileID: 4418415609966599632, guid: c040fabe222da2745b2269ddc2512aef, type: 3}
+  rotationSpeed: 90
+  enemyData: {fileID: 0}
 --- !u!1001 &7921898154068939021
 PrefabInstance:
   m_ObjectHideFlags: 0
