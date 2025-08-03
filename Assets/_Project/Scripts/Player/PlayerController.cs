@@ -257,6 +257,7 @@ public class PlayerController : MonoBehaviour, ICombat
         }
 
         animator.Dash();
+        SoundManager.Instance.PlayAudio("dash",0.1f);    
         isDashing = true;
         dashTime = 0f;
         lastDashTime = Time.time;
