@@ -1,6 +1,6 @@
 ## 🏴‍☠️ **Takım İsmi**
 
-**One Piece** 
+**Jenerat Games** 
 
 
 ## 👥 Takım Üyeleri
@@ -245,5 +245,70 @@ Done: Tamamlanmış ve kabul edilmiş görevler.
     
     📝**İlerleme Planı**
     
-     3.Level tasarımı tamamlanacak ve oyun deneyimini destekleyecek Menü UI, ses efektleri, cut scene geçişleri ve game over ekranı gibi öğelerin tasarım ve entegrasyonu gerçekleştirilecek. 
+     3.Level tasarımı tamamlanacak ve oyun deneyimini destekleyecek Menü UI, ses efektleri, cut scene geçişleri ve game over ekranı gibi öğelerin tasarım ve entegrasyonu gerçekleştirilecek.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+# 🚀 Sprint 3
+
+- **Sprint Notları** : User Story'ler product backlog'ların içine yazılmıştır. Product backlog item'lara tıklandığında hikayelerin detayları okunabilmektedir.
+
+- **Sprint içinde tamamlanması tahmin edilen puan** : 100 Puan
+
+- **Puan tamamlama mantığı** : Proje boyunca tamamlanması gereken toplam 300 puanlık backlog bulunmaktadır. 3 sprinte bölündüğünde üçüncü sprintin 100 ile bitmesi gerektiği kararlaştırıldı.
+
+- **Backlog düzeni ve Story seçimleri** : Backlog’umuz, projenin tüm ihtiyaçlarını kapsayacak şekilde Notion’daki Task Tracker board’unda detaylı olarak oluşturulmuştur.Görevler, sprintlerin yapısına uygun olarak aşağıdaki sütunlarda yönetilmektedir:
+Not Started: Henüz başlanmamış, planlanan ve backlog’a eklenen görevler,
+In Progress: Aktif olarak üzerinde çalışılan görevler,
+In Test: Geliştirmesi tamamlanıp test veya review aşamasına alınan görevler,
+Done: Tamamlanmış ve kabul edilmiş görevler.
+
+
+
+- **Daily Scrum** : Daily Scrum toplantılarının Discord ve Slack üzerinden yapılması kararlaştırılmıştır. Daily Scrum toplantılarımız ve günlük Whatsapp konuşmalarımız Imgur'da toplanmıştır : [Sprint 3 - Daily Scrum Meetings](https://imgur.com/a/02ckeLE)
+- **Sprint Board Updates** : 
+![Backlog 1](SprintAssets/meetingSS/notion3.png)
+
+<details> <summary>• <b>Oyun Durumu: Ekran Görüntüleri : </b></summary>
+  
+  <p align="center">
+  <img src="SprintAssets/gameSS/starter.gif" width="700" />
+  <img src="SprintAssets/gameSS/level1_death.gif" width="700" />
+  <img src="SprintAssets/gameSS/level2_fight.gif" width="700" />
+  <img src="SprintAssets/gameSS/boss_room.gif" width="700" />
+  </p>
+  
+  </details>
+
+
+- **Sprint Review** : 
+
+   🎯 Sprint Hedefi
+  
+    Bu sprintteki temel hedefimiz, start point ve boss level’larını tasarlayarak mevcut oyun mekaniklerini bu alanlara entegre etmekti. Ayrıca oyun içi ses efektlerinin, diyalog sisteminin ve AI karakterimiz         Fungi’nin oyuna dahil edilmesi planlandı.
+  
+   ✨ Tamamlanan İşler
+  
+    Tüm level tasarımları tamamlanarak oyun oynanabilir hale getirildi. Boss sahnesi eklendi ve hareket paternleri başarıyla oluşturuldu. Market sistemi oyuna entegre edildi ve karakterlerin saldırılarındaki         projectile'lar hem görsel hem kod açısından güncellendi. Gemini API ile bağlantı kurularak oyuncu her öldüğünde, Fungi üzerinden ölüm nedeni ve alınan hasarlarla ilgili analizler gerçek zamanlı olarak            sunuldu. Başlangıç, ölüm, boss odası ve bölüm tanıtımlarına özel cutscene’ler hazırlandı. Karakter için ölüm animasyonu eklendi. Ayrıca roguelike yapıyı desteklemek adına, oyun sırasında alınan geçici            buff’ların sıfırlanmasını sağlayan sistem geliştirildi; marketten alınan kalıcı buff’lar ise korunmaya devam ediyor.
+  
+   ⚠️ Tamamlanamayan / Eksik Kalanlar
+  
+    Bu sprintte planlanan tüm görevler başarıyla tamamlandı ve herhangi bir eksiklik yaşanmadı.
+
+   Sprint Review katılımcıları: Melike Şahin, Ecenur Ektaş, Kutay Perk, Mirza Özmen, Harun Avaş.
+
+
+- **Sprint Retrospective** :
+
+    ✅ **İyi Gidenler**
+    
+     Ekip içi koordinasyon bu sprintte de oldukça başarılıydı. Boss sahnesi, market sistemi ve cutscene’lerin zamanında tamamlanması sayesinde proje önemli bir oynanabilirlik seviyesine ulaştı. Gemini API             entegrasyonu ile Fungi karakterinin bu sistemle etkileşimi, hem anlatım hem de oyun içi yönlendirmeler açısından güçlü bir katkı sağladı. Ek olarak, görsel ve animasyonel detaylarda yapılan iyileştirmeler        oyun kalitesini artırdı.
+    
+    🔄 **İyileştirilmesi Gerekenler**
+    
+     Test süreçleri yoğunlaştıkça bazı sistemlerde yeniden düzenleme ihtiyacı doğdu. Gemini API’den gelen yanıtların anlık iletiminde zaman zaman gecikmeler yaşandı; bu da kullanıcıya verilen geri bildirimin          akışını etkiledi.
+    
+    📝**İlerleme Planı**
+    
+     Teknik iyileştirmelere ek olarak, artık oyunun pazarlama sürecine geçiliyor. Oyunun Steam sayfası hazırlanacak ve yayın süreci başlatılacak. Bu doğrultuda tanıtım görselleri, oynanış videoları ve fragmanlar      hazırlanacak. Sosyal medya tarafında #fungor, #indiegame, #roguelike gibi etiketlerle paylaşım stratejisi oluşturulacak ve oyun topluluklarında görünürlük artırılacak. Steam wishlist kampanyası başlatılarak      kitlenin önceden oluşturulması sağlanacak.
 
