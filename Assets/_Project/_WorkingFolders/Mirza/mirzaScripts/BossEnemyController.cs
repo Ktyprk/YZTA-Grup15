@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class BossEnemyController : MonoBehaviour, ICombat
@@ -60,6 +61,8 @@ public class BossEnemyController : MonoBehaviour, ICombat
     public GameObject chargeEffect;
     public int missAttackNumber = 0;
     public GameObject oldman;
+    
+    [SerializeField] private Image healthFillImage; 
 
     private void Awake()
     {
@@ -75,6 +78,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
         summonCountCheck = summonCount;
         ResetEnemy();
         InitializeAttackBehavior();
+        
     }
 
     private void FixedUpdate()
@@ -251,7 +255,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
                 }
 
 
-                Debug.Log("animasyon baþlatýldý");
+                Debug.Log("animasyon baï¿½latï¿½ldï¿½");
 
 
                 yield return new WaitUntil(() => SpecialAttackAnimState);
@@ -340,6 +344,9 @@ public class BossEnemyController : MonoBehaviour, ICombat
         currentHealth -= damage;
         OnDamageTaken?.Invoke(damage);
 
+        float normalizedHealth = (float)currentHealth / maxHealth;
+        healthFillImage.fillAmount = Mathf.Clamp01(normalizedHealth);
+
         DamagePopUpGenerator.instance.CreatePopUp(transform.position + Vector3.up * 2, damage.ToString());
 
         if (flashRoutine != null)
@@ -350,7 +357,8 @@ public class BossEnemyController : MonoBehaviour, ICombat
         {
             Die();
         }
-        if(currentHealth<=maxHealth/2 && summon==false)
+
+        if(currentHealth <= maxHealth / 2 && summon == false)
         {
             summon = true;
             vanished = true;
@@ -361,6 +369,7 @@ public class BossEnemyController : MonoBehaviour, ICombat
             OnAttack?.Invoke();
         }
     }
+
 
     private IEnumerator FlashEffect()
     {
@@ -390,6 +399,8 @@ public class BossEnemyController : MonoBehaviour, ICombat
         Debug.Log($"{BossenemyData.enemyName} died.");
 
         EntityPoolManager.Instance.ReleaseEntityToPool(BossenemyData.enemyPrefab, gameObject);
+        if (healthFillImage != null)
+            healthFillImage.fillAmount = 0f;
     }
 
     public Transform GetTransform() => transform;
