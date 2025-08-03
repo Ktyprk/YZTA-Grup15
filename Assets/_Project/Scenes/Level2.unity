@@ -2183,8 +2183,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcca9e95654a8664e85b7c65a6a4a5b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 8351130665762768014, guid: 3bf9929015899c742abf7eb94b9794e3, type: 3}
-  enemyCount: 1
+  enemyPrefab: {fileID: 8351130665762768014, guid: 33efa884633269f4bb8b409fcbf04c12, type: 3}
+  enemyCount: 5
   spawnRadius: 5
   spawnOnlyOnce: 1
 --- !u!114 &973463253
@@ -5936,7 +5936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
-  enemyCount: 1
+  enemyCount: 3
   spawnRadius: 5
   spawnOnlyOnce: 1
 --- !u!114 &1907342249
@@ -6169,7 +6169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
-  enemyCount: 1
+  enemyCount: 3
   spawnRadius: 5
   spawnOnlyOnce: 1
 --- !u!114 &2049326226
@@ -6397,7 +6397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8351130665762768014, guid: 84c7bc2440b20c44294dda74739cb720, type: 3}
-  enemyCount: 1
+  enemyCount: 3
   spawnRadius: 5
   spawnOnlyOnce: 1
 --- !u!114 &2124329865
@@ -6481,7 +6481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8351130665762768014, guid: 3bf9929015899c742abf7eb94b9794e3, type: 3}
-  enemyCount: 1
+  enemyCount: 2
   spawnRadius: 5
   spawnOnlyOnce: 1
 --- !u!114 &2139622128

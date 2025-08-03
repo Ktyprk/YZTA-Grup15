@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using VFavorites.Libs;
 
 
 public class BuffCardsUiUpdate : MonoBehaviour
@@ -7,6 +8,7 @@ public class BuffCardsUiUpdate : MonoBehaviour
     private buffCardsStats buffCardsStat;
     [SerializeField] private PlayerStatsController playerStatsController;
     [SerializeField] private GameObject buffShowTrigger;
+   
     
     [Header("Ui Settings")]
     [SerializeField] private TMP_Text buffName;
@@ -17,7 +19,7 @@ public class BuffCardsUiUpdate : MonoBehaviour
 
     void Start()
     {
-        
+        buffShowTrigger = GameObject.Find("BuffShowTrigger");
         
     }
 
@@ -56,5 +58,6 @@ public class BuffCardsUiUpdate : MonoBehaviour
         playerStatsController.ApplyBuff(buffCardsStat);
         BuffPanel.SetActive(false);
         buffShowTrigger.SetActive(false);
+        
     }
 }

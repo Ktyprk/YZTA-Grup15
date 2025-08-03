@@ -62,7 +62,7 @@ public class APIManager : MonoBehaviour
                 return;
             }
 
-             header = "Bu veriler bana hasar veren düşmanlar, saldırı isimleri ve toplam hasarları gösteriyor. " +
+             header = "öncelikle cevabı aşırı detaylı ve uzun yazmana gerek yok =  Bu veriler bana hasar veren düşmanlar, saldırı isimleri ve toplam hasarları gösteriyor. " +
                 "Lütfen bu dataları inceleyip bana hangi karakter ne kadar hasar vermiş ve hangilerine daha çok dikkat etmem gerektiğini açıklar mısın(yakın bir arkadınmıs gibi konusursan sevinirim mantar şeklinde büyülü sevimli bir dost gibi" +
                 " düşün kendini ve cevap verirken öyle yaz. emoji kullanma lütfen kalp gülenyuzler vs . ve daha insansi  bir arkadaş gibi konus birde gemini tanrıları tarafından kutsanmıs oldugundan bahsedebilirsin konusma arasında)? birde biraz konusmma tarzın yapmacık geliyor daha insana yakın sade bir dilel konusurmusun ama arkadaş sammiyetinide korumaya çalıs ve bana arthur olarak seslenebilrisin\n\n";
 

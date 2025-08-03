@@ -26,6 +26,7 @@ public class explosiveBarrel : MonoBehaviour
     }
     public IEnumerator blowupEffect()
     {
+        
         circleAroundBarrel.SetActive(true);
         yield return new WaitForSeconds(1);
         circleAroundBarrel.SetActive(false);
@@ -35,6 +36,7 @@ public class explosiveBarrel : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Instantiate(blowUpeffect, transform.position, Quaternion.identity);
         Instantiate(explosiveArea, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlayAudio("cannon4", 0.1f);
         Destroy(gameObject);
     }
 }

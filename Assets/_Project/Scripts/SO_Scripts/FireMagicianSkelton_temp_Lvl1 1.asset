@@ -17,7 +17,7 @@ MonoBehaviour:
   attackType: 2
   enemyPrefab: {fileID: 8351130665762768014, guid: 33efa884633269f4bb8b409fcbf04c12, type: 3}
   projectilePrefab: {fileID: 4418415609966599632, guid: 905aa659763d31f40bdb33370edce4a3, type: 3}
-  health: 15
+  health: 25
   damage: 10
   moveSpeed: 2
   projectileSpeed: 5

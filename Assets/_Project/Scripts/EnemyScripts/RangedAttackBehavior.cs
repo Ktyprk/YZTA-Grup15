@@ -15,6 +15,7 @@ public class RangedAttackBehavior : IEnemyAttackBehavior
     public void Attack( EnemyController enemy, Transform target)
     {
         Vector3 spawnPos = enemy.transform.position + Vector3.up * 1f;
+        SoundManager.Instance.PlayAudio("fireball-01", 0.01f);
         GameObject proj = GameObject.Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
         FireBallDamage fireBallDamage = proj.GetComponent<FireBallDamage>();
         if ( fireBallDamage != null )
