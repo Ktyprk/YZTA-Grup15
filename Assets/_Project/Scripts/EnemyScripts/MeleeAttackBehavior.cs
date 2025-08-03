@@ -30,7 +30,7 @@ public class MeleeAttackBehavior : IEnemyAttackBehavior
         Collider[] hits = Physics.OverlapBox(boxCenter, hitboxSize / 2f, controller.transform.rotation, playerLayer);
 
         HashSet<GameObject> damagedEnemies = new();
-
+        SoundManager.Instance.PlayAudio("melee sound", 0.1f);
         foreach (Collider hit in hits)
         {
             GameObject enemy = hit.gameObject;

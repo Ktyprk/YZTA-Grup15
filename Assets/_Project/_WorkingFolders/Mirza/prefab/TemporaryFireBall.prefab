@@ -150,9 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f09074ba1d84bd4b90907b8a664c455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
+  damageAmount: 3
   fireDamageAmount: 1
   efect: {fileID: 1188344861150495681}
+  isSummonByBoss: 0
+  enemyData: {fileID: 0}
 --- !u!1001 &8421169050694486470
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour, ICombat
                 break;
             case "Attack":
                 animator.PlayAnim("Attack");
+                SoundManager.Instance.PlayAudio("sword sound",0.1f);
                 
                 break;
             default:
@@ -218,16 +219,19 @@ public class PlayerController : MonoBehaviour, ICombat
         yield return new WaitForSeconds(5f);
         GradualActivator gradualActivator = GetComponent<GradualActivator>();
         gradualActivator.deActive();
-        playerStats.currentHealth = 100;
-        animator.Idle();
-
+        playerStats.currentHealth = playerStats.MaxHealth;
+        
         // _sceneFader.FadeAndLoad("StartPoint"); // will change as loby map name
         playerController.enabled = true;
         playerStats.UpdateHealthBar();
         died = false;
         SceneFader.Instance.FadeThenExecute(1f, () =>
         {
+            
+
             NewSceneLoader.Instance.LoadSceneWithPlayer("StartPoint", "StartPoint");
+            animator.Idle();
+
         });
         
      //  gameObject.SetActive(false);
