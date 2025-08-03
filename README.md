@@ -261,7 +261,8 @@ Done: Tamamlanmış ve kabul edilmiş görevler.
 Not Started: Henüz başlanmamış, planlanan ve backlog’a eklenen görevler,
 In Progress: Aktif olarak üzerinde çalışılan görevler,
 In Test: Geliştirmesi tamamlanıp test veya review aşamasına alınan görevler,
-Done: Tamamlanmış ve kabul edilmiş görevler.
+Done: Tamamlanmış ve kabul edilmiş görevler,
+Sprint3_Tasks: Tamamlanmış ve kabul edilmiş görevler.
 
 
 
