@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using static VTabs.VTabs;
 
 public class MarketUiUpdate : MonoBehaviour
 {
