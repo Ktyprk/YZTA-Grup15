@@ -1,4 +1,3 @@
-using UnityEditor.TerrainTools;
 using UnityEngine;
 
 public class CoinDropSystem : MonoBehaviour

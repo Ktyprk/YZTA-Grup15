@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using VFavorites.Libs;
 
 
 public class BuffCardsUiUpdate : MonoBehaviour
